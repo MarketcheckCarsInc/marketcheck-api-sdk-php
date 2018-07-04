@@ -57,6 +57,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'id' => 'string',
         'options' => 'string[]',
         'features' => 'string[]',
         'seller_comment' => 'string'
@@ -68,6 +69,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'id' => null,
         'options' => null,
         'features' => null,
         'seller_comment' => null
@@ -100,6 +102,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'options' => 'options',
         'features' => 'features',
         'seller_comment' => 'seller_comment'
@@ -111,6 +114,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'options' => 'setOptions',
         'features' => 'setFeatures',
         'seller_comment' => 'setSellerComment'
@@ -122,6 +126,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'options' => 'getOptions',
         'features' => 'getFeatures',
         'seller_comment' => 'getSellerComment'
@@ -187,6 +192,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['options'] = isset($data['options']) ? $data['options'] : null;
         $this->container['features'] = isset($data['features']) ? $data['features'] : null;
         $this->container['seller_comment'] = isset($data['seller_comment']) ? $data['seller_comment'] : null;
@@ -215,6 +221,29 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The unique id associated with the dealer in the Marketcheck database
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets options

@@ -51,7 +51,7 @@ use \marketcheck\api\sdk\ObjectSerializer;
 class DealerApiTest extends \PHPUnit_Framework_TestCase
 {
     private $dealer_id = "1006292";
-    private $api_key = "nbWPXNcG8V6EgOBsjejVQJd9A9zTerzG";
+    private $api_key = "your api key";  
     private $latitude;
     private $longitude;
     private $radius;

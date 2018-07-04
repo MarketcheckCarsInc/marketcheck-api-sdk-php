@@ -57,6 +57,7 @@ class ListingMedia implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'id' => 'string',
         'photo_link' => 'string',
         'photo_links' => 'string[]'
     ];
@@ -67,6 +68,7 @@ class ListingMedia implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'id' => null,
         'photo_link' => null,
         'photo_links' => null
     ];
@@ -98,6 +100,7 @@ class ListingMedia implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'photo_link' => 'photo_link',
         'photo_links' => 'photo_links'
     ];
@@ -108,6 +111,7 @@ class ListingMedia implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'photo_link' => 'setPhotoLink',
         'photo_links' => 'setPhotoLinks'
     ];
@@ -118,6 +122,7 @@ class ListingMedia implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'photo_link' => 'getPhotoLink',
         'photo_links' => 'getPhotoLinks'
     ];
@@ -182,6 +187,7 @@ class ListingMedia implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['photo_link'] = isset($data['photo_link']) ? $data['photo_link'] : null;
         $this->container['photo_links'] = isset($data['photo_links']) ? $data['photo_links'] : null;
     }
@@ -209,6 +215,29 @@ class ListingMedia implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id The unique id associated with the dealer in the Marketcheck database
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
 
     /**
      * Gets photo_link

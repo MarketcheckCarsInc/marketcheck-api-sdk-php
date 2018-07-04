@@ -26,7 +26,15 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace marketcheck\api\sdk;
+require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../lib/Api/ListingsApi.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
 
 use \marketcheck\api\sdk\Configuration;
 use \marketcheck\api\sdk\ApiException;
@@ -42,6 +50,73 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class ListingsApiTest extends \PHPUnit_Framework_TestCase
 {
+    private $listing_id = "5TDDKRFH1GS304801-d8d57192-905e-4c96-b1ad-55fa144bc120";
+    private $api_key = "your api key";
+    private $latitude = null;
+    private $longitude = null;
+    private $radius = null;
+    private $zip = null;
+    private $include_lease = null;
+    private $include_finance = null;
+    private $lease_term = null;
+    private $lease_down_payment = null;
+    private $lease_emp = null;
+    private $finance_loan_term = null;
+    private $finance_loan_apr = null;
+    private $finance_emp = null;
+    private $finance_down_payment = null;
+    private $finance_down_payment_per = null;
+    private $car_type = null;
+    private $seller_type = null;
+    private $carfax_1_owner = null;
+    private $carfax_clean_title = null;
+    private $year = null;
+    private $make = null;
+    private $model = null;
+    private $trim = null;
+    private $dealer_id = null;
+    private $vin = null;
+    private $source = null; 
+    private $body_type = null;
+    private $body_subtype = null; 
+    private $vehicle_type = null; 
+    private $vins = null; 
+    private $taxonomy_vins = null; 
+    private $ymmt = null; 
+    private $match = null; 
+    private $cylinders = null; 
+    private $transmission = null; 
+    private $speeds = null; 
+    private $doors = null; 
+    private $drivetrain = null; 
+    private $exterior_color = null;
+    private $interior_color = null; 
+    private $engine = null; 
+    private $engine_type = null; 
+    private $engine_aspiration = null; 
+    private $engine_block = null; 
+    private $miles_range = null; 
+    private $price_range = null; 
+    private $dom_range = null; 
+    private $sort_by = null; 
+    private $sort_order = null; 
+    private $rows = null; 
+    private $start = null; 
+    private $facets = null; 
+    private $stats = null; 
+    private $country = null; 
+    private $plot = null; 
+    private $nodedup = null; 
+    private $state = null; 
+    private $city = null; 
+    private $dealer_name = null; 
+    private $trim_o = null; 
+    private $trim_r = null; 
+    private $dom_active_range = null; 
+    private $dom_180_range = null; 
+    private $options = null; 
+    private $features = null; 
+    private $exclude_certified = null;
 
     /**
      * Setup before running any test cases
@@ -79,6 +154,15 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetListing()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());           
+        
+        try {
+            $result = $apiInstance->getListing($this->listing_id , $this->api_key);            
+            $this->assertEquals($result["id"], $this->listing_id);            
+            echo "\n/listing/$this->listing_id?api_key={{api_key}}: endpoint working fine";            
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
     }
 
     /**
@@ -89,6 +173,16 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetListingExtra()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
+        
+        try {
+            $result = $apiInstance->getListingExtra($this->listing_id , $this->api_key);                   
+            $this->assertEquals($result["id"], $this->listing_id);   
+            //todo   has("features")  has("options")     
+            echo "\n/listing/$this->listing_id/extra?api_key={{api_key}}: endpoint working fine";            
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
     }
 
     /**
@@ -99,6 +193,16 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetListingMedia()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());        
+        
+        try {
+            $result = $apiInstance->getListingMedia($this->listing_id , $this->api_key);                
+            $this->assertEquals($result["id"], $this->listing_id);     
+            //todo  has("photo_links")        
+            echo "\n/listing/$this->listing_id/media?api_key={{api_key}}: endpoint working fine";            
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
     }
 
     /**
@@ -109,5 +213,15 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testSearch()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());      
+        
+        try {
+            $this->vin = "5TDDKRFH1GS304801";            
+            $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $this->zip, $this->include_lease, $this->include_finance, $this->lease_term, $this->lease_down_payment, $this->lease_emp, $this->finance_loan_term, $this->finance_loan_apr, $this->finance_emp, $this->finance_down_payment, $this->finance_down_payment_per, $this->car_type, $this->seller_type, $this->carfax_1_owner, $this->carfax_clean_title, $this->year, $this->make, $this->model, $this->trim, $this->dealer_id, $this->vin, $this->source, $this->body_type, $this->body_subtype, $this->vehicle_type, $this->vins, $this->taxonomy_vins, $this->ymmt, $this->match, $this->cylinders, $this->transmission, $this->speeds, $this->doors, $this->drivetrain, $this->exterior_color, $this->interior_color, $this->engine, $this->engine_type, $this->engine_aspiration, $this->engine_block, $this->miles_range, $this->price_range, $this->dom_range, $this->sort_by, $this->sort_order, $this->rows, $this->start, $this->facets, $this->stats, $this->country, $this->plot, $this->nodedup, $this->state, $this->city, $this->dealer_name, $this->trim_o, $this->trim_r, $this->dom_active_range, $this->dom_180_range, $this->options, $this->features, $this->exclude_certified); 
+            print_r($result["vin"]);     
+            echo "\n/search?api_key={{api_key}}&vin=5TDDKRFH1GS304801: endpoint working fine";          
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }
     }
 }
