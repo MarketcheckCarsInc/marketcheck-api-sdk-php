@@ -72,7 +72,8 @@ class Dealer implements ModelInterface, ArrayAccess
         'target_url_used' => 'string',
         'target_url_certified' => 'string',
         'dealer_type' => 'string',
-        'rating' => 'float'
+        'rating' => 'float',
+        'distance' => 'float'
     ];
 
     /**
@@ -96,7 +97,8 @@ class Dealer implements ModelInterface, ArrayAccess
         'target_url_used' => null,
         'target_url_certified' => null,
         'dealer_type' => null,
-        'rating' => null
+        'rating' => null,
+        'distance' => null
     ];
 
     /**
@@ -141,7 +143,8 @@ class Dealer implements ModelInterface, ArrayAccess
         'target_url_used' => 'target_url_used',
         'target_url_certified' => 'target_url_certified',
         'dealer_type' => 'dealer_type',
-        'rating' => 'rating'
+        'rating' => 'rating',
+        'distance' => 'distance'
     ];
 
     /**
@@ -165,7 +168,8 @@ class Dealer implements ModelInterface, ArrayAccess
         'target_url_used' => 'setTargetUrlUsed',
         'target_url_certified' => 'setTargetUrlCertified',
         'dealer_type' => 'setDealerType',
-        'rating' => 'setRating'
+        'rating' => 'setRating',
+        'distance' => 'setDistance'
     ];
 
     /**
@@ -189,7 +193,8 @@ class Dealer implements ModelInterface, ArrayAccess
         'target_url_used' => 'getTargetUrlUsed',
         'target_url_certified' => 'getTargetUrlCertified',
         'dealer_type' => 'getDealerType',
-        'rating' => 'getRating'
+        'rating' => 'getRating',
+        'distance' => 'getDistance'
     ];
 
     /**
@@ -268,6 +273,7 @@ class Dealer implements ModelInterface, ArrayAccess
         $this->container['target_url_certified'] = isset($data['target_url_certified']) ? $data['target_url_certified'] : null;
         $this->container['dealer_type'] = isset($data['dealer_type']) ? $data['dealer_type'] : 'independent';
         $this->container['rating'] = isset($data['rating']) ? $data['rating'] : null;
+        $this->container['distance'] = isset($data['distance']) ? $data['distance'] : null;
     }
 
     /**
@@ -677,6 +683,31 @@ class Dealer implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+    /**
+     * Gets distance
+     *
+     * @return float
+     */
+    public function getDistance()
+    {
+        return $this->container['distance'];
+    }
+
+    /**
+     * Sets distance
+     *
+     * @param float $distance 
+     *
+     * @return $this
+     */
+    public function setDistance($distance)
+    {
+        $this->container['distance'] = $distance;
+
+        return $this;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

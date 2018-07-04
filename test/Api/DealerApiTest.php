@@ -26,7 +26,15 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace marketcheck\api\sdk;
+require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../lib/Api/DealerApi.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
 
 use \marketcheck\api\sdk\Configuration;
 use \marketcheck\api\sdk\ApiException;
@@ -37,11 +45,18 @@ use \marketcheck\api\sdk\ObjectSerializer;
  *
  * @category Class
  * @package  marketcheck\api\sdk
- * @author   Swagger Codegen team
+ * @author   Rajan Modi
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 class DealerApiTest extends \PHPUnit_Framework_TestCase
 {
+    private $dealer_id = "1006292";
+    private $api_key = "nbWPXNcG8V6EgOBsjejVQJd9A9zTerzG";
+    private $latitude;
+    private $longitude;
+    private $radius;
+    private $rows;
+    private $start;
 
     /**
      * Setup before running any test cases
@@ -79,6 +94,56 @@ class DealerApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testDealerSearch()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\DealerApi(new GuzzleHttp\Client());
+        echo "\nTesting Dealers - Near Rochester, NY";
+        $this->latitude = 43.1856307;
+        $this->longitude = -77.7565881;
+        $this->radius = 100;
+        $this->rows = 20;
+        $this->start = 100;
+        try {
+            $result = $apiInstance->dealerSearch($this->latitude, $this->longitude, $this->radius, $this->api_key, $this->rows, $this->start);
+            foreach($result["dealers"] as $dealer)
+                {
+                $this->assertLessThanOrEqual("100", $dealer["distance"], $message = 'Verify dealers should cover under radius: 100');
+                print_r("\ndealers?api_key={{api_key}}&latitude=43.1856307&longitude=-77.7565881&radius=100&start=100&rows=20: endpoint working fine");
+                }
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+
+        echo "\nTesting Dealers - Near Los Angeles";
+        $this->latitude = 34.05;
+        $this->longitude = -118.24;
+        $this->radius = 100;
+        $this->rows = 20;
+        $this->start = 100;
+        try {                    
+            $result = $apiInstance->dealerSearch($this->latitude, $this->longitude, $this->radius, $this->api_key, $this->rows, $this->start);   
+            foreach($result["dealers"] as $dealer)
+                {
+                    $this->assertLessThanOrEqual("100", $dealer["distance"], $message = 'Verify dealers should cover under radius: 100');
+                    print_r("\n/dealers?api_key={{api_key}}&latitude=34.05&longitude=-118.24&radius=100&start=100&rows=20: endpoint working fine");
+                }                    
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        
+        echo "\nTesting Dealers - Near Denver, CO 200 miles";
+        $this->latitude = 39.73;
+        $this->longitude = -104.99;
+        $this->radius = 200;
+        $this->rows = 20;                
+        try {
+            $result = $apiInstance->dealerSearch($this->latitude, $this->longitude, $this->radius, $this->api_key, $this->rows);   
+            foreach($result["dealers"] as $dealer)
+                {
+                $this->assertLessThanOrEqual("100", $dealer["distance"], $message = 'Verify dealers should cover under radius: 100');
+                print_r("\n/dealers?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&rows=20: endpoint working fine");
+                }                    
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }        
     }
 
     /**
@@ -89,5 +154,13 @@ class DealerApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetDealer()
     {
+    $apiInstance = new marketcheck\api\sdk\Api\DealerApi(new GuzzleHttp\Client());
+    try {
+        $result = $apiInstance->getDealer($this->dealer_id, $this->api_key);
+        $this->assertEquals($result["id"], $this->dealer_id);
+        print_r("\n/dealer/1006292?api_key={{api_key}}: endpoint working fine");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
     }
 }
