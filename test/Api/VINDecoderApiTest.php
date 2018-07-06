@@ -98,6 +98,8 @@ class VINDecoderApiTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals($result["make"], "Ford");
             $this->assertEquals($result["year"], 2012);
             $this->assertEquals($result["model"], "Focus");
+            print_r("\n/vin/$this->vin/specs?api_key={{api_key}}: endpoint working fine");
+            
             } catch (Exception $e) {
                 $this->fail($e->getMessage());
                 }

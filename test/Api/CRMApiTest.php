@@ -26,7 +26,15 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace marketcheck\api\sdk;
+require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../lib/Api/CRMApi.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
 
 use \marketcheck\api\sdk\Configuration;
 use \marketcheck\api\sdk\ApiException;
@@ -42,6 +50,9 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class CRMApiTest extends \PHPUnit_Framework_TestCase
 {
+    private $api_key = "your api key";
+    private $vin=null;
+    private $sale_date = null;
 
     /**
      * Setup before running any test cases
@@ -79,5 +90,17 @@ class CRMApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testCrmCheck()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\CRMApi(new GuzzleHttp\Client());
+        echo "\nTesting CRM api";       
+        $this->vin = "1FTNE2CM2FKA81288";
+        $this->sale_date = "20170615";
+        
+        try {           
+            $result = $apiInstance->crmCheck($this->vin, $this->sale_date, $this->api_key);
+            $this->assertArrayHasKey("for_sale", $result); 
+            print_r("\n/v1/crm_check/$this->vin?api_key={{api_key}}&sale_date=20170615: endpoint working fine");
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
     }
 }
