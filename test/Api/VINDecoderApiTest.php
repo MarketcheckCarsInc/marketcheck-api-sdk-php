@@ -26,7 +26,15 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace marketcheck\api\sdk;
+require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../lib/Api/VINDecoderApi.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
 
 use \marketcheck\api\sdk\Configuration;
 use \marketcheck\api\sdk\ApiException;
@@ -42,6 +50,8 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class VINDecoderApiTest extends \PHPUnit_Framework_TestCase
 {
+    private $vin;
+    private $api_key = "your api key";  
 
     /**
      * Setup before running any test cases
@@ -79,5 +89,17 @@ class VINDecoderApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testDecode()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\VINDecoderApi(new GuzzleHttp\Client());
+        echo "\nTesting Vindecoder";
+        $this->vin = "1FAHP3F28CL148530";
+        try {   
+            $result = $apiInstance->decode($this->vin, $this->api_key);        
+            print_r($result);
+            $this->assertEquals($result["make"], "Ford");
+            $this->assertEquals($result["year"], 2012);
+            $this->assertEquals($result["model"], "Focus");
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
     }
 }
