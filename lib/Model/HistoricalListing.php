@@ -69,7 +69,8 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'source' => 'string',
         'city' => 'string',
         'state' => 'string',
-        'zip' => 'string'
+        'zip' => 'string',
+        'dealer_id' => 'float'
     ];
 
     /**
@@ -89,7 +90,8 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'source' => null,
         'city' => null,
         'state' => null,
-        'zip' => null
+        'zip' => null,
+        'dealer_id' => null
     ];
 
     /**
@@ -130,7 +132,8 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'source' => 'source',
         'city' => 'city',
         'state' => 'state',
-        'zip' => 'zip'
+        'zip' => 'zip',
+        'dealer_id' => 'dealer_id'
     ];
 
     /**
@@ -150,7 +153,8 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'source' => 'setSource',
         'city' => 'setCity',
         'state' => 'setState',
-        'zip' => 'setZip'
+        'zip' => 'setZip',
+        'dealer_id' => 'setDealerId'
     ];
 
     /**
@@ -170,7 +174,8 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'source' => 'getSource',
         'city' => 'getCity',
         'state' => 'getState',
-        'zip' => 'getZip'
+        'zip' => 'getZip',
+        'dealer_id' => 'getDealerId'
     ];
 
     /**
@@ -245,6 +250,7 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         $this->container['city'] = isset($data['city']) ? $data['city'] : null;
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         $this->container['zip'] = isset($data['zip']) ? $data['zip'] : null;
+        $this->container['dealer_id'] = isset($data['dealer_id']) ? $data['dealer_id'] : null;
     }
 
     /**
@@ -558,6 +564,31 @@ class HistoricalListing implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+     /**
+     * Gets dealer_id
+     *
+     * @return string
+     */
+    public function getDealerId()
+    {
+        return $this->container['dealer_id'];
+    }
+
+    /**
+     * Sets zip
+     *
+     * @param string $zip Zip of the listing
+     *
+     * @return $this
+     */
+    public function setDealerId($dealer_id)
+    {
+        $this->container['dealer_id'] = $dealer_id;
+
+        return $this;
+    }
+
     /**
      * Returns true if offset exists. False otherwise.
      *

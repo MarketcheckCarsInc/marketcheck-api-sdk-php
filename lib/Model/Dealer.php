@@ -59,14 +59,14 @@ class Dealer implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'franchise_id' => 'string',
-        'name' => 'string',
+        'seller_name' => 'string',
         'street' => 'string',
         'city' => 'string',
         'state' => 'string',
         'zip' => 'string',
         'latitude' => 'string',
         'longitude' => 'string',
-        'phone' => 'string',
+        'seller_phone' => 'string',
         'car_type' => 'string',
         'target_url_new' => 'string',
         'target_url_used' => 'string',
@@ -91,7 +91,7 @@ class Dealer implements ModelInterface, ArrayAccess
         'zip' => null,
         'latitude' => null,
         'longitude' => null,
-        'phone' => null,
+        'seller_phone' => null,
         'car_type' => null,
         'target_url_new' => null,
         'target_url_used' => null,
@@ -130,14 +130,14 @@ class Dealer implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'franchise_id' => 'franchise_id',
-        'name' => 'name',
+        'seller_name' => 'seller_name',
         'street' => 'street',
         'city' => 'city',
         'state' => 'state',
         'zip' => 'zip',
         'latitude' => 'latitude',
         'longitude' => 'longitude',
-        'phone' => 'phone',
+        'seller_phone' => 'seller_phone',
         'car_type' => 'car_type',
         'target_url_new' => 'target_url_new',
         'target_url_used' => 'target_url_used',
@@ -155,14 +155,14 @@ class Dealer implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'franchise_id' => 'setFranchiseId',
-        'name' => 'setName',
+        'seller_name' => 'setSellerName',
         'street' => 'setStreet',
         'city' => 'setCity',
         'state' => 'setState',
         'zip' => 'setZip',
         'latitude' => 'setLatitude',
         'longitude' => 'setLongitude',
-        'phone' => 'setPhone',
+        'seller_phone' => 'setSellerPhone',
         'car_type' => 'setCarType',
         'target_url_new' => 'setTargetUrlNew',
         'target_url_used' => 'setTargetUrlUsed',
@@ -180,14 +180,14 @@ class Dealer implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'franchise_id' => 'getFranchiseId',
-        'name' => 'getName',
+        'seller_name' => 'getSellerName',
         'street' => 'getStreet',
         'city' => 'getCity',
         'state' => 'getState',
         'zip' => 'getZip',
         'latitude' => 'getLatitude',
         'longitude' => 'getLongitude',
-        'phone' => 'getPhone',
+        'seller_phone' => 'getSellerPhone',
         'car_type' => 'getCarType',
         'target_url_new' => 'getTargetUrlNew',
         'target_url_used' => 'getTargetUrlUsed',
@@ -259,14 +259,14 @@ class Dealer implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['franchise_id'] = isset($data['franchise_id']) ? $data['franchise_id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['seller_name'] = isset($data['seller_name']) ? $data['seller_name'] : null;
         $this->container['street'] = isset($data['street']) ? $data['street'] : null;
         $this->container['city'] = isset($data['city']) ? $data['city'] : null;
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         $this->container['zip'] = isset($data['zip']) ? $data['zip'] : null;
         $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
         $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
-        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
+        $this->container['seller_phone'] = isset($data['seller_phone']) ? $data['seller_phone'] : null;
         $this->container['car_type'] = isset($data['car_type']) ? $data['car_type'] : null;
         $this->container['target_url_new'] = isset($data['target_url_new']) ? $data['target_url_new'] : null;
         $this->container['target_url_used'] = isset($data['target_url_used']) ? $data['target_url_used'] : null;
@@ -349,25 +349,25 @@ class Dealer implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets name
+     * Gets seller_name
      *
      * @return string
      */
-    public function getName()
+    public function getSellerName()
     {
-        return $this->container['name'];
+        return $this->container['seller_name'];
     }
 
     /**
-     * Sets name
+     * Sets seller_name
      *
-     * @param string $name Name of the dealer
+     * @param string $seller_name Name of the dealer
      *
      * @return $this
      */
-    public function setName($name)
+    public function setSellerName($seller_name)
     {
-        $this->container['name'] = $name;
+        $this->container['seller_name'] = $seller_name;
 
         return $this;
     }
@@ -521,21 +521,21 @@ class Dealer implements ModelInterface, ArrayAccess
      *
      * @return string
      */
-    public function getPhone()
+    public function getSellerPhone()
     {
-        return $this->container['phone'];
+        return $this->container['seller_phone'];
     }
 
     /**
-     * Sets phone
+     * Sets seller_phone
      *
-     * @param string $phone Contact no of the dealer
+     * @param string $seller_phone Contact no of the dealer
      *
      * @return $this
      */
-    public function setPhone($phone)
+    public function setSellerPhone($seller_phone)
     {
-        $this->container['phone'] = $phone;
+        $this->container['seller_phone'] = $seller_phone;
 
         return $this;
     }

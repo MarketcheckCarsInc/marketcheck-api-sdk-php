@@ -26,7 +26,15 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace marketcheck\api\sdk;
+require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../lib/Api/HistoryApi.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
 
 use \marketcheck\api\sdk\Configuration;
 use \marketcheck\api\sdk\ApiException;
@@ -42,6 +50,11 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class HistoryApiTest extends \PHPUnit_Framework_TestCase
 {
+    private $api_key = "your api key";      
+    private $vin; 
+    private $fields = null; 
+    private $rows = null; 
+    private $page = null;
 
     /**
      * Setup before running any test cases
@@ -79,5 +92,49 @@ class HistoryApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testHistory()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\HistoryApi(new GuzzleHttp\Client());
+        echo "\nTesting listing count for History api";       
+        $this->vin = "1FTNE2CM2FKA81288";
+        $this->fields = null; 
+        $this->rows = null; 
+        $this->page = null;
+        
+        try {
+            $result = $apiInstance->history($this->vin, $this->api_key, $this->fields, $this->rows, $this->page);
+            $count = 0;
+             foreach($result as $listing)
+                {
+                $count = $count + 1;
+                }
+                $this->assertNotEquals($count, 0);            
+                print_r("\n/history/$this->vin?api_key={{api_key}}: endpoint working fine");
+               
+            } catch (Exception $e) {
+                print_r("\n/history/$this->vin?api_key={{api_key}}: No listing found");
+                $this->fail($e->getMessage());
+                }
+
+        echo "\nTesting History api with fields";       
+        $this->vin = "1FTNE2CM2FKA81288";
+        $this->fields = "dealer_id,seller_name,vdp_url,source,last_seen_at,price,miles,city,state,zip,scraped_at"; 
+        $this->rows = null; 
+        $this->page = null;
+        
+        try {
+            $result = $apiInstance->history($this->vin, $this->api_key, $this->fields, $this->rows, $this->page);
+            $count = 0;
+             foreach($result as $listing)
+                {
+                $count = $count + 1;  
+                $this->assertArrayHasKey("seller_name", $listing);
+                $this->assertArrayHasKey("dealer_id", $listing);
+                $this->assertArrayHasKey("source", $listing);
+                }
+                $this->assertNotEquals($count, 0);                            
+                print_r("\n/history/$this->vin?api_key={{api_key}}&fields=seller_type,dealer_id,seller_name,seller_phone,seller_email,vdp_url,source,last_seen_at,price,miles,city,state,zip,scraped_at: endpoint working fine");
+               
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
     }
 }

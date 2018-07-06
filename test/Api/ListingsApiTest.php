@@ -178,6 +178,8 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
         try {
             $result = $apiInstance->getListingExtra($this->listing_id , $this->api_key);                   
             $this->assertEquals($result["id"], $this->listing_id);   
+            $this->assertArrayHasKey("features", $result); 
+            $this->assertArrayHasKey("options", $result); 
             //todo   has("features")  has("options")     
             echo "\n/listing/$this->listing_id/extra?api_key={{api_key}}: endpoint working fine";            
         } catch (Exception $e) {
@@ -197,8 +199,8 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
         
         try {
             $result = $apiInstance->getListingMedia($this->listing_id , $this->api_key);                
-            $this->assertEquals($result["id"], $this->listing_id);     
-            //todo  has("photo_links")        
+            $this->assertEquals($result["id"], $this->listing_id);   
+            $this->assertArrayHasKey("photo_links", $result);   
             echo "\n/listing/$this->listing_id/media?api_key={{api_key}}: endpoint working fine";            
         } catch (Exception $e) {
             $this->fail($e->getMessage());
@@ -214,12 +216,22 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
     public function testSearch()
     {
         $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());      
-        
+    
         try {
             $this->vin = "5TDDKRFH1GS304801";            
+            $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $this->zip, $this->include_lease, $this->include_finance, $this->lease_term, $this->lease_down_payment, $this->lease_emp, $this->finance_loan_term, $this->finance_loan_apr, $this->finance_emp, $this->finance_down_payment, $this->finance_down_payment_per, $this->car_type, $this->seller_type, $this->carfax_1_owner, $this->carfax_clean_title, $this->year, $this->make, $this->model, $this->trim, $this->dealer_id, $this->vin, $this->source, $this->body_type, $this->body_subtype, $this->vehicle_type, $this->vins, $this->taxonomy_vins, $this->ymmt, $this->match, $this->cylinders, $this->transmission, $this->speeds, $this->doors, $this->drivetrain, $this->exterior_color, $this->interior_color, $this->engine, $this->engine_type, $this->engine_aspiration, $this->engine_block, $this->miles_range, $this->price_range, $this->dom_range, $this->sort_by, $this->sort_order, $this->rows, $this->start, $this->facets, $this->stats, $this->country, $this->plot, $this->nodedup, $this->state, $this->city, $this->dealer_name, $this->trim_o, $this->trim_r, $this->dom_active_range, $this->dom_180_range, $this->options, $this->features, $this->exclude_certified);  
+            $this->assertEquals($result["listings"][0]["vin"], $this->vin); 
+            echo "\n/search?api_key={{api_key}}&vin=$this->vin: endpoint working fine";          
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+        }    
+        
+        try {
+            $this->make = "Acura";   
+            $this->vin = null;           
             $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $this->zip, $this->include_lease, $this->include_finance, $this->lease_term, $this->lease_down_payment, $this->lease_emp, $this->finance_loan_term, $this->finance_loan_apr, $this->finance_emp, $this->finance_down_payment, $this->finance_down_payment_per, $this->car_type, $this->seller_type, $this->carfax_1_owner, $this->carfax_clean_title, $this->year, $this->make, $this->model, $this->trim, $this->dealer_id, $this->vin, $this->source, $this->body_type, $this->body_subtype, $this->vehicle_type, $this->vins, $this->taxonomy_vins, $this->ymmt, $this->match, $this->cylinders, $this->transmission, $this->speeds, $this->doors, $this->drivetrain, $this->exterior_color, $this->interior_color, $this->engine, $this->engine_type, $this->engine_aspiration, $this->engine_block, $this->miles_range, $this->price_range, $this->dom_range, $this->sort_by, $this->sort_order, $this->rows, $this->start, $this->facets, $this->stats, $this->country, $this->plot, $this->nodedup, $this->state, $this->city, $this->dealer_name, $this->trim_o, $this->trim_r, $this->dom_active_range, $this->dom_180_range, $this->options, $this->features, $this->exclude_certified); 
-            print_r($result["vin"]);     
-            echo "\n/search?api_key={{api_key}}&vin=5TDDKRFH1GS304801: endpoint working fine";          
+            $this->assertEquals($result["listings"][0]["build"]["make"], $this->make);     
+            echo "\n/search?api_key={{api_key}}&make=$this->make: endpoint working fine";          
         } catch (Exception $e) {
             $this->fail($e->getMessage());
         }
