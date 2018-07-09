@@ -51,8 +51,8 @@ use \marketcheck\api\sdk\ObjectSerializer;
 class CRMApiTest extends \PHPUnit_Framework_TestCase
 {
     private $api_key = "your api key";
-    private $vin=null;
-    private $sale_date = null;
+    private $vin = "1N4AA5AP8EC477345";
+    private $sale_date = array(20180305,20180606);
 
     /**
      * Setup before running any test cases
@@ -91,16 +91,24 @@ class CRMApiTest extends \PHPUnit_Framework_TestCase
     public function testCrmCheck()
     {
         $apiInstance = new marketcheck\api\sdk\Api\CRMApi(new GuzzleHttp\Client());
-        echo "\nTesting CRM api";       
-        $this->vin = "1FTNE2CM2FKA81288";
-        $this->sale_date = "20170615";
+        echo "\nShould return true for crm check as both dates match";
+        try 
+        {           
+            $result = $apiInstance->crmCheck($this->vin, $this->sale_date[0], $this->api_key);
+            $this->assertEquals(true, $result["for_sale"]);
+            print_r("\n/v1/crm_check/$this->vin?api_key={{api_key}}&sale_date=".$this->sale_date[0].": endpoint working fine");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
         
-        try {           
-            $result = $apiInstance->crmCheck($this->vin, $this->sale_date, $this->api_key);
-            $this->assertArrayHasKey("for_sale", $result); 
-            print_r("\n/v1/crm_check/$this->vin?api_key={{api_key}}&sale_date=20170615: endpoint working fine");
-            } catch (Exception $e) {
-                $this->fail($e->getMessage());
-                }
+        echo "\nShould return false for crm check";
+        try 
+        {           
+            $result = $apiInstance->crmCheck($this->vin, $this->sale_date[1], $this->api_key);
+            $this->assertEquals(false, $result["for_sale"]);
+            print_r("\n/v1/crm_check/$this->vin?api_key={{api_key}}&sale_date=".$this->sale_date[1].": endpoint working fine");
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
     }
 }

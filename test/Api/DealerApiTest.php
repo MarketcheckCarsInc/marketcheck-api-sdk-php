@@ -95,14 +95,13 @@ class DealerApiTest extends \PHPUnit_Framework_TestCase
     public function testDealerSearch()
     {
         $apiInstance = new marketcheck\api\sdk\Api\DealerApi(new GuzzleHttp\Client());
-        // Radius array contains radius and expected dealer count
         $dummy_test_data = array
                             (  
                                 array
                                 (  
                                     "latitude" => 35, 
                                     "longitude" => -90,
-                                    "radius" => array
+                                    "radius" => array           // radius array contains radius value and expected dealer count
                                                 (
                                                     [20,126],
                                                     [30,228],
