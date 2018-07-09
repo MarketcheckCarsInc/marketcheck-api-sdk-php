@@ -50,14 +50,14 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class DealerApiTest extends \PHPUnit_Framework_TestCase
 {
-    private $dealer_id = "1006292";
-    private $api_key = "your api key";  
+    private $dealer_id = array("1016810","1016017","1016710","1017138","1016732");
+    private $api_key = "Your api key";  
     private $latitude;
     private $longitude;
     private $radius;
     private $rows;
     private $start;
-
+    
     /**
      * Setup before running any test cases
      */
@@ -95,55 +95,68 @@ class DealerApiTest extends \PHPUnit_Framework_TestCase
     public function testDealerSearch()
     {
         $apiInstance = new marketcheck\api\sdk\Api\DealerApi(new GuzzleHttp\Client());
-        echo "\nTesting Dealers - Near Rochester, NY";
-        $this->latitude = 43.1856307;
-        $this->longitude = -77.7565881;
-        $this->radius = 100;
-        $this->rows = 20;
-        $this->start = 100;
-        try {
-            $result = $apiInstance->dealerSearch($this->latitude, $this->longitude, $this->radius, $this->api_key, $this->rows, $this->start);
-            foreach($result["dealers"] as $dealer)
-                {
-                $this->assertLessThanOrEqual("100", $dealer["distance"], $message = 'Verify dealers should cover under radius: 100');
-                print_r("\ndealers?api_key={{api_key}}&latitude=43.1856307&longitude=-77.7565881&radius=100&start=100&rows=20: endpoint working fine");
-                }
-            } catch (Exception $e) {
-                $this->fail($e->getMessage());
-                }
-
-        echo "\nTesting Dealers - Near Los Angeles";
-        $this->latitude = 34.05;
-        $this->longitude = -118.24;
-        $this->radius = 100;
-        $this->rows = 20;
-        $this->start = 100;
-        try {                    
-            $result = $apiInstance->dealerSearch($this->latitude, $this->longitude, $this->radius, $this->api_key, $this->rows, $this->start);   
-            foreach($result["dealers"] as $dealer)
-                {
-                    $this->assertLessThanOrEqual("100", $dealer["distance"], $message = 'Verify dealers should cover under radius: 100');
-                    print_r("\n/dealers?api_key={{api_key}}&latitude=34.05&longitude=-118.24&radius=100&start=100&rows=20: endpoint working fine");
-                }                    
-            } catch (Exception $e) {
-                $this->fail($e->getMessage());
-                }
+        // Radius array contains radius and expected dealer count
+        $dummy_test_data = array
+                            (  
+                                array
+                                (  
+                                    "latitude" => 35, 
+                                    "longitude" => -90,
+                                    "radius" => array
+                                                (
+                                                    [20,126],
+                                                    [30,228],
+                                                    [50,255]
+                                                )
+                                ),
+                                array
+                                (  
+                                    "latitude" => 40, 
+                                    "longitude" => -80,
+                                    "radius" => array
+                                                (
+                                                    [20,25],
+                                                    [30,97],
+                                                    [50,359]
+                                                )
+                                ),
+                                array
+                                (  
+                                    "latitude" => 45, 
+                                    "longitude" => -90,
+                                    "radius" => array
+                                                (
+                                                    [20,3],
+                                                    [30,34],
+                                                    [50,74]
+                                                ) 
+                                )
+                            );
         
-        echo "\nTesting Dealers - Near Denver, CO 200 miles";
-        $this->latitude = 39.73;
-        $this->longitude = -104.99;
-        $this->radius = 200;
-        $this->rows = 20;                
-        try {
-            $result = $apiInstance->dealerSearch($this->latitude, $this->longitude, $this->radius, $this->api_key, $this->rows);   
-            foreach($result["dealers"] as $dealer)
-                {
-                $this->assertLessThanOrEqual("100", $dealer["distance"], $message = 'Verify dealers should cover under radius: 100');
-                print_r("\n/dealers?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&rows=20: endpoint working fine");
-                }                    
-            } catch (Exception $e) {
-                $this->fail($e->getMessage());
-                }        
+        echo "\nValidating Dealers count";
+        $limit = 10;
+        foreach($dummy_test_data as $test_data)
+        {
+            foreach($test_data["radius"] as $dealer_data)    
+            {   
+                try 
+                {    
+                    $this->latitude = $test_data["latitude"];
+                    $this->longitude = $test_data["longitude"];
+                    $this->radius = $dealer_data[0];
+                    $this->expected_dealer_count = $dealer_data[1];
+                    $result = $apiInstance->dealerSearch($this->latitude, $this->longitude, $this->radius, $this->api_key);  
+                    $lower_limit = $this->expected_dealer_count - (($limit * $this->expected_dealer_count)/100);
+                    $upper_limit = $this->expected_dealer_count + (($limit * $this->expected_dealer_count)/100);
+                    $api_dealer_cnt = $result["num_found"];
+                    $this->assertGreaterThanOrEqual($lower_limit,$api_dealer_cnt);
+                    $this->assertLessThanOrEqual($upper_limit,$api_dealer_cnt);                                 
+                    print_r("\n/dealers?api_key={{api_key}}&latitude=$this->latitude&longitude=$this->longitude&radius=$this->radius: endpoint working fine");
+                } catch (Exception $e) {
+                    $this->fail($e->getMessage());
+                    }
+            }
+        }
     }
 
     /**
@@ -154,13 +167,18 @@ class DealerApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetDealer()
     {
-    $apiInstance = new marketcheck\api\sdk\Api\DealerApi(new GuzzleHttp\Client());
-    try {
-        $result = $apiInstance->getDealer($this->dealer_id, $this->api_key);
-        $this->assertEquals($result["id"], $this->dealer_id);
-        print_r("\n/dealer/1006292?api_key={{api_key}}: endpoint working fine");
-        } catch (Exception $e) {
-            $this->fail($e->getMessage());
-            }
+        echo "\nValidating dealers on the basis of dealer id";
+        $apiInstance = new marketcheck\api\sdk\Api\DealerApi(new GuzzleHttp\Client());
+        foreach($this->dealer_id as $d_id) 
+        {
+            try 
+            {
+                $result = $apiInstance->getDealer($d_id, $this->api_key);
+                $this->assertEquals($result["id"], $d_id);
+                print_r("\n/dealer/$d_id?api_key={{api_key}}: endpoint working fine");
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        }
     }
 }
