@@ -50,8 +50,8 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class MarketApiTest extends \PHPUnit_Framework_TestCase
 {
-    private $api_key = "nbWPXNcG8V6EgOBsjejVQJd9A9zTerzG";
-    private $vin = array("1FTNE2CM2FKA81288","1GYS4BKJ8FR290257","3GYFNBE3XFS537500","1FT7W2BT5FEA75059","1FMCU9J90FUA21186");
+    private $api_key = "your api key";
+    private $vin = array("1GYS4BKJ8FR290257","3GYFNBE3XFS537500","1FT7W2BT5FEA75059","1FMCU9J90FUA21186");
     private $latitude;
     private $longitude;
     private $radius;
@@ -65,6 +65,13 @@ class MarketApiTest extends \PHPUnit_Framework_TestCase
     private $trim;
     private $body_type;
     private $stats;
+    private $car_type;
+    private $mm;
+    private $ymm;
+    private $ymmt;
+    private $taxonomy_vin;
+    private $state;
+    private $city_state;
 
     /**
      * Setup before running any test cases
@@ -107,25 +114,87 @@ class MarketApiTest extends \PHPUnit_Framework_TestCase
         $this->longitude = -84.522;
         $this->radius = 1000;
         $this->debug = "1";
-        $this->exact = "true";
-        $this->include_sold = null;
-        
+        $this->include_sold = 'false';
+         
+        echo "\nValidate ymmt available in response or not and will verify mds count with exact and debug";  
         foreach($this->vin as $h_vin) 
         {
-            try {
-                $result = $apiInstance->getMDS($this->vin, $this->api_key, $this->exact, $this->latitude, $this->longitude, $this->radius, $this->debug, $this->include_sold);
-                //$this->assertNotEquals($result["mds"],'NULL');
-                print_r($result);
-                // $this->assertNotNull($result["mds"]);
-                // $this->assertObjectHasAttribute((string)$result["year"], new stdClass);
-                // $this->assertObjectHasAttribute($result["make"], new stdClass);
-                // $this->assertObjectHasAttribute($result["model"], new stdClass);
-                // $this->assertObjectHasAttribute($result["trim"], new stdClass);
-                print_r("\n/mds?api_key={{api_key}}&vin=55SWF4JB8GU129288&latitude=37.998&longitude=-84.522&radius=1000&exact=true&debug=1: endpoint working fine");
-                //todo   expect_json_keys([:year, :make, :model, :trim]) 
-                } catch (Exception $e) {
-                    $this->fail($e->getMessage());
-                    }
+            try 
+            {                                           
+                $this->exact = "true";
+                $result = $apiInstance->getMDS($h_vin, $this->api_key, $this->exact, $this->latitude, $this->longitude, $this->radius, $this->debug, $this->include_sold);
+
+                $this->assertArrayHasKey("year", $result);
+                $this->assertArrayHasKey("make", $result);
+                $this->assertArrayHasKey("model", $result);
+                $this->assertArrayHasKey("trim", $result);
+
+                $this->assertNotNull($result["mds"]);
+                $this->assertNotEquals(sizeof($result), 0);
+                $this->assertNotEquals($result["total_cars_sold_in_last_45_days"], 0);
+                $this->assertNotNull($result["total_cars_sold_in_last_45_days"]);
+
+                $per_day_sold_rate = round($result["total_cars_sold_in_last_45_days"]/45,2);
+                $mds = round($result["total_active_cars_for_ymmt"]/$per_day_sold_rate);
+                $this->assertEquals($result["mds"], $mds);
+
+                print_r("\n/mds?api_key={{api_key}}&vin=$h_vin&latitude=37.998&longitude=-84.522&radius=1000&exact=true&debug=1: endpoint working fine");
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+    
+        }
+
+        echo "\nValidate ymmt available in response or not and will verify mds count with debug and without exact";
+        foreach($this->vin as $h_vin) 
+        {
+            try 
+            {                              
+                $this->exact = "false";
+                $result = $apiInstance->getMDS($h_vin, $this->api_key, $this->exact, $this->latitude, $this->longitude, $this->radius, $this->debug, $this->include_sold);
+
+                $this->assertArrayHasKey("year", $result);
+                $this->assertArrayHasKey("make", $result);
+                $this->assertArrayHasKey("model", $result);
+
+                $this->assertNotNull($result["mds"]);
+                $this->assertNotEquals(sizeof($result), 0);
+                $this->assertNotEquals($result["total_cars_sold_in_last_45_days"], 0);
+                $this->assertNotNull($result["total_cars_sold_in_last_45_days"]);
+
+                $per_day_sold_rate = round($result["total_cars_sold_in_last_45_days"]/45,2);
+                $mds = round($result["total_active_cars_for_ymmt"]/$per_day_sold_rate);
+                $this->assertEquals($result["mds"], $mds);
+
+                print_r("\n/mds?api_key={{api_key}}&vin=$h_vin&latitude=37.998&longitude=-84.522&radius=1000&exact=true&debug=1: endpoint working fine");
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        }
+
+        echo "\nValidate mds count with debug and without exact"; 
+        foreach($this->vin as $h_vin) 
+        {
+            try 
+            {                             
+                $this->exact = "false";
+                $result = $apiInstance->getMDS($h_vin, $this->api_key, $this->exact, $this->latitude, $this->longitude, $this->radius, $this->debug, $this->include_sold);
+
+                $this->assertNotNull($result["mds"]);
+                $this->assertNotEquals(sizeof($result), 0);
+                $this->assertNotEquals($result["total_active_cars_for_ymmt"], 0);
+                $this->assertNotNull($result["total_active_cars_for_ymmt"]);
+                $this->assertNotEquals($result["total_cars_sold_in_last_45_days"], 0);
+                $this->assertNotNull($result["total_cars_sold_in_last_45_days"]);
+
+                $per_day_sold_rate = round($result["total_cars_sold_in_last_45_days"]/45,2);
+                $mds = round($result["total_active_cars_for_ymmt"]/$per_day_sold_rate);
+                $this->assertEquals($result["mds"], $mds);
+
+                print_r("\n/mds?api_key={{api_key}}&vin=$h_vin&latitude=37.998&longitude=-84.522&radius=1000&exact=true&debug=1: endpoint working fine");
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
         }
     }
 
@@ -137,5 +206,18 @@ class MarketApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetSalesCount()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\MarketApi(new GuzzleHttp\Client());
+        $this->car_type = 'used';
+        $this->make;
+        $this->mm;
+        $this->ymm;
+        $this->ymmt;
+        $this->taxonomy_vin;
+        $this->state;
+        $this->city_state;
+        $this->stats;
+               
+        //$result = $apiInstance->getSalesCount($this->api_key, $this->car_type, $this->make, $this->mm, $this->ymm, $this->ymmt, $this->taxonomy_vin, $this->state, $this->city_state, $this->stats);
+        print($result);
     }
 }

@@ -61,8 +61,8 @@ class Mds implements ModelInterface, ArrayAccess
         'mds' => 'float',
         'total_active_cars_for_ymmt' => 'float',
         'total_cars_sold_in_last_45_days' => 'float',
-        'sold_vins' => 'string',
-        'year' => 'integer',
+        'sold_vins' => 'string[]',
+        'year' => 'string',
         'make' => 'string',
         'model' => 'string',
         'trim' => 'string'
@@ -129,7 +129,12 @@ class Mds implements ModelInterface, ArrayAccess
     protected static $setters = [
         'mds' => 'setMds',
         'total_active_cars_for_ymmt' => 'setTotalActiveCarsForYmmt',
-        'total_cars_sold_in_last_45_days' => 'setTotalCarsSoldInLast45Days'
+        'total_cars_sold_in_last_45_days' => 'setTotalCarsSoldInLast45Days',
+        'sold_vins' => 'setSoldVins',
+        'year' => 'setYear',
+        'make' => 'setMake',
+        'model' => 'setModel',
+        'trim' => 'setTrim'
     ];
 
     /**
@@ -187,7 +192,11 @@ class Mds implements ModelInterface, ArrayAccess
     public function getModelName()
     {
         return self::$swaggerModelName;
-    } 
+    }
+
+    
+
+    
 
     /**
      * Associative array for storing property values
@@ -310,10 +319,10 @@ class Mds implements ModelInterface, ArrayAccess
         return $this;
     }
 
-     /**
+    /**
      * Gets sold_vins
      *
-     * @return string
+     * @return string[]
      */
     public function getSoldVins()
     {
@@ -323,20 +332,21 @@ class Mds implements ModelInterface, ArrayAccess
     /**
      * Sets sold_vins
      *
-     * @param string $sold_vins
+     * @param string[] $sold_vins Sold vins array
      *
      * @return $this
      */
     public function setSoldVins($sold_vins)
     {
         $this->container['sold_vins'] = $sold_vins;
+
         return $this;
     }
 
     /**
      * Gets year
      *
-     * @return integer
+     * @return float
      */
     public function getYear()
     {
@@ -346,13 +356,14 @@ class Mds implements ModelInterface, ArrayAccess
     /**
      * Sets year
      *
-     * @param integer $year
+     * @param float $year Year of vin provided
      *
      * @return $this
      */
     public function setYear($year)
     {
         $this->container['year'] = $year;
+
         return $this;
     }
 
@@ -369,13 +380,14 @@ class Mds implements ModelInterface, ArrayAccess
     /**
      * Sets make
      *
-     * @param string $make
+     * @param string $make Make of vin provided
      *
      * @return $this
      */
     public function setMake($make)
     {
         $this->container['make'] = $make;
+
         return $this;
     }
 
@@ -392,13 +404,14 @@ class Mds implements ModelInterface, ArrayAccess
     /**
      * Sets model
      *
-     * @param string $model
+     * @param string $model Model of vin provided
      *
      * @return $this
      */
     public function setModel($model)
     {
         $this->container['model'] = $model;
+
         return $this;
     }
 
@@ -415,17 +428,17 @@ class Mds implements ModelInterface, ArrayAccess
     /**
      * Sets trim
      *
-     * @param string $trim
+     * @param string $trim Trim of vin provided
      *
      * @return $this
      */
     public function setTrim($trim)
     {
         $this->container['trim'] = $trim;
+
         return $this;
     }
-    
-     /**
+    /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset
