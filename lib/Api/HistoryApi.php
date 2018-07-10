@@ -95,16 +95,15 @@ class HistoryApi
      * @param  string $vin The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
      * @param  string $fields List of fields to fetch, in case the default fields list in the response is to be trimmed down (optional)
-     * @param  float $rows Number of results to return. Default is 10. Max is 50 (optional)
      * @param  float $page Page number to fetch the results for the given criteria. Default is 1. (optional)
      *
      * @throws \marketcheck\api\sdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \marketcheck\api\sdk\Model\HistoricalListing[]
      */
-    public function history($vin, $api_key = null, $fields = null, $rows = null, $page = null)
+    public function history($vin, $api_key = null, $fields = null, $page = null)
     {
-        list($response) = $this->historyWithHttpInfo($vin, $api_key, $fields, $rows, $page);
+        list($response) = $this->historyWithHttpInfo($vin, $api_key, $fields, $page);
         return $response;
     }
 
@@ -116,17 +115,16 @@ class HistoryApi
      * @param  string $vin The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
      * @param  string $fields List of fields to fetch, in case the default fields list in the response is to be trimmed down (optional)
-     * @param  float $rows Number of results to return. Default is 10. Max is 50 (optional)
      * @param  float $page Page number to fetch the results for the given criteria. Default is 1. (optional)
      *
      * @throws \marketcheck\api\sdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \marketcheck\api\sdk\Model\HistoricalListing[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function historyWithHttpInfo($vin, $api_key = null, $fields = null, $rows = null, $page = null)
+    public function historyWithHttpInfo($vin, $api_key = null, $fields = null, $page = null)
     {
         $returnType = '\marketcheck\api\sdk\Model\HistoricalListing[]';
-        $request = $this->historyRequest($vin, $api_key, $fields, $rows, $page);
+        $request = $this->historyRequest($vin, $api_key, $fields, $page);
 
         try {
             $options = $this->createHttpClientOption();
@@ -203,15 +201,14 @@ class HistoryApi
      * @param  string $vin The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
      * @param  string $fields List of fields to fetch, in case the default fields list in the response is to be trimmed down (optional)
-     * @param  float $rows Number of results to return. Default is 10. Max is 50 (optional)
      * @param  float $page Page number to fetch the results for the given criteria. Default is 1. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function historyAsync($vin, $api_key = null, $fields = null, $rows = null, $page = null)
+    public function historyAsync($vin, $api_key = null, $fields = null, $page = null)
     {
-        return $this->historyAsyncWithHttpInfo($vin, $api_key, $fields, $rows, $page)
+        return $this->historyAsyncWithHttpInfo($vin, $api_key, $fields, $page)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -227,16 +224,15 @@ class HistoryApi
      * @param  string $vin The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
      * @param  string $fields List of fields to fetch, in case the default fields list in the response is to be trimmed down (optional)
-     * @param  float $rows Number of results to return. Default is 10. Max is 50 (optional)
      * @param  float $page Page number to fetch the results for the given criteria. Default is 1. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function historyAsyncWithHttpInfo($vin, $api_key = null, $fields = null, $rows = null, $page = null)
+    public function historyAsyncWithHttpInfo($vin, $api_key = null, $fields = null, $page = null)
     {
         $returnType = '\marketcheck\api\sdk\Model\HistoricalListing[]';
-        $request = $this->historyRequest($vin, $api_key, $fields, $rows, $page);
+        $request = $this->historyRequest($vin, $api_key, $fields, $page);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -281,13 +277,12 @@ class HistoryApi
      * @param  string $vin The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
      * @param  string $fields List of fields to fetch, in case the default fields list in the response is to be trimmed down (optional)
-     * @param  float $rows Number of results to return. Default is 10. Max is 50 (optional)
      * @param  float $page Page number to fetch the results for the given criteria. Default is 1. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function historyRequest($vin, $api_key = null, $fields = null, $rows = null, $page = null)
+    protected function historyRequest($vin, $api_key = null, $fields = null, $page = null)
     {
         // verify the required parameter 'vin' is set
         if ($vin === null || (is_array($vin) && count($vin) === 0)) {
@@ -310,10 +305,6 @@ class HistoryApi
         // query params
         if ($fields !== null) {
             $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
-        }
-        // query params
-        if ($rows !== null) {
-            $queryParams['rows'] = ObjectSerializer::toQueryValue($rows);
         }
         // query params
         if ($page !== null) {

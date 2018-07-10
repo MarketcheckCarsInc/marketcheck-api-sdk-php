@@ -60,7 +60,12 @@ class Mds implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'mds' => 'float',
         'total_active_cars_for_ymmt' => 'float',
-        'total_cars_sold_in_last_45_days' => 'float'
+        'total_cars_sold_in_last_45_days' => 'float',
+        'sold_vins' => 'string',
+        'year' => 'integer',
+        'make' => 'string',
+        'model' => 'string',
+        'trim' => 'string'
     ];
 
     /**
@@ -71,7 +76,12 @@ class Mds implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'mds' => null,
         'total_active_cars_for_ymmt' => null,
-        'total_cars_sold_in_last_45_days' => null
+        'total_cars_sold_in_last_45_days' => null,
+        'sold_vins' => null,
+        'year' => null,
+        'make' => null,
+        'model' => null,
+        'trim' => null
     ];
 
     /**
@@ -103,7 +113,12 @@ class Mds implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'mds' => 'mds',
         'total_active_cars_for_ymmt' => 'total_active_cars_for_ymmt',
-        'total_cars_sold_in_last_45_days' => 'total_cars_sold_in_last_45_days'
+        'total_cars_sold_in_last_45_days' => 'total_cars_sold_in_last_45_days',
+        'sold_vins' => 'sold_vins',
+        'year' => 'year',
+        'make' => 'make',
+        'model' => 'model',
+        'trim' => 'trim'
     ];
 
     /**
@@ -125,7 +140,12 @@ class Mds implements ModelInterface, ArrayAccess
     protected static $getters = [
         'mds' => 'getMds',
         'total_active_cars_for_ymmt' => 'getTotalActiveCarsForYmmt',
-        'total_cars_sold_in_last_45_days' => 'getTotalCarsSoldInLast45Days'
+        'total_cars_sold_in_last_45_days' => 'getTotalCarsSoldInLast45Days',
+        'sold_vins' => 'getSoldVins',
+        'year' => 'getYear',
+        'make' => 'getMake',
+        'model' => 'getModel',
+        'trim' => 'getTrim'
     ];
 
     /**
@@ -167,11 +187,7 @@ class Mds implements ModelInterface, ArrayAccess
     public function getModelName()
     {
         return self::$swaggerModelName;
-    }
-
-    
-
-    
+    } 
 
     /**
      * Associative array for storing property values
@@ -191,6 +207,11 @@ class Mds implements ModelInterface, ArrayAccess
         $this->container['mds'] = isset($data['mds']) ? $data['mds'] : null;
         $this->container['total_active_cars_for_ymmt'] = isset($data['total_active_cars_for_ymmt']) ? $data['total_active_cars_for_ymmt'] : null;
         $this->container['total_cars_sold_in_last_45_days'] = isset($data['total_cars_sold_in_last_45_days']) ? $data['total_cars_sold_in_last_45_days'] : null;
+        $this->container['sold_vins'] = isset($data['sold_vins']) ? $data['sold_vins'] : null;
+        $this->container['year'] = isset($data['year']) ? $data['year'] : null;
+        $this->container['make'] = isset($data['make']) ? $data['make'] : null;
+        $this->container['model'] = isset($data['model']) ? $data['model'] : null;
+        $this->container['trim'] = isset($data['trim']) ? $data['trim'] : null;
     }
 
     /**
@@ -288,7 +309,123 @@ class Mds implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
+     /**
+     * Gets sold_vins
+     *
+     * @return string
+     */
+    public function getSoldVins()
+    {
+        return $this->container['sold_vins'];
+    }
+
     /**
+     * Sets sold_vins
+     *
+     * @param string $sold_vins
+     *
+     * @return $this
+     */
+    public function setSoldVins($sold_vins)
+    {
+        $this->container['sold_vins'] = $sold_vins;
+        return $this;
+    }
+
+    /**
+     * Gets year
+     *
+     * @return integer
+     */
+    public function getYear()
+    {
+        return $this->container['year'];
+    }
+
+    /**
+     * Sets year
+     *
+     * @param integer $year
+     *
+     * @return $this
+     */
+    public function setYear($year)
+    {
+        $this->container['year'] = $year;
+        return $this;
+    }
+
+    /**
+     * Gets make
+     *
+     * @return string
+     */
+    public function getMake()
+    {
+        return $this->container['make'];
+    }
+
+    /**
+     * Sets make
+     *
+     * @param string $make
+     *
+     * @return $this
+     */
+    public function setMake($make)
+    {
+        $this->container['make'] = $make;
+        return $this;
+    }
+
+    /**
+     * Gets model
+     *
+     * @return string
+     */
+    public function getModel()
+    {
+        return $this->container['model'];
+    }
+
+    /**
+     * Sets model
+     *
+     * @param string $model
+     *
+     * @return $this
+     */
+    public function setModel($model)
+    {
+        $this->container['model'] = $model;
+        return $this;
+    }
+
+    /**
+     * Gets trim
+     *
+     * @return string
+     */
+    public function getTrim()
+    {
+        return $this->container['trim'];
+    }
+
+    /**
+     * Sets trim
+     *
+     * @param string $trim
+     *
+     * @return $this
+     */
+    public function setTrim($trim)
+    {
+        $this->container['trim'] = $trim;
+        return $this;
+    }
+    
+     /**
      * Returns true if offset exists. False otherwise.
      *
      * @param integer $offset Offset

@@ -58,7 +58,7 @@ class Build implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'year' => 'float',
+        'year' => 'string',
         'make' => 'string',
         'model' => 'string',
         'trim' => 'string',

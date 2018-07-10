@@ -57,7 +57,7 @@ class Error implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'status' => 'float',
+        'code' => 'float',
         'message' => 'string'
     ];
 
@@ -67,7 +67,7 @@ class Error implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'status' => null,
+        'code' => null,
         'message' => null
     ];
 
@@ -98,7 +98,7 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
+        'code' => 'code',
         'message' => 'message'
     ];
 
@@ -108,7 +108,7 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
+        'code' => 'setCode',
         'message' => 'setMessage'
     ];
 
@@ -118,7 +118,7 @@ class Error implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
+        'code' => 'getCode',
         'message' => 'getMessage'
     ];
 
@@ -182,7 +182,7 @@ class Error implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
         $this->container['message'] = isset($data['message']) ? $data['message'] : null;
     }
 
@@ -211,25 +211,25 @@ class Error implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets status
+     * Gets code
      *
      * @return float
      */
-    public function getStatus()
+    public function getCode()
     {
-        return $this->container['status'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets status
+     * Sets code
      *
-     * @param float $status Error code
+     * @param float $code Error code
      *
      * @return $this
      */
-    public function setStatus($status)
+    public function setCode($code)
     {
-        $this->container['status'] = $status;
+        $this->container['code'] = $code;
 
         return $this;
     }

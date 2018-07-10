@@ -77,9 +77,9 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "status"
+     * Test attribute "code"
      */
-    public function testPropertyStatus()
+    public function testPropertyCode()
     {
     }
 

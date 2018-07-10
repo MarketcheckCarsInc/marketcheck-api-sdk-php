@@ -60,7 +60,14 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         'id' => 'string',
         'options' => 'string[]',
         'features' => 'string[]',
-        'seller_comment' => 'string'
+        'electronics_f' => 'string[]',
+        'exterior_f' => 'string[]',
+        'technical_f' => 'string[]',
+        'standard_f' => 'string[]',
+        'dealer_added_f' => 'string[]',
+        'interior_f' => 'string[]',
+        'safety_f' => 'string[]',
+        'seller_comments' => 'string'
     ];
 
     /**
@@ -72,7 +79,14 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         'id' => null,
         'options' => null,
         'features' => null,
-        'seller_comment' => null
+        'electronics_f' => null,
+        'exterior_f' => null,
+        'technical_f' => null,
+        'standard_f' => null,
+        'dealer_added_f' => null,
+        'interior_f' => null,
+        'safety_f' => null,
+        'seller_comments' => null
     ];
 
     /**
@@ -105,7 +119,14 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         'id' => 'id',
         'options' => 'options',
         'features' => 'features',
-        'seller_comment' => 'seller_comment'
+        'electronics_f' => 'electronics_f',
+        'exterior_f' => 'exterior_f',
+        'technical_f' => 'technical_f',
+        'standard_f' => 'standard_f',
+        'dealer_added_f' => 'dealer_added_f',
+        'interior_f' => 'interior_f',
+        'safety_f' => 'safety_f',
+        'seller_comments' => 'seller_comment'
     ];
 
     /**
@@ -117,7 +138,14 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'options' => 'setOptions',
         'features' => 'setFeatures',
-        'seller_comment' => 'setSellerComment'
+        'electronics_f' => 'setElectronicsF',
+        'exterior_f' => 'setExteriorF',
+        'technical_f' => 'setTechnicalF',
+        'standard_f' => 'setStandardF',
+        'dealer_added_f' => 'setDealerAddedF',
+        'interior_f' => 'setInteriorF',
+        'safety_f' => 'setSafetyF',
+        'seller_comments' => 'setSellerComment'
     ];
 
     /**
@@ -129,7 +157,14 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'options' => 'getOptions',
         'features' => 'getFeatures',
-        'seller_comment' => 'getSellerComment'
+        'electronics_f' => 'getElectronicsF',
+        'exterior_f' => 'getExteriorF',
+        'technical_f' => 'getTechnicalF',
+        'standard_f' => 'getStandardF',
+        'dealer_added_f' => 'getDealerAddedF',
+        'interior_f' => 'getInteriorF',
+        'safety_f' => 'getSafetyF',
+        'seller_comments' => 'getSellerComment'
     ];
 
     /**
@@ -195,7 +230,14 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['options'] = isset($data['options']) ? $data['options'] : null;
         $this->container['features'] = isset($data['features']) ? $data['features'] : null;
-        $this->container['seller_comment'] = isset($data['seller_comment']) ? $data['seller_comment'] : null;
+        $this->container['electronics_f'] = isset($data['electronics_f']) ? $data['electronics_f'] : null;
+        $this->container['exterior_f'] = isset($data['exterior_f']) ? $data['exterior_f'] : null;
+        $this->container['technical_f'] = isset($data['technical_f']) ? $data['technical_f'] : null;
+        $this->container['standard_f'] = isset($data['standard_f']) ? $data['standard_f'] : null;
+        $this->container['dealer_added_f'] = isset($data['dealer_added_f']) ? $data['dealer_added_f'] : null;
+        $this->container['interior_f'] = isset($data['interior_f']) ? $data['interior_f'] : null;
+        $this->container['safety_f'] = isset($data['safety_f']) ? $data['safety_f'] : null;
+        $this->container['seller_comments'] = isset($data['seller_comments']) ? $data['seller_comments'] : null;
     }
 
     /**
@@ -221,6 +263,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
     /**
      * Gets id
      *
@@ -234,7 +277,7 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string $id The unique id associated with the dealer in the Marketcheck database
+     * @param string $id Unique identifier representing a specific listing from the Marketcheck database
      *
      * @return $this
      */
@@ -294,25 +337,193 @@ class ListingExtraAttributes implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets electronics_f
+     *
+     * @return string[]
+     */
+    public function getElectronicsF()
+    {
+        return $this->container['electronics_f'];
+    }
+
+    /**
+     * Sets electronics_f
+     *
+     * @param string[] $electronics_f List of electronic features available with the car
+     *
+     * @return $this
+     */
+    public function setElectronicsF($electronics_f)
+    {
+        $this->container['electronics_f'] = $electronics_f;
+
+        return $this;
+    }
+
+    /**
+     * Gets exterior_f
+     *
+     * @return string[]
+     */
+    public function getExteriorF()
+    {
+        return $this->container['exterior_f'];
+    }
+
+    /**
+     * Sets exterior_f
+     *
+     * @param string[] $exterior_f List of exterior features available with the car
+     *
+     * @return $this
+     */
+    public function setExteriorF($exterior_f)
+    {
+        $this->container['exterior_f'] = $exterior_f;
+
+        return $this;
+    }
+
+    /**
+     * Gets technical_f
+     *
+     * @return string[]
+     */
+    public function getTechnicalF()
+    {
+        return $this->container['technical_f'];
+    }
+
+    /**
+     * Sets technical_f
+     *
+     * @param string[] $technical_f List of technical features available with the car
+     *
+     * @return $this
+     */
+    public function setTechnicalF($technical_f)
+    {
+        $this->container['technical_f'] = $technical_f;
+
+        return $this;
+    }
+
+    /**
+     * Gets standard_f
+     *
+     * @return string[]
+     */
+    public function getStandardF()
+    {
+        return $this->container['standard_f'];
+    }
+
+    /**
+     * Sets standard_f
+     *
+     * @param string[] $standard_f List of standard features available with the car
+     *
+     * @return $this
+     */
+    public function setStandardF($standard_f)
+    {
+        $this->container['standard_f'] = $standard_f;
+
+        return $this;
+    }
+
+    /**
+     * Gets dealer_added_f
+     *
+     * @return string[]
+     */
+    public function getDealerAddedF()
+    {
+        return $this->container['dealer_added_f'];
+    }
+
+    /**
+     * Sets dealer_added_f
+     *
+     * @param string[] $dealer_added_f List of dealer added features available with the car
+     *
+     * @return $this
+     */
+    public function setDealerAddedF($dealer_added_f)
+    {
+        $this->container['dealer_added_f'] = $dealer_added_f;
+
+        return $this;
+    }
+
+    /**
+     * Gets interior_f
+     *
+     * @return string[]
+     */
+    public function getInteriorF()
+    {
+        return $this->container['interior_f'];
+    }
+
+    /**
+     * Sets interior_f
+     *
+     * @param string[] $interior_f List of interior features available with the car
+     *
+     * @return $this
+     */
+    public function setInteriorF($interior_f)
+    {
+        $this->container['interior_f'] = $interior_f;
+
+        return $this;
+    }
+
+    /**
+     * Gets safety_f
+     *
+     * @return string[]
+     */
+    public function getSafetyF()
+    {
+        return $this->container['safety_f'];
+    }
+
+    /**
+     * Sets safety_f
+     *
+     * @param string[] $safety_f List of safety features available with the car
+     *
+     * @return $this
+     */
+    public function setSafetyF($safety_f)
+    {
+        $this->container['safety_f'] = $safety_f;
+
+        return $this;
+    }
+
+    /**
      * Gets seller_comment
      *
      * @return string
      */
-    public function getSellerComment()
+    public function getSellerComments()
     {
-        return $this->container['seller_comment'];
+        return $this->container['seller_comments'];
     }
 
     /**
-     * Sets seller_comment
+     * Sets seller_comments
      *
-     * @param string $seller_comment Seller comment for the car
+     * @param string $seller_comments Seller comment for the car
      *
      * @return $this
      */
-    public function setSellerComment($seller_comment)
+    public function setSellerComments($seller_comments)
     {
-        $this->container['seller_comment'] = $seller_comment;
+        $this->container['seller_comments'] = $seller_comments;
 
         return $this;
     }

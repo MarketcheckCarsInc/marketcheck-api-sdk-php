@@ -51,7 +51,7 @@ use \marketcheck\api\sdk\ObjectSerializer;
 class VINDecoderApiTest extends \PHPUnit_Framework_TestCase
 {
     private $vin;
-    private $api_key = "your api key";  
+    private $api_key = "nbWPXNcG8V6EgOBsjejVQJd9A9zTerzG";  
 
     /**
      * Setup before running any test cases
@@ -94,7 +94,6 @@ class VINDecoderApiTest extends \PHPUnit_Framework_TestCase
         $this->vin = "1FAHP3F28CL148530";
         try {   
             $result = $apiInstance->decode($this->vin, $this->api_key);        
-            print_r($result);
             $this->assertEquals($result["make"], "Ford");
             $this->assertEquals($result["year"], 2012);
             $this->assertEquals($result["model"], "Focus");

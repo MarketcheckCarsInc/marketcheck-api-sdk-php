@@ -94,18 +94,18 @@ class MarketApi
      *
      * @param  string $vin VIN to decode (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $exact Exact parameter (optional)
+     * @param  bool $exact Exact parameter (optional, default to false)
      * @param  double $latitude Latitude component of location (optional)
      * @param  double $longitude Longitude component of location (optional)
      * @param  int $radius Radius around the search location (optional)
-     * @param  string $debug Debug parameter (optional)
-     * @param  string $include_sold To fetch sold vins (optional)
+     * @param  int $debug Debug parameter (optional, default to 0)
+     * @param  bool $include_sold To fetch sold vins (optional, default to false)
      *
      * @throws \marketcheck\api\sdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \marketcheck\api\sdk\Model\Mds
      */
-    public function getMDS($vin, $api_key = null, $exact = null, $latitude = null, $longitude = null, $radius = null, $debug = null, $include_sold = null)
+    public function getMDS($vin, $api_key = null, $exact = 'false', $latitude = null, $longitude = null, $radius = null, $debug = '0', $include_sold = 'false')
     {
         list($response) = $this->getMDSWithHttpInfo($vin, $api_key, $exact, $latitude, $longitude, $radius, $debug, $include_sold);
         return $response;
@@ -118,18 +118,18 @@ class MarketApi
      *
      * @param  string $vin VIN to decode (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $exact Exact parameter (optional)
+     * @param  bool $exact Exact parameter (optional, default to false)
      * @param  double $latitude Latitude component of location (optional)
      * @param  double $longitude Longitude component of location (optional)
      * @param  int $radius Radius around the search location (optional)
-     * @param  string $debug Debug parameter (optional)
-     * @param  string $include_sold To fetch sold vins (optional)
+     * @param  int $debug Debug parameter (optional, default to 0)
+     * @param  bool $include_sold To fetch sold vins (optional, default to false)
      *
      * @throws \marketcheck\api\sdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \marketcheck\api\sdk\Model\Mds, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getMDSWithHttpInfo($vin, $api_key = null, $exact = null, $latitude = null, $longitude = null, $radius = null, $debug = null, $include_sold = null)
+    public function getMDSWithHttpInfo($vin, $api_key = null, $exact = 'false', $latitude = null, $longitude = null, $radius = null, $debug = '0', $include_sold = 'false')
     {
         $returnType = '\marketcheck\api\sdk\Model\Mds';
         $request = $this->getMDSRequest($vin, $api_key, $exact, $latitude, $longitude, $radius, $debug, $include_sold);
@@ -208,17 +208,17 @@ class MarketApi
      *
      * @param  string $vin VIN to decode (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $exact Exact parameter (optional)
+     * @param  bool $exact Exact parameter (optional, default to false)
      * @param  double $latitude Latitude component of location (optional)
      * @param  double $longitude Longitude component of location (optional)
      * @param  int $radius Radius around the search location (optional)
-     * @param  string $debug Debug parameter (optional)
-     * @param  string $include_sold To fetch sold vins (optional)
+     * @param  int $debug Debug parameter (optional, default to 0)
+     * @param  bool $include_sold To fetch sold vins (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMDSAsync($vin, $api_key = null, $exact = null, $latitude = null, $longitude = null, $radius = null, $debug = null, $include_sold = null)
+    public function getMDSAsync($vin, $api_key = null, $exact = 'false', $latitude = null, $longitude = null, $radius = null, $debug = '0', $include_sold = 'false')
     {
         return $this->getMDSAsyncWithHttpInfo($vin, $api_key, $exact, $latitude, $longitude, $radius, $debug, $include_sold)
             ->then(
@@ -235,17 +235,17 @@ class MarketApi
      *
      * @param  string $vin VIN to decode (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $exact Exact parameter (optional)
+     * @param  bool $exact Exact parameter (optional, default to false)
      * @param  double $latitude Latitude component of location (optional)
      * @param  double $longitude Longitude component of location (optional)
      * @param  int $radius Radius around the search location (optional)
-     * @param  string $debug Debug parameter (optional)
-     * @param  string $include_sold To fetch sold vins (optional)
+     * @param  int $debug Debug parameter (optional, default to 0)
+     * @param  bool $include_sold To fetch sold vins (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getMDSAsyncWithHttpInfo($vin, $api_key = null, $exact = null, $latitude = null, $longitude = null, $radius = null, $debug = null, $include_sold = null)
+    public function getMDSAsyncWithHttpInfo($vin, $api_key = null, $exact = 'false', $latitude = null, $longitude = null, $radius = null, $debug = '0', $include_sold = 'false')
     {
         $returnType = '\marketcheck\api\sdk\Model\Mds';
         $request = $this->getMDSRequest($vin, $api_key, $exact, $latitude, $longitude, $radius, $debug, $include_sold);
@@ -292,17 +292,17 @@ class MarketApi
      *
      * @param  string $vin VIN to decode (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $exact Exact parameter (optional)
+     * @param  bool $exact Exact parameter (optional, default to false)
      * @param  double $latitude Latitude component of location (optional)
      * @param  double $longitude Longitude component of location (optional)
      * @param  int $radius Radius around the search location (optional)
-     * @param  string $debug Debug parameter (optional)
-     * @param  string $include_sold To fetch sold vins (optional)
+     * @param  int $debug Debug parameter (optional, default to 0)
+     * @param  bool $include_sold To fetch sold vins (optional, default to false)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getMDSRequest($vin, $api_key = null, $exact = null, $latitude = null, $longitude = null, $radius = null, $debug = null, $include_sold = null)
+    protected function getMDSRequest($vin, $api_key = null, $exact = 'false', $latitude = null, $longitude = null, $radius = null, $debug = '0', $include_sold = 'false')
     {
         // verify the required parameter 'vin' is set
         if ($vin === null || (is_array($vin) && count($vin) === 0)) {
@@ -417,49 +417,55 @@ class MarketApi
     }
 
     /**
-     * Operation getPopularity
+     * Operation getSalesCount
      *
-     * Popularity
+     * Get sales count by make, model, year, trim or taxonomy vin
      *
-     * @param  string $year Year of the car (required)
-     * @param  string $make Make of the car (required)
-     * @param  string $model Model of the Car (required)
-     * @param  string $trim Trim of the Car (required)
-     * @param  string $body_type Body type to filter the cars on. Valid values are the ones returned by body_type facets API call (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $stats The list of fields for which stats need to be generated based on the matching listings for the search criteria. Allowed fields are - price, miles, msrp, dom The stats consists of mean, max, average and count of listings based on which the stats are calculated for the field. Stats could be requested in addition to the listings for the search. Please note - The API calls with the stats fields may take longer to respond. (optional)
+     * @param  string $car_type Inventory type for which sales count is to be searched, default is used (optional, default to used)
+     * @param  string $make Make for which sales count is to be searched (optional)
+     * @param  string $mm Make-Model for which sales count is to be searched, pipe seperated like mm&#x3D;ford|f-150 (optional)
+     * @param  string $ymm Year-Make-Model for which sales count is to be searched, pipe seperated like ymm&#x3D;2015|ford|f-150 (optional)
+     * @param  string $ymmt Year-Make-Model-Trim for which sales count is to be searched, pipe seperated like ymmt&#x3D;2015|ford|f-150|platinum (optional)
+     * @param  string $taxonomy_vin taxonomy_vin for which sales count is to be searched (optional)
+     * @param  string $state State level sales count (optional)
+     * @param  string $city_state City level sales count, pipe seperated like city_state&#x3D;jacksonville|FL (optional)
+     * @param  string $stats Comma separated list of fields to generate stats for. Allowed fields in the list are - price, miles, dom (days on market) OR all (optional)
      *
      * @throws \marketcheck\api\sdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \marketcheck\api\sdk\Model\PopularityItem[]
+     * @return \marketcheck\api\sdk\Model\Sales
      */
-    public function getPopularity($year, $make, $model, $trim, $body_type, $api_key = null, $stats = null)
+    public function getSalesCount($api_key = null, $car_type = 'used', $make = null, $mm = null, $ymm = null, $ymmt = null, $taxonomy_vin = null, $state = null, $city_state = null, $stats = null)
     {
-        list($response) = $this->getPopularityWithHttpInfo($year, $make, $model, $trim, $body_type, $api_key, $stats);
+        list($response) = $this->getSalesCountWithHttpInfo($api_key, $car_type, $make, $mm, $ymm, $ymmt, $taxonomy_vin, $state, $city_state, $stats);
         return $response;
     }
 
     /**
-     * Operation getPopularityWithHttpInfo
+     * Operation getSalesCountWithHttpInfo
      *
-     * Popularity
+     * Get sales count by make, model, year, trim or taxonomy vin
      *
-     * @param  string $year Year of the car (required)
-     * @param  string $make Make of the car (required)
-     * @param  string $model Model of the Car (required)
-     * @param  string $trim Trim of the Car (required)
-     * @param  string $body_type Body type to filter the cars on. Valid values are the ones returned by body_type facets API call (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $stats The list of fields for which stats need to be generated based on the matching listings for the search criteria. Allowed fields are - price, miles, msrp, dom The stats consists of mean, max, average and count of listings based on which the stats are calculated for the field. Stats could be requested in addition to the listings for the search. Please note - The API calls with the stats fields may take longer to respond. (optional)
+     * @param  string $car_type Inventory type for which sales count is to be searched, default is used (optional, default to used)
+     * @param  string $make Make for which sales count is to be searched (optional)
+     * @param  string $mm Make-Model for which sales count is to be searched, pipe seperated like mm&#x3D;ford|f-150 (optional)
+     * @param  string $ymm Year-Make-Model for which sales count is to be searched, pipe seperated like ymm&#x3D;2015|ford|f-150 (optional)
+     * @param  string $ymmt Year-Make-Model-Trim for which sales count is to be searched, pipe seperated like ymmt&#x3D;2015|ford|f-150|platinum (optional)
+     * @param  string $taxonomy_vin taxonomy_vin for which sales count is to be searched (optional)
+     * @param  string $state State level sales count (optional)
+     * @param  string $city_state City level sales count, pipe seperated like city_state&#x3D;jacksonville|FL (optional)
+     * @param  string $stats Comma separated list of fields to generate stats for. Allowed fields in the list are - price, miles, dom (days on market) OR all (optional)
      *
      * @throws \marketcheck\api\sdk\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \marketcheck\api\sdk\Model\PopularityItem[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \marketcheck\api\sdk\Model\Sales, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPopularityWithHttpInfo($year, $make, $model, $trim, $body_type, $api_key = null, $stats = null)
+    public function getSalesCountWithHttpInfo($api_key = null, $car_type = 'used', $make = null, $mm = null, $ymm = null, $ymmt = null, $taxonomy_vin = null, $state = null, $city_state = null, $stats = null)
     {
-        $returnType = '\marketcheck\api\sdk\Model\PopularityItem[]';
-        $request = $this->getPopularityRequest($year, $make, $model, $trim, $body_type, $api_key, $stats);
+        $returnType = '\marketcheck\api\sdk\Model\Sales';
+        $request = $this->getSalesCountRequest($api_key, $car_type, $make, $mm, $ymm, $ymmt, $taxonomy_vin, $state, $city_state, $stats);
 
         try {
             $options = $this->createHttpClientOption();
@@ -510,7 +516,7 @@ class MarketApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\marketcheck\api\sdk\Model\PopularityItem[]',
+                        '\marketcheck\api\sdk\Model\Sales',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -529,24 +535,27 @@ class MarketApi
     }
 
     /**
-     * Operation getPopularityAsync
+     * Operation getSalesCountAsync
      *
-     * Popularity
+     * Get sales count by make, model, year, trim or taxonomy vin
      *
-     * @param  string $year Year of the car (required)
-     * @param  string $make Make of the car (required)
-     * @param  string $model Model of the Car (required)
-     * @param  string $trim Trim of the Car (required)
-     * @param  string $body_type Body type to filter the cars on. Valid values are the ones returned by body_type facets API call (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $stats The list of fields for which stats need to be generated based on the matching listings for the search criteria. Allowed fields are - price, miles, msrp, dom The stats consists of mean, max, average and count of listings based on which the stats are calculated for the field. Stats could be requested in addition to the listings for the search. Please note - The API calls with the stats fields may take longer to respond. (optional)
+     * @param  string $car_type Inventory type for which sales count is to be searched, default is used (optional, default to used)
+     * @param  string $make Make for which sales count is to be searched (optional)
+     * @param  string $mm Make-Model for which sales count is to be searched, pipe seperated like mm&#x3D;ford|f-150 (optional)
+     * @param  string $ymm Year-Make-Model for which sales count is to be searched, pipe seperated like ymm&#x3D;2015|ford|f-150 (optional)
+     * @param  string $ymmt Year-Make-Model-Trim for which sales count is to be searched, pipe seperated like ymmt&#x3D;2015|ford|f-150|platinum (optional)
+     * @param  string $taxonomy_vin taxonomy_vin for which sales count is to be searched (optional)
+     * @param  string $state State level sales count (optional)
+     * @param  string $city_state City level sales count, pipe seperated like city_state&#x3D;jacksonville|FL (optional)
+     * @param  string $stats Comma separated list of fields to generate stats for. Allowed fields in the list are - price, miles, dom (days on market) OR all (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPopularityAsync($year, $make, $model, $trim, $body_type, $api_key = null, $stats = null)
+    public function getSalesCountAsync($api_key = null, $car_type = 'used', $make = null, $mm = null, $ymm = null, $ymmt = null, $taxonomy_vin = null, $state = null, $city_state = null, $stats = null)
     {
-        return $this->getPopularityAsyncWithHttpInfo($year, $make, $model, $trim, $body_type, $api_key, $stats)
+        return $this->getSalesCountAsyncWithHttpInfo($api_key, $car_type, $make, $mm, $ymm, $ymmt, $taxonomy_vin, $state, $city_state, $stats)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -555,25 +564,28 @@ class MarketApi
     }
 
     /**
-     * Operation getPopularityAsyncWithHttpInfo
+     * Operation getSalesCountAsyncWithHttpInfo
      *
-     * Popularity
+     * Get sales count by make, model, year, trim or taxonomy vin
      *
-     * @param  string $year Year of the car (required)
-     * @param  string $make Make of the car (required)
-     * @param  string $model Model of the Car (required)
-     * @param  string $trim Trim of the Car (required)
-     * @param  string $body_type Body type to filter the cars on. Valid values are the ones returned by body_type facets API call (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $stats The list of fields for which stats need to be generated based on the matching listings for the search criteria. Allowed fields are - price, miles, msrp, dom The stats consists of mean, max, average and count of listings based on which the stats are calculated for the field. Stats could be requested in addition to the listings for the search. Please note - The API calls with the stats fields may take longer to respond. (optional)
+     * @param  string $car_type Inventory type for which sales count is to be searched, default is used (optional, default to used)
+     * @param  string $make Make for which sales count is to be searched (optional)
+     * @param  string $mm Make-Model for which sales count is to be searched, pipe seperated like mm&#x3D;ford|f-150 (optional)
+     * @param  string $ymm Year-Make-Model for which sales count is to be searched, pipe seperated like ymm&#x3D;2015|ford|f-150 (optional)
+     * @param  string $ymmt Year-Make-Model-Trim for which sales count is to be searched, pipe seperated like ymmt&#x3D;2015|ford|f-150|platinum (optional)
+     * @param  string $taxonomy_vin taxonomy_vin for which sales count is to be searched (optional)
+     * @param  string $state State level sales count (optional)
+     * @param  string $city_state City level sales count, pipe seperated like city_state&#x3D;jacksonville|FL (optional)
+     * @param  string $stats Comma separated list of fields to generate stats for. Allowed fields in the list are - price, miles, dom (days on market) OR all (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPopularityAsyncWithHttpInfo($year, $make, $model, $trim, $body_type, $api_key = null, $stats = null)
+    public function getSalesCountAsyncWithHttpInfo($api_key = null, $car_type = 'used', $make = null, $mm = null, $ymm = null, $ymmt = null, $taxonomy_vin = null, $state = null, $city_state = null, $stats = null)
     {
-        $returnType = '\marketcheck\api\sdk\Model\PopularityItem[]';
-        $request = $this->getPopularityRequest($year, $make, $model, $trim, $body_type, $api_key, $stats);
+        $returnType = '\marketcheck\api\sdk\Model\Sales';
+        $request = $this->getSalesCountRequest($api_key, $car_type, $make, $mm, $ymm, $ymmt, $taxonomy_vin, $state, $city_state, $stats);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -613,53 +625,26 @@ class MarketApi
     }
 
     /**
-     * Create request for operation 'getPopularity'
+     * Create request for operation 'getSalesCount'
      *
-     * @param  string $year Year of the car (required)
-     * @param  string $make Make of the car (required)
-     * @param  string $model Model of the Car (required)
-     * @param  string $trim Trim of the Car (required)
-     * @param  string $body_type Body type to filter the cars on. Valid values are the ones returned by body_type facets API call (required)
      * @param  string $api_key The API Authentication Key. Mandatory with all API calls. (optional)
-     * @param  string $stats The list of fields for which stats need to be generated based on the matching listings for the search criteria. Allowed fields are - price, miles, msrp, dom The stats consists of mean, max, average and count of listings based on which the stats are calculated for the field. Stats could be requested in addition to the listings for the search. Please note - The API calls with the stats fields may take longer to respond. (optional)
+     * @param  string $car_type Inventory type for which sales count is to be searched, default is used (optional, default to used)
+     * @param  string $make Make for which sales count is to be searched (optional)
+     * @param  string $mm Make-Model for which sales count is to be searched, pipe seperated like mm&#x3D;ford|f-150 (optional)
+     * @param  string $ymm Year-Make-Model for which sales count is to be searched, pipe seperated like ymm&#x3D;2015|ford|f-150 (optional)
+     * @param  string $ymmt Year-Make-Model-Trim for which sales count is to be searched, pipe seperated like ymmt&#x3D;2015|ford|f-150|platinum (optional)
+     * @param  string $taxonomy_vin taxonomy_vin for which sales count is to be searched (optional)
+     * @param  string $state State level sales count (optional)
+     * @param  string $city_state City level sales count, pipe seperated like city_state&#x3D;jacksonville|FL (optional)
+     * @param  string $stats Comma separated list of fields to generate stats for. Allowed fields in the list are - price, miles, dom (days on market) OR all (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getPopularityRequest($year, $make, $model, $trim, $body_type, $api_key = null, $stats = null)
+    protected function getSalesCountRequest($api_key = null, $car_type = 'used', $make = null, $mm = null, $ymm = null, $ymmt = null, $taxonomy_vin = null, $state = null, $city_state = null, $stats = null)
     {
-        // verify the required parameter 'year' is set
-        if ($year === null || (is_array($year) && count($year) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $year when calling getPopularity'
-            );
-        }
-        // verify the required parameter 'make' is set
-        if ($make === null || (is_array($make) && count($make) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $make when calling getPopularity'
-            );
-        }
-        // verify the required parameter 'model' is set
-        if ($model === null || (is_array($model) && count($model) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $model when calling getPopularity'
-            );
-        }
-        // verify the required parameter 'trim' is set
-        if ($trim === null || (is_array($trim) && count($trim) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $trim when calling getPopularity'
-            );
-        }
-        // verify the required parameter 'body_type' is set
-        if ($body_type === null || (is_array($body_type) && count($body_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body_type when calling getPopularity'
-            );
-        }
 
-        $resourcePath = '/popularity';
+        $resourcePath = '/sales';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -671,24 +656,36 @@ class MarketApi
             $queryParams['api_key'] = ObjectSerializer::toQueryValue($api_key);
         }
         // query params
-        if ($year !== null) {
-            $queryParams['year'] = ObjectSerializer::toQueryValue($year);
+        if ($car_type !== null) {
+            $queryParams['car_type'] = ObjectSerializer::toQueryValue($car_type);
         }
         // query params
         if ($make !== null) {
             $queryParams['make'] = ObjectSerializer::toQueryValue($make);
         }
         // query params
-        if ($model !== null) {
-            $queryParams['model'] = ObjectSerializer::toQueryValue($model);
+        if ($mm !== null) {
+            $queryParams['mm'] = ObjectSerializer::toQueryValue($mm);
         }
         // query params
-        if ($trim !== null) {
-            $queryParams['trim'] = ObjectSerializer::toQueryValue($trim);
+        if ($ymm !== null) {
+            $queryParams['ymm'] = ObjectSerializer::toQueryValue($ymm);
         }
         // query params
-        if ($body_type !== null) {
-            $queryParams['body_type'] = ObjectSerializer::toQueryValue($body_type);
+        if ($ymmt !== null) {
+            $queryParams['ymmt'] = ObjectSerializer::toQueryValue($ymmt);
+        }
+        // query params
+        if ($taxonomy_vin !== null) {
+            $queryParams['taxonomy_vin'] = ObjectSerializer::toQueryValue($taxonomy_vin);
+        }
+        // query params
+        if ($state !== null) {
+            $queryParams['state'] = ObjectSerializer::toQueryValue($state);
+        }
+        // query params
+        if ($city_state !== null) {
+            $queryParams['city_state'] = ObjectSerializer::toQueryValue($city_state);
         }
         // query params
         if ($stats !== null) {

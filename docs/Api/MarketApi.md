@@ -5,7 +5,7 @@ All URIs are relative to *https://marketcheck-prod.apigee.net/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getMDS**](MarketApi.md#getMDS) | **GET** /mds | Market Days Supply
-[**getPopularity**](MarketApi.md#getPopularity) | **GET** /popularity | Popularity
+[**getSalesCount**](MarketApi.md#getSalesCount) | **GET** /sales | Get sales count by make, model, year, trim or taxonomy vin
 
 
 # **getMDS**
@@ -27,12 +27,12 @@ $apiInstance = new marketcheck\api\sdk\Api\MarketApi(
 );
 $vin = "vin_example"; // string | VIN to decode
 $api_key = "api_key_example"; // string | The API Authentication Key. Mandatory with all API calls.
-$exact = "exact_example"; // string | Exact parameter
+$exact = false; // bool | Exact parameter
 $latitude = 1.2; // double | Latitude component of location
 $longitude = 1.2; // double | Longitude component of location
 $radius = 56; // int | Radius around the search location
-$debug = "debug_example"; // string | Debug parameter
-$include_sold = "include_sold_example"; // string | To fetch sold vins
+$debug = 0; // int | Debug parameter
+$include_sold = false; // bool | To fetch sold vins
 
 try {
     $result = $apiInstance->getMDS($vin, $api_key, $exact, $latitude, $longitude, $radius, $debug, $include_sold);
@@ -49,12 +49,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **vin** | **string**| VIN to decode |
  **api_key** | **string**| The API Authentication Key. Mandatory with all API calls. | [optional]
- **exact** | **string**| Exact parameter | [optional]
+ **exact** | **bool**| Exact parameter | [optional] [default to false]
  **latitude** | **double**| Latitude component of location | [optional]
  **longitude** | **double**| Longitude component of location | [optional]
  **radius** | **int**| Radius around the search location | [optional]
- **debug** | **string**| Debug parameter | [optional]
- **include_sold** | **string**| To fetch sold vins | [optional]
+ **debug** | **int**| Debug parameter | [optional] [default to 0]
+ **include_sold** | **bool**| To fetch sold vins | [optional] [default to false]
 
 ### Return type
 
@@ -71,12 +71,12 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getPopularity**
-> \marketcheck\api\sdk\Model\PopularityItem[] getPopularity($year, $make, $model, $trim, $body_type, $api_key, $stats)
+# **getSalesCount**
+> \marketcheck\api\sdk\Model\Sales getSalesCount($api_key, $car_type, $make, $mm, $ymm, $ymmt, $taxonomy_vin, $state, $city_state, $stats)
 
-Popularity
+Get sales count by make, model, year, trim or taxonomy vin
 
-[MOCK] [Merged with the /search API - Please check the 'popularity' parameter to the Search API above] Get the Popularity for the given simple filter criteria (by given Year, Make, Model, Trim criteria)
+Get a sales count for city, state or national level by make, model, year, trim or taxonomy vin
 
 ### Example
 ```php
@@ -88,19 +88,22 @@ $apiInstance = new marketcheck\api\sdk\Api\MarketApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$year = "year_example"; // string | Year of the car
-$make = "make_example"; // string | Make of the car
-$model = "model_example"; // string | Model of the Car
-$trim = "trim_example"; // string | Trim of the Car
-$body_type = "body_type_example"; // string | Body type to filter the cars on. Valid values are the ones returned by body_type facets API call
 $api_key = "api_key_example"; // string | The API Authentication Key. Mandatory with all API calls.
-$stats = "stats_example"; // string | The list of fields for which stats need to be generated based on the matching listings for the search criteria. Allowed fields are - price, miles, msrp, dom The stats consists of mean, max, average and count of listings based on which the stats are calculated for the field. Stats could be requested in addition to the listings for the search. Please note - The API calls with the stats fields may take longer to respond.
+$car_type = "used"; // string | Inventory type for which sales count is to be searched, default is used
+$make = "make_example"; // string | Make for which sales count is to be searched
+$mm = "mm_example"; // string | Make-Model for which sales count is to be searched, pipe seperated like mm=ford|f-150
+$ymm = "ymm_example"; // string | Year-Make-Model for which sales count is to be searched, pipe seperated like ymm=2015|ford|f-150
+$ymmt = "ymmt_example"; // string | Year-Make-Model-Trim for which sales count is to be searched, pipe seperated like ymmt=2015|ford|f-150|platinum
+$taxonomy_vin = "taxonomy_vin_example"; // string | taxonomy_vin for which sales count is to be searched
+$state = "state_example"; // string | State level sales count
+$city_state = "city_state_example"; // string | City level sales count, pipe seperated like city_state=jacksonville|FL
+$stats = "stats_example"; // string | Comma separated list of fields to generate stats for. Allowed fields in the list are - price, miles, dom (days on market) OR all
 
 try {
-    $result = $apiInstance->getPopularity($year, $make, $model, $trim, $body_type, $api_key, $stats);
+    $result = $apiInstance->getSalesCount($api_key, $car_type, $make, $mm, $ymm, $ymmt, $taxonomy_vin, $state, $city_state, $stats);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling MarketApi->getPopularity: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling MarketApi->getSalesCount: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -109,17 +112,20 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **year** | **string**| Year of the car |
- **make** | **string**| Make of the car |
- **model** | **string**| Model of the Car |
- **trim** | **string**| Trim of the Car |
- **body_type** | **string**| Body type to filter the cars on. Valid values are the ones returned by body_type facets API call |
  **api_key** | **string**| The API Authentication Key. Mandatory with all API calls. | [optional]
- **stats** | **string**| The list of fields for which stats need to be generated based on the matching listings for the search criteria. Allowed fields are - price, miles, msrp, dom The stats consists of mean, max, average and count of listings based on which the stats are calculated for the field. Stats could be requested in addition to the listings for the search. Please note - The API calls with the stats fields may take longer to respond. | [optional]
+ **car_type** | **string**| Inventory type for which sales count is to be searched, default is used | [optional] [default to used]
+ **make** | **string**| Make for which sales count is to be searched | [optional]
+ **mm** | **string**| Make-Model for which sales count is to be searched, pipe seperated like mm&#x3D;ford|f-150 | [optional]
+ **ymm** | **string**| Year-Make-Model for which sales count is to be searched, pipe seperated like ymm&#x3D;2015|ford|f-150 | [optional]
+ **ymmt** | **string**| Year-Make-Model-Trim for which sales count is to be searched, pipe seperated like ymmt&#x3D;2015|ford|f-150|platinum | [optional]
+ **taxonomy_vin** | **string**| taxonomy_vin for which sales count is to be searched | [optional]
+ **state** | **string**| State level sales count | [optional]
+ **city_state** | **string**| City level sales count, pipe seperated like city_state&#x3D;jacksonville|FL | [optional]
+ **stats** | **string**| Comma separated list of fields to generate stats for. Allowed fields in the list are - price, miles, dom (days on market) OR all | [optional]
 
 ### Return type
 
-[**\marketcheck\api\sdk\Model\PopularityItem[]**](../Model/PopularityItem.md)
+[**\marketcheck\api\sdk\Model\Sales**](../Model/Sales.md)
 
 ### Authorization
 

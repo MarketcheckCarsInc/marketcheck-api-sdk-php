@@ -58,14 +58,19 @@ class Dealer implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
-        'franchise_id' => 'string',
+        'name' => 'string',
         'seller_name' => 'string',
+        'inventory_url' => 'string',
+        'data_source' => 'string',
+        'status' => 'string',
         'street' => 'string',
         'city' => 'string',
         'state' => 'string',
+        'country' => 'string',
         'zip' => 'string',
         'latitude' => 'string',
         'longitude' => 'string',
+        'location_ll' => 'string',
         'seller_phone' => 'string',
         'car_type' => 'string',
         'target_url_new' => 'string',
@@ -83,14 +88,19 @@ class Dealer implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => null,
-        'franchise_id' => null,
         'name' => null,
+        'seller_name' => null,
+        'inventory_url' => null,
+        'data_source' => null,
+        'status' => null,
         'street' => null,
         'city' => null,
         'state' => null,
+        'country' => null,
         'zip' => null,
         'latitude' => null,
         'longitude' => null,
+        'location_ll' => null,
         'seller_phone' => null,
         'car_type' => null,
         'target_url_new' => null,
@@ -129,14 +139,19 @@ class Dealer implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'franchise_id' => 'franchise_id',
+        'name' => 'name',
         'seller_name' => 'seller_name',
+        'inventory_url' => 'inventory_url',
+        'data_source' => 'data_source',
+        'status' => 'status',
         'street' => 'street',
         'city' => 'city',
         'state' => 'state',
+        'country' => 'country',
         'zip' => 'zip',
         'latitude' => 'latitude',
         'longitude' => 'longitude',
+        'location_ll' => 'location_ll',
         'seller_phone' => 'seller_phone',
         'car_type' => 'car_type',
         'target_url_new' => 'target_url_new',
@@ -154,14 +169,19 @@ class Dealer implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'franchise_id' => 'setFranchiseId',
+        'name' => 'setName',
         'seller_name' => 'setSellerName',
+        'inventory_url' => 'setInventoryUrl',
+        'data_source' => 'setDataSource',
+        'status' => 'setStatus',
         'street' => 'setStreet',
         'city' => 'setCity',
         'state' => 'setState',
+        'country' => 'setCountry',
         'zip' => 'setZip',
         'latitude' => 'setLatitude',
         'longitude' => 'setLongitude',
+        'location_ll' => 'setLocationLl',
         'seller_phone' => 'setSellerPhone',
         'car_type' => 'setCarType',
         'target_url_new' => 'setTargetUrlNew',
@@ -179,14 +199,19 @@ class Dealer implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'franchise_id' => 'getFranchiseId',
+        'name' => 'getName',
         'seller_name' => 'getSellerName',
+        'inventory_url' => 'getInventoryUrl',
+        'data_source' => 'getDataSource',
+        'status' => 'getStatus',
         'street' => 'getStreet',
         'city' => 'getCity',
         'state' => 'getState',
+        'country' => 'getCountry',
         'zip' => 'getZip',
         'latitude' => 'getLatitude',
         'longitude' => 'getLongitude',
+        'location_ll' => 'getLocationLl',
         'seller_phone' => 'getSellerPhone',
         'car_type' => 'getCarType',
         'target_url_new' => 'getTargetUrlNew',
@@ -258,14 +283,19 @@ class Dealer implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['franchise_id'] = isset($data['franchise_id']) ? $data['franchise_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['seller_name'] = isset($data['seller_name']) ? $data['seller_name'] : null;
+        $this->container['inventory_url'] = isset($data['inventory_url']) ? $data['inventory_url'] : null;
+        $this->container['data_source'] = isset($data['data_source']) ? $data['data_source'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['street'] = isset($data['street']) ? $data['street'] : null;
         $this->container['city'] = isset($data['city']) ? $data['city'] : null;
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
+        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
         $this->container['zip'] = isset($data['zip']) ? $data['zip'] : null;
         $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
         $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
+        $this->container['location_ll'] = isset($data['location_ll']) ? $data['location_ll'] : null;
         $this->container['seller_phone'] = isset($data['seller_phone']) ? $data['seller_phone'] : null;
         $this->container['car_type'] = isset($data['car_type']) ? $data['car_type'] : null;
         $this->container['target_url_new'] = isset($data['target_url_new']) ? $data['target_url_new'] : null;
@@ -325,25 +355,25 @@ class Dealer implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets franchise_id
+     * Gets name
      *
      * @return string
      */
-    public function getFranchiseId()
+    public function getName()
     {
-        return $this->container['franchise_id'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets franchise_id
+     * Sets name
      *
-     * @param string $franchise_id Dealer franchise id
+     * @param string $name Name of the dealer
      *
      * @return $this
      */
-    public function setFranchiseId($franchise_id)
+    public function setName($name)
     {
-        $this->container['franchise_id'] = $franchise_id;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -368,6 +398,78 @@ class Dealer implements ModelInterface, ArrayAccess
     public function setSellerName($seller_name)
     {
         $this->container['seller_name'] = $seller_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets inventory_url
+     *
+     * @return string
+     */
+    public function getInventoryUrl()
+    {
+        return $this->container['inventory_url'];
+    }
+
+    /**
+     * Sets inventory_url
+     *
+     * @param string $inventory_url Website of the dealer
+     *
+     * @return $this
+     */
+    public function setInventoryUrl($inventory_url)
+    {
+        $this->container['inventory_url'] = $inventory_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_source
+     *
+     * @return string
+     */
+    public function getDataSource()
+    {
+        return $this->container['data_source'];
+    }
+
+    /**
+     * Sets data_source
+     *
+     * @param string $data_source Datasource of the dealer
+     *
+     * @return $this
+     */
+    public function setDataSource($data_source)
+    {
+        $this->container['data_source'] = $data_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status Status of the dealer
+     *
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $this->container['status'] = $status;
 
         return $this;
     }
@@ -445,6 +547,30 @@ class Dealer implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets country
+     *
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->container['country'];
+    }
+
+    /**
+     * Sets country
+     *
+     * @param string $country country of the dealer
+     *
+     * @return $this
+     */
+    public function setCountry($country)
+    {
+        $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
      * Gets zip
      *
      * @return string
@@ -517,7 +643,31 @@ class Dealer implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets phone
+     * Gets location_ll
+     *
+     * @return string
+     */
+    public function getLocationLl()
+    {
+        return $this->container['location_ll'];
+    }
+
+    /**
+     * Sets location_ll
+     *
+     * @param string $location_ll location_ll for the dealer location
+     *
+     * @return $this
+     */
+    public function setLocationLl($location_ll)
+    {
+        $this->container['location_ll'] = $location_ll;
+
+        return $this;
+    }
+
+    /**
+     * Gets seller_phone
      *
      * @return string
      */
@@ -541,7 +691,29 @@ class Dealer implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets car_type
+     * Gets seller_email
+     *
+     * @return string
+     */
+    public function getSellerEmail()
+    {
+        return $this->container['seller_email'];
+    }
+
+    /**
+     * Sets seller_email
+     *
+     * @param string $seller_email Contact email of the dealer
+     *
+     * @return $this
+     */
+    public function setSellerEmail($seller_email)
+    {
+        $this->container['seller_email'] = $seller_email;
+
+        return $this;
+    }
+     /* Gets car_type
      *
      * @return string
      */
@@ -697,7 +869,7 @@ class Dealer implements ModelInterface, ArrayAccess
     /**
      * Sets distance
      *
-     * @param float $distance 
+     * @param float $distance Distance of dealer from given location
      *
      * @return $this
      */
@@ -707,7 +879,6 @@ class Dealer implements ModelInterface, ArrayAccess
 
         return $this;
     }
-
     /**
      * Returns true if offset exists. False otherwise.
      *

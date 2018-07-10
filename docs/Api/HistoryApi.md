@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **history**
-> \marketcheck\api\sdk\Model\HistoricalListing[] history($vin, $api_key, $fields, $rows, $page)
+> \marketcheck\api\sdk\Model\HistoricalListing[] history($vin, $api_key, $fields, $page)
 
 Get a cars online listing history
 
@@ -27,11 +27,10 @@ $apiInstance = new marketcheck\api\sdk\Api\HistoryApi(
 $vin = "vin_example"; // string | The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN
 $api_key = "api_key_example"; // string | The API Authentication Key. Mandatory with all API calls.
 $fields = "fields_example"; // string | List of fields to fetch, in case the default fields list in the response is to be trimmed down
-$rows = 8.14; // float | Number of results to return. Default is 10. Max is 50
 $page = 8.14; // float | Page number to fetch the results for the given criteria. Default is 1.
 
 try {
-    $result = $apiInstance->history($vin, $api_key, $fields, $rows, $page);
+    $result = $apiInstance->history($vin, $api_key, $fields, $page);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling HistoryApi->history: ', $e->getMessage(), PHP_EOL;
@@ -46,7 +45,6 @@ Name | Type | Description  | Notes
  **vin** | **string**| The VIN to identify the car to fetch the listing history. Must be a valid 17 char VIN |
  **api_key** | **string**| The API Authentication Key. Mandatory with all API calls. | [optional]
  **fields** | **string**| List of fields to fetch, in case the default fields list in the response is to be trimmed down | [optional]
- **rows** | **float**| Number of results to return. Default is 10. Max is 50 | [optional]
  **page** | **float**| Page number to fetch the results for the given criteria. Default is 1. | [optional]
 
 ### Return type

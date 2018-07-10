@@ -90,7 +90,7 @@ Class | Method | HTTP request | Description
 *ListingsApi* | [**getListingMedia**](docs/Api/ListingsApi.md#getlistingmedia) | **GET** /listing/{id}/media | Listing media by id
 *ListingsApi* | [**search**](docs/Api/ListingsApi.md#search) | **GET** /search | Gets active car listings for the given search criteria
 *MarketApi* | [**getMDS**](docs/Api/MarketApi.md#getmds) | **GET** /mds | Market Days Supply
-*MarketApi* | [**getPopularity**](docs/Api/MarketApi.md#getpopularity) | **GET** /popularity | Popularity
+*MarketApi* | [**getSalesCount**](docs/Api/MarketApi.md#getsalescount) | **GET** /sales | Get sales count by make, model, year, trim or taxonomy vin
 *VINDecoderApi* | [**decode**](docs/Api/VINDecoderApi.md#decode) | **GET** /vin/{vin}/specs | VIN Decoder
 
 
@@ -123,15 +123,20 @@ Class | Method | HTTP request | Description
  - [ListingFinance](docs/Model/ListingFinance.md)
  - [ListingLease](docs/Model/ListingLease.md)
  - [ListingMedia](docs/Model/ListingMedia.md)
+ - [ListingNestExtraAttributes](docs/Model/ListingNestExtraAttributes.md)
+ - [ListingNestMedia](docs/Model/ListingNestMedia.md)
  - [ListingVDP](docs/Model/ListingVDP.md)
  - [Location](docs/Model/Location.md)
  - [MakeModel](docs/Model/MakeModel.md)
  - [Mds](docs/Model/Mds.md)
+ - [NestDealer](docs/Model/NestDealer.md)
  - [PlotPoint](docs/Model/PlotPoint.md)
  - [PopularityItem](docs/Model/PopularityItem.md)
  - [RatingComponents](docs/Model/RatingComponents.md)
  - [ReviewComponents](docs/Model/ReviewComponents.md)
  - [SafetyRating](docs/Model/SafetyRating.md)
+ - [Sales](docs/Model/Sales.md)
+ - [SalesStats](docs/Model/SalesStats.md)
  - [SearchResponse](docs/Model/SearchResponse.md)
  - [TrendPoint](docs/Model/TrendPoint.md)
  - [VinReport](docs/Model/VinReport.md)

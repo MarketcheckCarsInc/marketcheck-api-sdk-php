@@ -51,8 +51,8 @@ use \marketcheck\api\sdk\ObjectSerializer;
 class HistoryApiTest extends \PHPUnit_Framework_TestCase
 {
     private $api_key = "your api key";      
-    private $vin; 
-    private $fields = null; 
+    private $vin = array("1FTEW1EF9GKE64460","NM0LS7E78G1263750","1FTNE1CM0FKA52494","1FADP3N21FL364871","1FTEW1EG1FFB24493"); 
+    private $fields = null;
     private $rows = null; 
     private $page = null;
 
@@ -92,49 +92,54 @@ class HistoryApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testHistory()
     {
+        echo "\nShould validate history of vin";
         $apiInstance = new marketcheck\api\sdk\Api\HistoryApi(new GuzzleHttp\Client());
-        echo "\nTesting listing count for History api";       
-        $this->vin = "1FTNE2CM2FKA81288";
-        $this->fields = null; 
-        $this->rows = null; 
-        $this->page = null;
-        
-        try {
-            $result = $apiInstance->history($this->vin, $this->api_key, $this->fields, $this->rows, $this->page);
-            $count = 0;
-             foreach($result as $listing)
+        foreach($this->vin as $h_vin) 
+        {
+            try 
+            {
+                $result = $apiInstance->history($h_vin, $this->api_key);  
+                $last_seen_at_ary = []; 
+                $temp = [];
+                foreach($result as $listing)
                 {
-                $count = $count + 1;
+                    array_push($temp,$listing["last_seen_at_date"]);
                 }
-                $this->assertNotEquals($count, 0);            
-                print_r("\n/history/$this->vin?api_key={{api_key}}: endpoint working fine");
-               
-            } catch (Exception $e) {
-                print_r("\n/history/$this->vin?api_key={{api_key}}: No listing found");
-                $this->fail($e->getMessage());
-                }
+                $last_seen_at_ary  = $temp;
+                sort($temp);
 
-        echo "\nTesting History api with fields";       
-        $this->vin = "1FTNE2CM2FKA81288";
-        $this->fields = "dealer_id,seller_name,vdp_url,source,last_seen_at,price,miles,city,state,zip,scraped_at"; 
-        $this->rows = null; 
-        $this->page = null;
-        
-        try {
-            $result = $apiInstance->history($this->vin, $this->api_key, $this->fields, $this->rows, $this->page);
-            $count = 0;
-             foreach($result as $listing)
-                {
-                $count = $count + 1;  
-                $this->assertArrayHasKey("seller_name", $listing);
-                $this->assertArrayHasKey("dealer_id", $listing);
-                $this->assertArrayHasKey("source", $listing);
-                }
-                $this->assertNotEquals($count, 0);                            
-                print_r("\n/history/$this->vin?api_key={{api_key}}&fields=seller_type,dealer_id,seller_name,seller_phone,seller_email,vdp_url,source,last_seen_at,price,miles,city,state,zip,scraped_at: endpoint working fine");
-               
+                $this->assertNotEquals(sizeof($result), 0);
+                $this->assertEquals($temp, array_reverse($last_seen_at_ary));
+                $this->assertEquals(sizeof(array_unique($result)), sizeof($result));
+                print_r("\n/history/$h_vin?api_key={{api_key}}: endpoint working fine");
             } catch (Exception $e) {
                 $this->fail($e->getMessage());
                 }
+        }
+
+        echo "\nValidate fields are returned when specified in fields param for multiple vins";       
+        $this->fields = "seller_type,inventory_type,is_searchable,dealer_id,source,data_source"; 
+        $this->rows = null; 
+        $this->page = null;
+        foreach($this->vin as $h_vin) {
+            try 
+            {
+                $result = $apiInstance->history($h_vin, $this->api_key, $this->fields, $this->rows, $this->page);
+                $this->assertNotEquals(sizeof($result), 0);
+                 foreach($result as $listing)
+                    {                    
+                    $this->assertArrayHasKey("seller_type", $listing);
+                    $this->assertArrayHasKey("inventory_type", $listing);
+                    $this->assertArrayHasKey("is_searchable", $listing);
+                    $this->assertArrayHasKey("dealer_id", $listing);
+                    $this->assertArrayHasKey("source", $listing);
+                    $this->assertArrayHasKey("data_source", $listing);
+                    $this->assertArrayHasKey("status_date", $listing);
+                    }                        
+                print_r("\n/history/$h_vin?api_key={{api_key}}&fields=seller_type,inventory_type,is_searchable,dealer_id,source,data_source: endpoint working fine");
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        }
     }
 }

@@ -65,12 +65,17 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'vdp_url' => 'string',
         'seller_name' => 'string',
         'scraped_at' => 'float',
-        'last_seen_at' => 'float',
+        'last_seen_at_date' => 'string',
         'source' => 'string',
         'city' => 'string',
         'state' => 'string',
         'zip' => 'string',
-        'dealer_id' => 'float'
+        'dealer_id' => 'float',
+        'seller_type' => 'string',
+        'inventory_type' => 'string',
+        'is_searchable'  => 'string',
+        'data_source' => 'string',
+        'status_date' => 'string' 
     ];
 
     /**
@@ -86,12 +91,17 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'vdp_url' => null,
         'seller_name' => null,
         'scraped_at' => null,
-        'last_seen_at' => null,
+        'last_seen_at_date' => null,
         'source' => null,
         'city' => null,
         'state' => null,
         'zip' => null,
-        'dealer_id' => null
+        'dealer_id' => null,
+        'seller_type' => null,
+        'inventory_type' => null,
+        'is_searchable'  => null,
+        'data_source' => null,
+        'status_date' => null 
     ];
 
     /**
@@ -128,12 +138,17 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'vdp_url' => 'vdp_url',
         'seller_name' => 'seller_name',
         'scraped_at' => 'scraped_at',
-        'last_seen_at' => 'last_seen_at',
+        'last_seen_at_date' => 'last_seen_at_date',
         'source' => 'source',
         'city' => 'city',
         'state' => 'state',
         'zip' => 'zip',
-        'dealer_id' => 'dealer_id'
+        'dealer_id' => 'dealer_id',
+        'seller_type' => 'seller_type',
+        'inventory_type' => 'inventory_type',
+        'is_searchable'  => 'is_searchable',
+        'data_source' => 'data_source',
+        'status_date' => 'status_date'
     ];
 
     /**
@@ -149,12 +164,17 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'vdp_url' => 'setVdpUrl',
         'seller_name' => 'setSellerName',
         'scraped_at' => 'setScrapedAt',
-        'last_seen_at' => 'setLastSeenAt',
+        'last_seen_at_date' => 'setLastSeenAtDate',
         'source' => 'setSource',
         'city' => 'setCity',
         'state' => 'setState',
         'zip' => 'setZip',
-        'dealer_id' => 'setDealerId'
+        'dealer_id' => 'setDealerId',
+        'seller_type' => 'setSellerType',
+        'inventory_type' => 'setInventoryType',
+        'is_searchable'  => 'setIsSearchable',
+        'data_source' => 'setDataSource',
+        'status_date' => 'setStatusDate'
     ];
 
     /**
@@ -170,12 +190,17 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         'vdp_url' => 'getVdpUrl',
         'seller_name' => 'getSellerName',
         'scraped_at' => 'getScrapedAt',
-        'last_seen_at' => 'getLastSeenAt',
+        'last_seen_at_date' => 'getLastSeenAtDate',
         'source' => 'getSource',
         'city' => 'getCity',
         'state' => 'getState',
         'zip' => 'getZip',
-        'dealer_id' => 'getDealerId'
+        'dealer_id' => 'getDealerId',
+        'seller_type' => 'getSellerType',
+        'inventory_type' => 'getInventoryType',
+        'is_searchable'  => 'getIsSearchable',
+        'data_source' => 'getDataSource',
+        'status_date' => 'getStatusDate'
     ];
 
     /**
@@ -245,12 +270,17 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         $this->container['vdp_url'] = isset($data['vdp_url']) ? $data['vdp_url'] : null;
         $this->container['seller_name'] = isset($data['seller_name']) ? $data['seller_name'] : null;
         $this->container['scraped_at'] = isset($data['scraped_at']) ? $data['scraped_at'] : null;
-        $this->container['last_seen_at'] = isset($data['last_seen_at']) ? $data['last_seen_at'] : null;
+        $this->container['last_seen_at_date'] = isset($data['last_seen_at_date']) ? $data['last_seen_at_date'] : null;
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
         $this->container['city'] = isset($data['city']) ? $data['city'] : null;
         $this->container['state'] = isset($data['state']) ? $data['state'] : null;
         $this->container['zip'] = isset($data['zip']) ? $data['zip'] : null;
         $this->container['dealer_id'] = isset($data['dealer_id']) ? $data['dealer_id'] : null;
+        $this->container['seller_type'] = isset($data['seller_type']) ? $data['seller_type'] : null;
+        $this->container['inventory_type'] = isset($data['inventory_type']) ? $data['inventory_type'] : null;
+        $this->container['is_searchable'] = isset($data['is_searchable']) ? $data['is_searchable'] : null;
+        $this->container['data_source'] = isset($data['data_source']) ? $data['data_source'] : null;
+        $this->container['status_date'] = isset($data['status_date']) ? $data['status_date'] : null;
     }
 
     /**
@@ -446,25 +476,25 @@ class HistoricalListing implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets last_seen_at
+     * Gets last_seen_at_date
      *
      * @return float
      */
-    public function getLastSeenAt()
+    public function getLastSeenAtDate()
     {
-        return $this->container['last_seen_at'];
+        return $this->container['last_seen_at_date'];
     }
 
     /**
-     * Sets last_seen_at
+     * Sets last_seen_at_date
      *
      * @param float $last_seen_at Listing last seen at (most recent) timestamp
      *
      * @return $this
      */
-    public function setLastSeenAt($last_seen_at)
+    public function setLastSeenAtDate($last_seen_at_date)
     {
-        $this->container['last_seen_at'] = $last_seen_at;
+        $this->container['last_seen_at_date'] = $last_seen_at_date;
 
         return $this;
     }
@@ -565,6 +595,7 @@ class HistoricalListing implements ModelInterface, ArrayAccess
         return $this;
     }
 
+    
      /**
      * Gets dealer_id
      *
@@ -578,13 +609,133 @@ class HistoricalListing implements ModelInterface, ArrayAccess
     /**
      * Sets zip
      *
-     * @param string $zip Zip of the listing
+     * @param string $dealer_id  the listing
      *
      * @return $this
      */
     public function setDealerId($dealer_id)
     {
         $this->container['dealer_id'] = $dealer_id;
+
+        return $this;
+    }
+
+     /**
+     * Gets seller_type
+     *
+     * @return string
+     */
+    public function getSellerType()
+    {
+        return $this->container['seller_type'];
+    }
+
+    /**
+     * Sets seller_type
+     *
+     * @param string $seller_type of the listing
+     *
+     * @return $this
+     */
+    public function setSellerType($seller_type)
+    {
+        $this->container['seller_type'] = $seller_type;
+
+        return $this;
+    }
+
+     /**
+     * Gets inventory_type
+     *
+     * @return string
+     */
+    public function getInventoryType()
+    {
+        return $this->container['inventory_type'];
+    }
+
+    /**
+     * Sets inventory_type
+     *
+     * @param string $inventory_type of the listing
+     *
+     * @return $this
+     */
+    public function setInventoryType($inventory_type)
+    {
+        $this->container['inventory_type'] = $inventory_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_searchable
+     *
+     * @return string
+     */
+    public function getIsSearchable()
+    {
+        return $this->container['is_searchable'];
+    }
+
+    /**
+     * Sets is_searchable
+     *
+     * @param string $is_searchable of the listing
+     *
+     * @return $this
+     */
+    public function setIsSearchable($is_searchable)
+    {
+        $this->container['is_searchable'] = $is_searchable;
+
+        return $this;
+    }
+
+    /**
+     * Gets data_source
+     *
+     * @return string
+     */
+    public function getDataSource()
+    {
+        return $this->container['data_source'];
+    }
+
+    /**
+     * Sets data_source
+     *
+     * @param string $data_source of the listing
+     *
+     * @return $this
+     */
+    public function setDataSource($data_source)
+    {
+        $this->container['data_source'] = $data_source;
+
+        return $this;
+    }
+
+    /**
+     * Gets status_date
+     *
+     * @return string
+     */
+    public function getStatusDate()
+    {
+        return $this->container['status_date'];
+    }
+
+    /**
+     * Sets status_date
+     *
+     * @param string $status_date of the listing
+     *
+     * @return $this
+     */
+    public function setStatusDate($status_date)
+    {
+        $this->container['status_date'] = $status_date;
 
         return $this;
     }

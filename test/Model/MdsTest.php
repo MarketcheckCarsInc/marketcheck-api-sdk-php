@@ -96,4 +96,39 @@ class MdsTest extends \PHPUnit_Framework_TestCase
     public function testPropertyTotalCarsSoldInLast45Days()
     {
     }
+
+    /**
+     * Test attribute "sold_vins"
+     */
+    public function testPropertySoldVins()
+    {
+    }
+
+    /**
+     * Test attribute "year"
+     */
+    public function testPropertyYear()
+    {
+    }
+
+    /**
+     * Test attribute "make"
+     */
+    public function testPropertyMake()
+    {
+    }
+
+    /**
+     * Test attribute "model"
+     */
+    public function testPropertyModel()
+    {
+    }
+
+    /**
+     * Test attribute "trim"
+     */
+    public function testPropertyTrim()
+    {
+    }
 }

@@ -26,7 +26,15 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace marketcheck\api\sdk;
+require __DIR__.'/../../vendor/autoload.php';
+require __DIR__.'/../../lib/Api/ListingsApi.php';
+
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
 
 use \marketcheck\api\sdk\Configuration;
 use \marketcheck\api\sdk\ApiException;
@@ -42,6 +50,21 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class MarketApiTest extends \PHPUnit_Framework_TestCase
 {
+    private $api_key = "nbWPXNcG8V6EgOBsjejVQJd9A9zTerzG";
+    private $vin = array("1FTNE2CM2FKA81288","1GYS4BKJ8FR290257","3GYFNBE3XFS537500","1FT7W2BT5FEA75059","1FMCU9J90FUA21186");
+    private $latitude;
+    private $longitude;
+    private $radius;
+    private $exact;
+    private $start;
+    private $debug;
+    private $include_sold;
+    private $year;
+    private $make;
+    private $model;
+    private $trim;
+    private $body_type;
+    private $stats;
 
     /**
      * Setup before running any test cases
@@ -79,15 +102,40 @@ class MarketApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetMDS()
     {
+        $apiInstance = new marketcheck\api\sdk\Api\MarketApi(new GuzzleHttp\Client());
+        $this->latitude = 37.998;
+        $this->longitude = -84.522;
+        $this->radius = 1000;
+        $this->debug = "1";
+        $this->exact = "true";
+        $this->include_sold = null;
+        
+        foreach($this->vin as $h_vin) 
+        {
+            try {
+                $result = $apiInstance->getMDS($this->vin, $this->api_key, $this->exact, $this->latitude, $this->longitude, $this->radius, $this->debug, $this->include_sold);
+                //$this->assertNotEquals($result["mds"],'NULL');
+                print_r($result);
+                // $this->assertNotNull($result["mds"]);
+                // $this->assertObjectHasAttribute((string)$result["year"], new stdClass);
+                // $this->assertObjectHasAttribute($result["make"], new stdClass);
+                // $this->assertObjectHasAttribute($result["model"], new stdClass);
+                // $this->assertObjectHasAttribute($result["trim"], new stdClass);
+                print_r("\n/mds?api_key={{api_key}}&vin=55SWF4JB8GU129288&latitude=37.998&longitude=-84.522&radius=1000&exact=true&debug=1: endpoint working fine");
+                //todo   expect_json_keys([:year, :make, :model, :trim]) 
+                } catch (Exception $e) {
+                    $this->fail($e->getMessage());
+                    }
+        }
     }
 
     /**
-     * Test case for getPopularity
+     * Test case for getSalesCount
      *
-     * Popularity.
+     * Get sales count by make, model, year, trim or taxonomy vin.
      *
      */
-    public function testGetPopularity()
+    public function testGetSalesCount()
     {
     }
 }

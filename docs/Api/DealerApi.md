@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 Find car dealers around
 
-The dealers API returns a list of dealers around a given point and radius. Max radius of only 50 miles is supported.
+The dealers API returns a list of dealers around a given point and radius.
 
 ### Example
 ```php
