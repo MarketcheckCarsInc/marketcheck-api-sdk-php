@@ -108,7 +108,7 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
     private $start = null; 
     private $facets = null; 
     private $stats = null; 
-    private $country = null; 
+    private $country = "US"; 
     private $plot = null; 
     private $nodedup = null; 
     private $state = null; 
@@ -163,7 +163,8 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
         
         foreach($this->listing_id as $l_id) 
         {
-            try {
+            try 
+            {
                 $result = $apiInstance->getListing($l_id,$this->api_key);          
                 $this->assertEquals("object", gettype($result["media"])); 
                 $this->assertEquals("object", gettype($result["extra"])); 
@@ -204,7 +205,8 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
         
         foreach($this->listing_id as $l_id) 
         {
-            try {
+            try 
+            {
                 $result = $apiInstance->getListingExtra($l_id , $this->api_key);                    
                 $this->assertEquals("string", gettype($result["id"]));
                 $this->assertEquals("array", gettype($result["options"]));
@@ -227,10 +229,11 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
     {
         $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
         echo "\nValidate media fields in listings";
-        
+
         foreach($this->listing_id as $l_id) 
         {
-            try {
+            try 
+            {
                 $result = $apiInstance->getListingMedia($l_id , $this->api_key);                
                 $this->assertEquals("string", gettype($result["id"]));
                 $this->assertEquals("string", gettype($result["photo_url"]));
@@ -250,19 +253,27 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testSearch()
     {
-        // $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
-        // echo "validate extra fields in listings";
-        
-        // foreach($this->listing_id as $l_id) 
-        // {
-        //     try {
-        //         $this->vin = "5TDDKRFH1GS304801";            
-        //         $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $this->zip, $this->include_lease, $this->include_finance, $this->lease_term, $this->lease_down_payment, $this->lease_emp, $this->finance_loan_term, $this->finance_loan_apr, $this->finance_emp, $this->finance_down_payment, $this->finance_down_payment_per, $this->car_type, $this->seller_type, $this->carfax_1_owner, $this->carfax_clean_title, $this->year, $this->make, $this->model, $this->trim, $this->dealer_id, $this->vin, $this->source, $this->body_type, $this->body_subtype, $this->vehicle_type, $this->vins, $this->taxonomy_vins, $this->ymmt, $this->match, $this->cylinders, $this->transmission, $this->speeds, $this->doors, $this->drivetrain, $this->exterior_color, $this->interior_color, $this->engine, $this->engine_type, $this->engine_aspiration, $this->engine_block, $this->miles_range, $this->price_range, $this->dom_range, $this->sort_by, $this->sort_order, $this->rows, $this->start, $this->facets, $this->stats, $this->country, $this->plot, $this->nodedup, $this->state, $this->city, $this->dealer_name, $this->trim_o, $this->trim_r, $this->dom_active_range, $this->dom_180_range, $this->options, $this->features, $this->exclude_certified);  
-        //         $this->assertEquals($result["listings"][0]["vin"], $this->vin); 
-        //         echo "\n/search?api_key={{api_key}}&vin=$this->vin: endpoint working fine";          
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //     } 
-        // }        
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
+        echo "Validate country";
+        $this->latitude = 37.998;
+        $this->longitude = -84.522;
+        $this->radius = 200;
+        try 
+        {            
+        $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = $this->country, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+        $this->assertNotEquals(sizeof($result["listings"]), 0);
+        foreach($result as $listing)
+        {
+            print_r($listing);
+            $this->assertEquals($this->country, $listing["dealer"]);
+        }
+        echo "\n/search?api_key={{api_key}}&country=$this->country&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine";   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }      
     }
 }
+
+
+//$result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $this->zip, $this->include_lease, $this->include_finance, $this->lease_term, $this->lease_down_payment, $this->lease_emp, $this->finance_loan_term, $this->finance_loan_apr, $this->finance_emp, $this->finance_down_payment, $this->finance_down_payment_per, $this->car_type, $this->seller_type, $this->carfax_1_owner, $this->carfax_clean_title, $this->year, $this->make, $this->model, $this->trim, $this->dealer_id, $this->vin, $this->source, $this->body_type, $this->body_subtype, $this->vehicle_type, $this->vins, $this->taxonomy_vins, $this->ymmt, $this->match, $this->cylinders, $this->transmission, $this->speeds, $this->doors, $this->drivetrain, $this->exterior_color, $this->interior_color, $this->engine, $this->engine_type, $this->engine_aspiration, $this->engine_block, $this->miles_range, $this->price_range, $this->dom_range, $this->sort_by, $this->sort_order, $this->rows, $this->start, $this->facets, $this->stats, $this->country, $this->plot, $this->nodedup, $this->state, $this->city, $this->dealer_name, $this->trim_o, $this->trim_r, $this->dom_active_range, $this->dom_180_range, $this->options, $this->features, $this->exclude_certified);  
+                
