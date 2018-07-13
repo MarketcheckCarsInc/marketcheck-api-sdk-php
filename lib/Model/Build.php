@@ -63,6 +63,7 @@ class Build implements ModelInterface, ArrayAccess
         'model' => 'string',
         'trim' => 'string',
         'body_type' => 'string',
+        'body_subtype' => 'string',
         'vehicle_type' => 'string',
         'drivetrain' => 'string',
         'fuel_type' => 'string',
@@ -97,6 +98,7 @@ class Build implements ModelInterface, ArrayAccess
         'model' => null,
         'trim' => null,
         'body_type' => null,
+        'body_subtype' => null,
         'vehicle_type' => null,
         'drivetrain' => null,
         'fuel_type' => null,
@@ -152,6 +154,7 @@ class Build implements ModelInterface, ArrayAccess
         'model' => 'model',
         'trim' => 'trim',
         'body_type' => 'body_type',
+        'body_subtype' => 'body_subtype',
         'vehicle_type' => 'vehicle_type',
         'drivetrain' => 'drivetrain',
         'fuel_type' => 'fuel_type',
@@ -186,6 +189,7 @@ class Build implements ModelInterface, ArrayAccess
         'model' => 'setModel',
         'trim' => 'setTrim',
         'body_type' => 'setBodyType',
+        'body_subtype' => 'setBodySubtype',
         'vehicle_type' => 'setVehicleType',
         'drivetrain' => 'setDrivetrain',
         'fuel_type' => 'setFuelType',
@@ -220,6 +224,7 @@ class Build implements ModelInterface, ArrayAccess
         'model' => 'getModel',
         'trim' => 'getTrim',
         'body_type' => 'getBodyType',
+        'body_subtype' => 'getBodySubtype',
         'vehicle_type' => 'getVehicleType',
         'drivetrain' => 'getDrivetrain',
         'fuel_type' => 'getFuelType',
@@ -308,6 +313,7 @@ class Build implements ModelInterface, ArrayAccess
         $this->container['model'] = isset($data['model']) ? $data['model'] : null;
         $this->container['trim'] = isset($data['trim']) ? $data['trim'] : null;
         $this->container['body_type'] = isset($data['body_type']) ? $data['body_type'] : null;
+        $this->container['body_subtype'] = isset($data['body_subtype']) ? $data['body_subtype'] : null;
         $this->container['vehicle_type'] = isset($data['vehicle_type']) ? $data['vehicle_type'] : null;
         $this->container['drivetrain'] = isset($data['drivetrain']) ? $data['drivetrain'] : null;
         $this->container['fuel_type'] = isset($data['fuel_type']) ? $data['fuel_type'] : null;
@@ -471,6 +477,30 @@ class Build implements ModelInterface, ArrayAccess
     public function setBodyType($body_type)
     {
         $this->container['body_type'] = $body_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets body_subtype
+     *
+     * @return string
+     */
+    public function getBodySubtype()
+    {
+        return $this->container['body_subtype'];
+    }
+
+    /**
+     * Sets body_subtype
+     *
+     * @param string $body_subtype Body type of the car
+     *
+     * @return $this
+     */
+    public function setBodySubtype($body_subtype)
+    {
+        $this->container['body_subtype'] = $body_subtype;
 
         return $this;
     }

@@ -70,6 +70,8 @@ class Listing implements ModelInterface, ArrayAccess
         'first_seen_at' => 'float',
         'first_seen_at_date' => 'string',
         'vdp_url' => 'string',
+        'carfax_1_owner' => 'string',
+        'carfax_clean_title' => 'string',
         'source' => 'string',
         'is_certified' => 'int',
         'dom' => 'float',
@@ -78,6 +80,7 @@ class Listing implements ModelInterface, ArrayAccess
         'seller_type' => 'string',
         'last_seen_at' => 'float',
         'last_seen_at_date' => 'string',
+        'dist' => 'float',
         'build' => '\marketcheck\api\sdk\Model\Build',
         'media' => '\marketcheck\api\sdk\Model\ListingMedia',
         'extra' => '\marketcheck\api\sdk\Model\ListingExtraAttributes',
@@ -103,6 +106,8 @@ class Listing implements ModelInterface, ArrayAccess
         'first_seen_at' => null,
         'first_seen_at_date' => null,
         'vdp_url' => null,
+        'carfax_1_owner' => null,
+        'carfax_clean_title' => null,
         'source' => null,
         'is_certified' => null,
         'dom' => null,
@@ -111,6 +116,7 @@ class Listing implements ModelInterface, ArrayAccess
         'seller_type' => null,
         'last_seen_at' => null,
         'last_seen_at_date' => null,
+        'dist' => null,
         'build' => null,
         'media' => null,
         'extra' => null,
@@ -157,6 +163,8 @@ class Listing implements ModelInterface, ArrayAccess
         'first_seen_at' => 'first_seen_at',
         'first_seen_at_date' => 'first_seen_at_date',
         'vdp_url' => 'vdp_url',
+        'carfax_1_owner' => 'carfax_1_owner',
+        'carfax_clean_title' => 'carfax_clean_title',
         'source' => 'source',
         'is_certified' => 'is_certified',
         'dom' => 'dom',
@@ -165,6 +173,7 @@ class Listing implements ModelInterface, ArrayAccess
         'seller_type' => 'seller_type',
         'last_seen_at' => 'last_seen_at',
         'last_seen_at_date' => 'last_seen_at_date',
+        'dist' => 'dist',
         'build' => 'build',
         'media' => 'media',
         'extra' => 'extra',
@@ -190,6 +199,8 @@ class Listing implements ModelInterface, ArrayAccess
         'first_seen_at' => 'setFirstSeenAt',
         'first_seen_at_date' => 'setFirstSeenAtDate',
         'vdp_url' => 'setVdpUrl',
+        'carfax_1_owner' => 'setCarfax1Owner',
+        'carfax_clean_title' => 'setCarfaxCleanTitle',
         'source' => 'setSource',
         'is_certified' => 'setIsCertified',
         'dom' => 'setDom',
@@ -198,6 +209,7 @@ class Listing implements ModelInterface, ArrayAccess
         'seller_type' => 'setSellerType',
         'last_seen_at' => 'setLastSeenAt',
         'last_seen_at_date' => 'setLastSeenAtDate',
+        'dist' => 'setDist',
         'build' => 'setBuild',
         'media' => 'setMedia',
         'extra' => 'setExtra',
@@ -223,6 +235,8 @@ class Listing implements ModelInterface, ArrayAccess
         'first_seen_at' => 'getFirstSeenAt',
         'first_seen_at_date' => 'getFirstSeenAtDate',
         'vdp_url' => 'getVdpUrl',
+        'carfax_1_owner' => 'getCarfax1Owner',
+        'carfax_clean_title' => 'getCarfaxCleanTitle',
         'source' => 'getSource',
         'is_certified' => 'getIsCertified',
         'dom' => 'getDom',
@@ -231,6 +245,7 @@ class Listing implements ModelInterface, ArrayAccess
         'seller_type' => 'getSellerType',
         'last_seen_at' => 'getLastSeenAt',
         'last_seen_at_date' => 'getLastSeenAtDate',
+        'dist' => 'getDist',
         'build' => 'getBuild',
         'media' => 'getMedia',
         'extra' => 'getExtra',
@@ -310,6 +325,8 @@ class Listing implements ModelInterface, ArrayAccess
         $this->container['first_seen_at'] = isset($data['first_seen_at']) ? $data['first_seen_at'] : null;
         $this->container['first_seen_at_date'] = isset($data['first_seen_at_date']) ? $data['first_seen_at_date'] : null;
         $this->container['vdp_url'] = isset($data['vdp_url']) ? $data['vdp_url'] : null;
+        $this->container['carfax_1_owner'] = isset($data['carfax_1_owner']) ? $data['carfax_1_owner'] : null;
+        $this->container['carfax_clean_title'] = isset($data['carfax_clean_title']) ? $data['carfax_clean_title'] : null;
         $this->container['source'] = isset($data['source']) ? $data['source'] : null;
         $this->container['is_certified'] = isset($data['is_certified']) ? $data['is_certified'] : null;
         $this->container['dom'] = isset($data['dom']) ? $data['dom'] : null;
@@ -318,6 +335,7 @@ class Listing implements ModelInterface, ArrayAccess
         $this->container['seller_type'] = isset($data['seller_type']) ? $data['seller_type'] : null;
         $this->container['last_seen_at'] = isset($data['last_seen_at']) ? $data['last_seen_at'] : null;
         $this->container['last_seen_at_date'] = isset($data['last_seen_at_date']) ? $data['last_seen_at_date'] : null;
+        $this->container['dist'] = isset($data['dist']) ? $data['dist'] : null;        
         $this->container['build'] = isset($data['build']) ? $data['build'] : null;
         $this->container['media'] = isset($data['media']) ? $data['media'] : null;
         $this->container['extra'] = isset($data['extra']) ? $data['extra'] : null;
@@ -638,6 +656,54 @@ class Listing implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets carfax_1_owner
+     *
+     * @return string
+     */
+    public function getCarfax1Owner()
+    {
+        return $this->container['carfax_1_owner'];
+    }
+
+    /**
+     * Sets carfax_1_owner
+     *
+     * @param string $carfax_1_owner
+     *
+     * @return $this
+     */
+    public function setCarfax1Owner($carfax_1_owner)
+    {
+        $this->container['carfax_1_owner'] = $carfax_1_owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets carfax_clean_title
+     *
+     * @return string
+     */
+    public function getCarfaxCleanTitle()
+    {
+        return $this->container['carfax_clean_title'];
+    }
+
+    /**
+     * Sets carfax_clean_title
+     *
+     * @param string $carfax_clean_title
+     *
+     * @return $this
+     */
+    public function setCarfaxCleanTitle($carfax_clean_title)
+    {
+        $this->container['carfax_clean_title'] = $carfax_clean_title;
+
+        return $this;
+    }
+
+    /**
      * Gets source
      *
      * @return string
@@ -825,6 +891,30 @@ class Listing implements ModelInterface, ArrayAccess
     public function setLastSeenAtDate($last_seen_at_date)
     {
         $this->container['last_seen_at_date'] = $last_seen_at_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets dist
+     *
+     * @return string
+     */
+    public function getDist()
+    {
+        return $this->container['dist'];
+    }
+
+    /**
+     * Sets dist
+     *
+     * @param string $dist 
+     *
+     * @return $this
+     */
+    public function setDist($dist)
+    {
+        $this->container['dist'] = $dist;
 
         return $this;
     }

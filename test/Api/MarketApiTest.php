@@ -218,6 +218,6 @@ class MarketApiTest extends \PHPUnit_Framework_TestCase
         $this->stats;
                
         //$result = $apiInstance->getSalesCount($this->api_key, $this->car_type, $this->make, $this->mm, $this->ymm, $this->ymmt, $this->taxonomy_vin, $this->state, $this->city_state, $this->stats);
-        print($result);
+        //print($result);
     }
 }

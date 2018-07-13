@@ -50,7 +50,7 @@ use \marketcheck\api\sdk\ObjectSerializer;
  */
 class HistoryApiTest extends \PHPUnit_Framework_TestCase
 {
-    private $api_key = "your api key";      
+    private $api_key = "Your api key";      
     private $vin = array("1FTEW1EF9GKE64460","NM0LS7E78G1263750","1FTNE1CM0FKA52494","1FADP3N21FL364871","1FTEW1EG1FFB24493"); 
     private $fields = null;
     private $rows = null; 
@@ -106,7 +106,7 @@ class HistoryApiTest extends \PHPUnit_Framework_TestCase
                     array_push($temp,$listing["last_seen_at_date"]);
                 }
                 $last_seen_at_ary  = $temp;
-                sort($temp);
+                sort($last_seen_at_ary);
 
                 $this->assertNotEquals(sizeof($result), 0);
                 $this->assertEquals($temp, array_reverse($last_seen_at_ary));

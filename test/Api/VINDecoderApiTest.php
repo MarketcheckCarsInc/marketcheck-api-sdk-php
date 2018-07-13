@@ -51,7 +51,7 @@ use \marketcheck\api\sdk\ObjectSerializer;
 class VINDecoderApiTest extends \PHPUnit_Framework_TestCase
 {
     private $vin;
-    private $api_key = "nbWPXNcG8V6EgOBsjejVQJd9A9zTerzG";  
+    private $api_key = "Your api key";  
 
     /**
      * Setup before running any test cases
