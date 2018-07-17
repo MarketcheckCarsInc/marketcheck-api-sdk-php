@@ -55,7 +55,7 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
                                 "4T1B11HKXJU647545-5766db96-3c3a-49c7-b2f1-80604adb429f",
                                 "JF2GTABC9JH333062-cd9481a0-c474-49cc-90df-9216fed35c10"
                                 );
-    private $api_key = "nbWPXNcG8V6EgOBsjejVQJd9A9zTerzG";
+    private $api_key = "your api key";
     private $latitude = array(35.94, 37.34, 35.41, 33.54, 43.06);
     private $longitude = array(-117.29, -75.65, -86.8, -80.64, -84.16);
     private $radius = null;
@@ -179,38 +179,38 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetListing()
     {
-        // $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
-        // echo "\nValidate listing formats";
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
+        echo "\nValidate listing formats";
         
-        // foreach($this->listing_id as $l_id) 
-        // {
-        //     try 
-        //     {
-        //         $result = $apiInstance->getListing($l_id,$this->api_key);          
-        //         $this->assertEquals("object", gettype($result["media"])); 
-        //         $this->assertEquals("object", gettype($result["extra"])); 
-        //         $this->assertEquals("object", gettype($result["dealer"])); 
-        //         $this->assertEquals("object", gettype($result["build"])); 
+        foreach($this->listing_id as $l_id) 
+        {
+            try 
+            { 
+                $result = $apiInstance->getListing($l_id,$this->api_key);          
+                $this->assertEquals("object", gettype($result["media"])); 
+                $this->assertEquals("object", gettype($result["extra"])); 
+                $this->assertEquals("object", gettype($result["dealer"])); 
+                $this->assertEquals("object", gettype($result["build"])); 
 
-        //         $this->assertEquals("array", gettype($result["media"]["photo_links"]));
+                $this->assertEquals("array", gettype($result["media"]["photo_links"]));
 
-        //         $this->assertEquals("array", gettype($result["extra"]["features"]));
-        //         //$this->assertEquals("string", gettype($result["extra"]["seller_comments"]));   
+                $this->assertEquals("array", gettype($result["extra"]["features"]));
+                //$this->assertEquals("string", gettype($result["extra"]["seller_comments"]));   
 
-        //         $this->assertEquals("string", gettype($result["dealer"]["id"]));
-        //         $this->assertEquals("string", gettype($result["dealer"]["name"]));
-        //         $this->assertEquals("string", gettype($result["dealer"]["street"]));
-        //         $this->assertEquals("string", gettype($result["dealer"]["zip"]));
+                $this->assertEquals("string", gettype($result["dealer"]["id"]));
+                $this->assertEquals("string", gettype($result["dealer"]["name"]));
+                $this->assertEquals("string", gettype($result["dealer"]["street"]));
+                $this->assertEquals("string", gettype($result["dealer"]["zip"]));
 
-        //         $this->assertEquals("string", gettype($result["build"]["year"]));
-        //         $this->assertEquals("string", gettype($result["build"]["make"]));
-        //         $this->assertEquals("string", gettype($result["build"]["model"]));
-        //         $this->assertEquals("string", gettype($result["build"]["engine"]));           
-        //         print_r("\n/listing/$l_id?api_key={{api_key}}: endpoint working fine");            
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //     }
-        // }
+                $this->assertEquals("string", gettype($result["build"]["year"]));
+                $this->assertEquals("string", gettype($result["build"]["make"]));
+                $this->assertEquals("string", gettype($result["build"]["model"]));
+                $this->assertEquals("string", gettype($result["build"]["engine"]));           
+                print_r("\n/listing/$l_id?api_key={{api_key}}: endpoint working fine");            
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+            }
+        }
     }
 
     /**
@@ -221,23 +221,23 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetListingExtra()
     {
-        // $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
-        // echo "\nValidate extra fields in listings";
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
+        echo "\nValidate extra fields in listings";
         
-        // foreach($this->listing_id as $l_id) 
-        // {
-        //     try 
-        //     {
-        //         $result = $apiInstance->getListingExtra($l_id , $this->api_key);                    
-        //         $this->assertEquals("string", gettype($result["id"]));
-        //         $this->assertEquals("array", gettype($result["options"]));
-        //         $this->assertEquals("array", gettype($result["features"])); 
-        //         //$this->assertEquals("string", gettype($result["seller_comments"])); 
-        //         print_r("\n/listing/$l_id/extra?api_key={{api_key}}: endpoint working fine");            
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //     }
-        // }
+        foreach($this->listing_id as $l_id) 
+        {
+            try 
+            {   
+                $result = $apiInstance->getListingExtra($l_id , $this->api_key);                    
+                $this->assertEquals("string", gettype($result["id"]));
+                $this->assertEquals("array", gettype($result["options"]));
+                $this->assertEquals("array", gettype($result["features"])); 
+                //$this->assertEquals("string", gettype($result["seller_comments"])); 
+                print_r("\n/listing/$l_id/extra?api_key={{api_key}}: endpoint working fine");            
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+            }
+        }
     }
 
     /**
@@ -248,22 +248,22 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetListingMedia()
     {
-        // $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
-        // echo "\nValidate media fields in listings";
+        $apiInstance = new marketcheck\api\sdk\Api\ListingsApi(new GuzzleHttp\Client());   
+        echo "\nValidate media fields in listings";
 
-        // foreach($this->listing_id as $l_id) 
-        // {
-        //     try 
-        //     {
-        //         $result = $apiInstance->getListingMedia($l_id , $this->api_key);                
-        //         $this->assertEquals("string", gettype($result["id"]));
-        //         $this->assertEquals("string", gettype($result["photo_url"]));
-        //         $this->assertEquals("array", gettype($result["photo_links"]));    
-        //         print_r("\n/listing/$l_id/media?api_key={{api_key}}: endpoint working fine");            
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //     }
-        // }
+        foreach($this->listing_id as $l_id) 
+        {
+            try 
+            {
+                $result = $apiInstance->getListingMedia($l_id , $this->api_key);                
+                $this->assertEquals("string", gettype($result["id"]));
+                $this->assertEquals("string", gettype($result["photo_url"]));
+                $this->assertEquals("array", gettype($result["photo_links"]));    
+                print_r("\n/listing/$l_id/media?api_key={{api_key}}: endpoint working fine");            
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+            }
+        }
     }
 
     /**
@@ -432,1179 +432,1174 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
             }
         }
 
-        // print_r($this->ext_int_clr_bd_and_bds_type_combo);
-
-        // echo "\nValidate country";
-        // try 
-        // {            
-        //     $result = $apiInstance->search($this->api_key, 37.998, -84.522, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = "US", $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //     $this->assertNotEquals(sizeof($result["listings"]), 0);
-        //     foreach($result["listings"] as $listing)
-        //     {
-        //         $this->assertEquals("US", $listing["dealer"]["country"]);
-        //     }
-        //     echo "\n/search?api_key={{api_key}}&country=US&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine";   
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }    
+        echo "\nValidate country";
+        try 
+        {            
+            $result = $apiInstance->search($this->api_key, 37.998, -84.522, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = "US", $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+            $this->assertNotEquals(sizeof($result["listings"]), 0);
+            foreach($result["listings"] as $listing)
+            {
+                $this->assertEquals("US", $listing["dealer"]["country"]);
+            }
+            echo "\n/search?api_key={{api_key}}&country=US&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine";   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }    
             
-        // echo "\nValidate inventory type";
-        // try 
-        // {            
-        //     $result = $apiInstance->search($this->api_key, 37.998, -84.522, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //     $this->assertNotEquals(sizeof($result["listings"]), 0);  
-        //     foreach($result["listings"] as $listing)
-        //     {
-        //         $this->assertEquals("used", $listing["inventory_type"]);
-        //     }
-        //     echo "\n/search?api_key={{api_key}}&car_type=used&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine";   
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }   
+        echo "\nValidate inventory type";
+        try 
+        {            
+            $result = $apiInstance->search($this->api_key, 37.998, -84.522, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+            $this->assertNotEquals(sizeof($result["listings"]), 0);  
+            foreach($result["listings"] as $listing)
+            {
+                $this->assertEquals("used", $listing["inventory_type"]);
+            }
+            echo "\n/search?api_key={{api_key}}&car_type=used&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine";   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }   
 
-        // echo "\nValidate api response for matching vins";
-        // foreach($this->vin as $h_vin) 
-        // {
-        //     try 
-        //     {            
-        //         $result = $apiInstance->search($this->api_key, 40.85271900000001, -74.0623244, 5000, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = $h_vin, $taxonomy_vins = null, $ymmt = null, $match = "year,make,model,trim", $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "distance", $sort_order = "asc", $rows = 50, $start = 0, $facets = null, $stats = null, $country = "ALL", $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         $this->assertNotEquals(sizeof($result["listings"]), 0);
-        //         $this->assertArrayHasKey("num_found", $result);
-        //         $this->assertArrayHasKey("listings", $result);
-        //         $this->assertEquals("double", gettype($result["num_found"])); 
-        //         $this->assertEquals("array", gettype($result["listings"])); 
-        //         echo "\n/search?api_key={{api_key}}&vins=$h_vin&match=year,make,model,trim&latitude=40.85271900000001&longitude=-74.0623244&radius=5000&car_type=used&sort_by=dist&sort_order=asc&start=0&rows=50&country=ALL: endpoint working fine";   
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //         }
-        // }
+        echo "\nValidate api response for matching vins";
+        foreach($this->vin as $h_vin) 
+        {
+            try 
+            {            
+                $result = $apiInstance->search($this->api_key, 40.85271900000001, -74.0623244, 5000, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = $h_vin, $taxonomy_vins = null, $ymmt = null, $match = "year,make,model,trim", $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "distance", $sort_order = "asc", $rows = 50, $start = 0, $facets = null, $stats = null, $country = "ALL", $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $this->assertNotEquals(sizeof($result["listings"]), 0);
+                $this->assertArrayHasKey("num_found", $result);
+                $this->assertArrayHasKey("listings", $result);
+                $this->assertEquals("double", gettype($result["num_found"])); 
+                $this->assertEquals("array", gettype($result["listings"])); 
+                echo "\n/search?api_key={{api_key}}&vins=$h_vin&match=year,make,model,trim&latitude=40.85271900000001&longitude=-74.0623244&radius=5000&car_type=used&sort_by=dist&sort_order=asc&start=0&rows=50&country=ALL: endpoint working fine";   
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        }
 
-        // echo "\nValidate dealer id";
-        // foreach($this->dealer_id as $d_id) 
-        // {
-        //     try 
-        //     {         
-        //         $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+        echo "\nValidate dealer id";
+        foreach($this->dealer_id as $d_id) 
+        {
+            try 
+            {         
+                $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
                 
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($d_id, $listing["dealer"]["id"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&dealer_id=$d_id&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";   
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //         }
-        // }
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($d_id, $listing["dealer"]["id"]);
+                }
+                echo "\n/search?api_key={{api_key}}&dealer_id=$d_id&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";   
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        }
         
-        // echo "\nValidate facets";
-        // try 
-        // {        
-        //     $facets_list = array(array("year,make"), array("make,model"), array("model,trim"), array("trim,car_type"), array("car_type,year"));    
-        //     foreach($facets_list as $facets_param) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = $facets_param, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         $this->assertEquals("double", gettype($result["num_found"]));
-        //         $this->assertEquals("array", gettype($result["listings"]));
-        //         //$this->assertEquals("object", gettype($result["facets"]));
-        //         echo "\n/search?api_key={{api_key}}&facets=$facets_param[0]&latitude=37.998&longitude=-84.522&radius=200&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";  
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }  
+        echo "\nValidate facets";
+        try 
+        {        
+            $facets_list = array(array("year,make"), array("make,model"), array("model,trim"), array("trim,car_type"), array("car_type,year"));    
+            foreach($facets_list as $facets_param) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = $facets_param, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $this->assertEquals("double", gettype($result["num_found"]));
+                $this->assertEquals("array", gettype($result["listings"]));
+                //$this->assertEquals("object", gettype($result["facets"]));
+                echo "\n/search?api_key={{api_key}}&facets=$facets_param[0]&latitude=37.998&longitude=-84.522&radius=200&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";  
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }  
 
-        // echo "\nValidate misc fields";
-        // try 
-        // {     
-        //     $misc_fields = array(array());
-        //     $all_query_params = array(array());
-        //     for($i = 0; $i < 5; $i++) 
-        //     {
-        //         $temp = array();
-        //         array_push($temp,"year=".$this->year[$i],"&make=".$this->make[$i],"&model=".$this->model[$i],"&trim=".$this->trim[$i],"&exterior_color=".$this->exterior_color[$i],"&interior_color=".$this->interior_color[$i]);
-        //         array_push($misc_fields,$temp);
-        //     }
-        //     foreach($misc_fields as $query_field)
-        //     {
-        //         $query_param = "";
-        //         foreach($query_field as $field)
-        //         {
-        //             $query_param = $query_param.$field;  
-        //         }
-        //         array_push($all_query_params, $query_param);
-        //     }       
-        //     $random_index = array_rand($all_query_params, 2);   
-        //     print_r($random_index);
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $q_param = $all_query_params[$v];                
-        //         // $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = $ymmt_token, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         // foreach($result["listings"] as $listing)
-        //         //     {  
-        //                 // todo
-        //         //     }
-        //         echo "\n/search?api_key={{api_key}}&$q_param&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";  
-        //     } 
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate misc fields";
+        try 
+        {     
+            $misc_fields = array(array());
+            $all_query_params = array(array());
+            for($i = 0; $i < 5; $i++) 
+            {
+                $temp = array();
+                array_push($temp,"year=".$this->year[$i],"&make=".$this->make[$i],"&model=".$this->model[$i],"&trim=".$this->trim[$i],"&exterior_color=".$this->exterior_color[$i],"&interior_color=".$this->interior_color[$i]);
+                array_push($misc_fields,$temp);
+            }
+            foreach($misc_fields as $query_field)
+            {
+                $query_param = "";
+                foreach($query_field as $field)
+                {
+                    $query_param = $query_param.$field;  
+                }
+                array_push($all_query_params, $query_param);
+            }       
+            $random_index = array_rand($all_query_params, 2);   
+            print_r($random_index);
+            foreach($random_index as $k => $v)   
+            {                
+                $q_param = $all_query_params[$v];                
+                // $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = $ymmt_token, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                // foreach($result["listings"] as $listing)
+                //     {  
+                        // todo
+                //     }
+                echo "\n/search?api_key={{api_key}}&$q_param&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";  
+            } 
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate ymmt module";
-        // try 
-        // {            
-        //     $random_index = array_rand($this->ymmt_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $yr = $this->ymmt_combo[$v][0];
-        //         $mk = $this->ymmt_combo[$v][1];
-        //         $md = $this->ymmt_combo[$v][2];
-        //         $tr = $this->ymmt_combo[$v][3];
-        //         $ymmt_token = rawurlencode("$yr+$mk+$md+$tr");
-        //         echo $ymmt_token;
-        //         // $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = $ymmt_token, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         // foreach($result["listings"] as $listing)
-        //         //     {  
-        //         //         $this->assertArrayHasKey("year", $listing["build"]);
-        //         //         $this->assertArrayHasKey("make", $listing["build"]);
-        //         //         $this->assertArrayHasKey("model", $listing["build"]);
-        //         //         $this->assertArrayHasKey("trim", $listing["build"]);
-        //         //     }
-        //         echo "\n/search?api_key={{api_key}}&year=$yr&ymmt=$ymmt_token&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                       
-        //     }  
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate ymmt module";
+        try 
+        {            
+            $random_index = array_rand($this->ymmt_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $yr = $this->ymmt_combo[$v][0];
+                $mk = $this->ymmt_combo[$v][1];
+                $md = $this->ymmt_combo[$v][2];
+                $tr = $this->ymmt_combo[$v][3];
+                $ymmt_token = rawurlencode("$yr+$mk+$md+$tr");
+                echo $ymmt_token;
+                // $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = $ymmt_token, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                // foreach($result["listings"] as $listing)
+                //     {  
+                //         $this->assertArrayHasKey("year", $listing["build"]);
+                //         $this->assertArrayHasKey("make", $listing["build"]);
+                //         $this->assertArrayHasKey("model", $listing["build"]);
+                //         $this->assertArrayHasKey("trim", $listing["build"]);
+                //     }
+                echo "\n/search?api_key={{api_key}}&year=$yr&ymmt=$ymmt_token&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                       
+            }  
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate rows";
-        // $row_counts = array(5,10,20,30,50);
-        // foreach($row_counts as $r_num) 
-        // {
-        //     try 
-        //     {         
-        //         $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = "black", $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = $r_num, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         $this->assertEquals(sizeof($result["listings"]), $r_num);
-        //         echo "\n/search?api_key={{api_key}}&exterior_color=black&rows=$r_num&car_type=used&sort_by=id&sort_order=desc: endpoint working fine"; 
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //         }
-        // }
+        echo "\nValidate rows";
+        $row_counts = array(5,10,20,30,50);
+        foreach($row_counts as $r_num) 
+        {
+            try 
+            {         
+                $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = "black", $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = $r_num, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $this->assertEquals(sizeof($result["listings"]), $r_num);
+                echo "\n/search?api_key={{api_key}}&exterior_color=black&rows=$r_num&car_type=used&sort_by=id&sort_order=desc: endpoint working fine"; 
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        }
 
-        // echo "\nValidate sort by and sort order";
-        // try 
-        // {         
-        //     $random_index = array_rand($this->sort_by_and_order_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $s_by = $this->sort_by_and_order_combo[$v][0];
-        //         $s_order = $this->sort_by_and_order_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 50, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_by, $sort_order = $s_order, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         $field_arr = array();
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             if ($s_by == "price" || $s_by == "miles" || $s_by == "dom")
-        //             {
-        //                 array_push($field_arr, $listing["sort_by"]);
-        //             }
-        //             if ($s_by == "year")
-        //             {
-        //                 if ($listing["build"] != null)
-        //                 {
-        //                     array_push($field_arr, $listing["build"]["sort_by"]);           
-        //                 }
-        //             }
-        //         }
-        //         $temp = [];
-        //         $temp = $field_arr;
-        //         sort($temp);
-        //         if ($s_order == "asc")
-        //         {
-        //             $this->assertEquals($field_arr, $temp);
-        //         }   
-        //         else
-        //         {
-        //             $this->assertEquals($field_arr, array_reverse($temp));
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&sort_by=$s_by&sort_order=$s_order&latitude=37.998&longitude=-84.522&radius=50&car_type=used: endpoint working fine";                           
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate sort by and sort order";
+        try 
+        {         
+            $random_index = array_rand($this->sort_by_and_order_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $s_by = $this->sort_by_and_order_combo[$v][0];
+                $s_order = $this->sort_by_and_order_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 50, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_by, $sort_order = $s_order, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $field_arr = array();
+                foreach($result["listings"] as $listing)
+                {   
+                    if ($s_by == "price" || $s_by == "miles" || $s_by == "dom")
+                    {
+                        array_push($field_arr, $listing["sort_by"]);
+                    }
+                    if ($s_by == "year")
+                    {
+                        if ($listing["build"] != null)
+                        {
+                            array_push($field_arr, $listing["build"]["sort_by"]);           
+                        }
+                    }
+                }
+                $temp = [];
+                $temp = $field_arr;
+                sort($temp);
+                if ($s_order == "asc")
+                {
+                    $this->assertEquals($field_arr, $temp);
+                }   
+                else
+                {
+                    $this->assertEquals($field_arr, array_reverse($temp));
+                }
+                echo "\n/search?api_key={{api_key}}&sort_by=$s_by&sort_order=$s_order&latitude=37.998&longitude=-84.522&radius=50&car_type=used: endpoint working fine";                           
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate dom range";
-        // try 
-        // {       
-        //     $random_index = array_rand($this->dom_range_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $dom1 = $this->dom_range_combo[$v][0];
-        //         $dom2 = $this->dom_range_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = "$dom1-$dom2", $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertGreaterThanOrEqual($dom1, $listing["dom"]);
-        //                 $this->assertLessThanOrEqual($dom2, $listing["dom"]);
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&dom_range=$dom1-$dom2&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }                   
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate dom range";
+        try 
+        {       
+            $random_index = array_rand($this->dom_range_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $dom1 = $this->dom_range_combo[$v][0];
+                $dom2 = $this->dom_range_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = "$dom1-$dom2", $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertGreaterThanOrEqual($dom1, $listing["dom"]);
+                        $this->assertLessThanOrEqual($dom2, $listing["dom"]);
+                    }
+                    echo "\n/search?api_key={{api_key}}&dom_range=$dom1-$dom2&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }                   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
         
-        // echo "\nValidate price range";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->price_range_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $price1 = $this->price_range_combo[$v][0];
-        //         $price2 = $this->price_range_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = "$price1-$price2", $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertGreaterThanOrEqual($price1, $listing["price"]);
-        //                 $this->assertLessThanOrEqual($price2, $listing["price"]);
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&price_range=$price1-$price2&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }  
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate price range";
+        try 
+        {        
+            $random_index = array_rand($this->price_range_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $price1 = $this->price_range_combo[$v][0];
+                $price2 = $this->price_range_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = "$price1-$price2", $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertGreaterThanOrEqual($price1, $listing["price"]);
+                        $this->assertLessThanOrEqual($price2, $listing["price"]);
+                    }
+                    echo "\n/search?api_key={{api_key}}&price_range=$price1-$price2&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }  
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
         
-        // echo "\nValidate miles range";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->miles_range_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $miles1 = $this->miles_range_combo[$v][0];
-        //         $miles2 = $this->miles_range_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = "$miles1-$miles2", $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertGreaterThanOrEqual($miles1, $listing["miles"]);
-        //                 $this->assertLessThanOrEqual($miles2, $listing["miles"]);
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&miles_range=$miles1-$miles2&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }    
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }    
+        echo "\nValidate miles range";
+        try 
+        {        
+            $random_index = array_rand($this->miles_range_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $miles1 = $this->miles_range_combo[$v][0];
+                $miles2 = $this->miles_range_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = "$miles1-$miles2", $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertGreaterThanOrEqual($miles1, $listing["miles"]);
+                        $this->assertLessThanOrEqual($miles2, $listing["miles"]);
+                    }
+                    echo "\n/search?api_key={{api_key}}&miles_range=$miles1-$miles2&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }    
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }    
 
-        // echo "\nValidate taxonomy vins";
-        // try 
-        // {      
-        //     $random_index = array_rand($this->taxonomy_vins_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $vin1 = $this->taxonomy_vins_combo[$v][0];
-        //         $vin2 = $this->taxonomy_vins_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = "$vin1,$vin2", $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         $is_taxonomy_vins = false;
-        //         $vins_list = array($vin1,$vin2);
+        echo "\nValidate taxonomy vins";
+        try 
+        {      
+            $random_index = array_rand($this->taxonomy_vins_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $vin1 = $this->taxonomy_vins_combo[$v][0];
+                $vin2 = $this->taxonomy_vins_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = "$vin1,$vin2", $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $is_taxonomy_vins = false;
+                $vins_list = array($vin1,$vin2);
             
-        //         foreach($vins_list as $_vin)
-        //         {    
-        //             if( strlen($_vin) == 10)
-        //             {
-        //                 $is_taxonomy_vins = true;
-        //             }
-        //         }
-        //         $taxonomy_vins_of_listing = array();
-        //         $taxonomy_vins_of_request = array();
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $temp = substr($listing["vin"],0,8)."".substr($listing["vin"],9,2);
-        //                 array_push($taxonomy_vins_of_listing,$temp);
-        //             }
+                foreach($vins_list as $_vin)
+                {    
+                    if( strlen($_vin) == 10)
+                    {
+                        $is_taxonomy_vins = true;
+                    }
+                }
+                $taxonomy_vins_of_listing = array();
+                $taxonomy_vins_of_request = array();
+                foreach($result["listings"] as $listing)
+                    {   
+                        $temp = substr($listing["vin"],0,8)."".substr($listing["vin"],9,2);
+                        array_push($taxonomy_vins_of_listing,$temp);
+                    }
 
-        //         if ($is_taxonomy_vins == false)
-        //         {
-        //             foreach($vins_list as $_vin)
-        //             {
-        //                 $tax_temp = substr($_vin,0,8)."".substr($_vin,9,2);
-        //                 array_push($taxonomy_vins_of_request,$tax_temp);
-        //             }
-        //         }
-        //         else
-        //         {
-        //             array_push($taxonomy_vins_of_request,$vin1,$vin2);    
-        //         }
-        //         sort($taxonomy_vins_of_listing);
-        //         sort($taxonomy_vins_of_request);
-        //         $requested_vin_checker = sizeof(array_diff(array_unique($taxonomy_vins_of_listing), array_unique($taxonomy_vins_of_request)));
-        //         $this->assertEquals(0, $requested_vin_checker);  
-        //         echo "\n/search?api_key={{api_key}}&taxonomy_vins=#{vin1},#{vin2}&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine"; 
-        //     } 
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+                if ($is_taxonomy_vins == false)
+                {
+                    foreach($vins_list as $_vin)
+                    {
+                        $tax_temp = substr($_vin,0,8)."".substr($_vin,9,2);
+                        array_push($taxonomy_vins_of_request,$tax_temp);
+                    }
+                }
+                else
+                {
+                    array_push($taxonomy_vins_of_request,$vin1,$vin2);    
+                }
+                sort($taxonomy_vins_of_listing);
+                sort($taxonomy_vins_of_request);
+                $requested_vin_checker = sizeof(array_diff(array_unique($taxonomy_vins_of_listing), array_unique($taxonomy_vins_of_request)));
+                $this->assertEquals(0, $requested_vin_checker);  
+                echo "\n/search?api_key={{api_key}}&taxonomy_vins=#{vin1},#{vin2}&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine"; 
+            } 
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate multiple vins";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->vin_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $vin1 = $this->vin_combo[$v][0];
-        //         $vin2 = $this->vin_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = "$vin1,$vin2", $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         $is_taxonomy_vins = false;
-        //         $vins_list = array($vin1,$vin2);
-        //         foreach($vins_list as $_vin)
-        //         {
-        //             if(sizeof($_vin) == 10)
-        //             {
-        //                 $is_taxonomy_vins = true;
-        //             }
-        //         }
-        //         $taxonomy_vins_of_listing = array();
-        //         $taxonomy_vins_of_request = array();
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $temp = substr($listing["vin"],0,8)."".substr($listing["vin"],9,1);
-        //                 array_push($taxonomy_vins_of_listing,$temp);
-        //             }
+        echo "\nValidate multiple vins";
+        try 
+        {        
+            $random_index = array_rand($this->vin_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $vin1 = $this->vin_combo[$v][0];
+                $vin2 = $this->vin_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = "$vin1,$vin2", $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $is_taxonomy_vins = false;
+                $vins_list = array($vin1,$vin2);
+                foreach($vins_list as $_vin)
+                {
+                    if(sizeof($_vin) == 10)
+                    {
+                        $is_taxonomy_vins = true;
+                    }
+                }
+                $taxonomy_vins_of_listing = array();
+                $taxonomy_vins_of_request = array();
+                foreach($result["listings"] as $listing)
+                    {   
+                        $temp = substr($listing["vin"],0,8)."".substr($listing["vin"],9,1);
+                        array_push($taxonomy_vins_of_listing,$temp);
+                    }
 
-        //         if ($is_taxonomy_vins == false)
-        //         {
-        //             foreach($vins_list as $_vin)
-        //             {
-        //                 $tax_temp = substr($_vin,0,8)."".substr($_vin,9,1);
-        //                 array_push($taxonomy_vins_of_request,$tax_temp);
-        //             }
-        //         }
-        //         else
-        //         {
-        //             array_push($taxonomy_vins_of_listing,$vin1,$vin2);    
-        //         }
-        //         sort($taxonomy_vins_of_listing);
-        //         sort($taxonomy_vins_of_request);
-        //         $requested_vin_checker = sizeof(array_diff(array_unique($taxonomy_vins_of_listing), array_unique($taxonomy_vins_of_request)));
-        //         $this->assertEquals(0, $requested_vin_checker);  
+                if ($is_taxonomy_vins == false)
+                {
+                    foreach($vins_list as $_vin)
+                    {
+                        $tax_temp = substr($_vin,0,8)."".substr($_vin,9,1);
+                        array_push($taxonomy_vins_of_request,$tax_temp);
+                    }
+                }
+                else
+                {
+                    array_push($taxonomy_vins_of_listing,$vin1,$vin2);    
+                }
+                sort($taxonomy_vins_of_listing);
+                sort($taxonomy_vins_of_request);
+                $requested_vin_checker = sizeof(array_diff(array_unique($taxonomy_vins_of_listing), array_unique($taxonomy_vins_of_request)));
+                $this->assertEquals(0, $requested_vin_checker);  
 
-        //         echo "\n/search?api_key={{api_key}}&vins=#{vin1},#{vin2}&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine";
-        //     }   
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+                echo "\n/search?api_key={{api_key}}&vins=#{vin1},#{vin2}&latitude=37.998&longitude=-84.522&radius=200: endpoint working fine";
+            }   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate vin";
-        // $vin_list = array("1N4AL3AP1JC104737","1C4NJCEB1HD160293");
-        // foreach($vin_list as $v_id) 
-        // {
-        //     try 
-        //     {        
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = $v_id, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         echo sizeof($result["listings"]);
-        //         $this->assertNotEquals(sizeof($result["listings"]), 0);
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($v_id, $listing["vin"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&vin=$v_id&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     } catch (Exception $e) {
-        //         $this->fail($e->getMessage());
-        //         }
-        // }
+        echo "\nValidate vin";
+        $vin_list = array("1N4AL3AP1JC104737","1C4NJCEB1HD160293");
+        foreach($vin_list as $v_id) 
+        {
+            try 
+            {        
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = $v_id, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                echo sizeof($result["listings"]);
+                $this->assertNotEquals(sizeof($result["listings"]), 0);
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($v_id, $listing["vin"]);
+                }
+                echo "\n/search?api_key={{api_key}}&vin=$v_id&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            } catch (Exception $e) {
+                $this->fail($e->getMessage());
+                }
+        }
 
-        // echo "\nValidate lat and lng";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->lat_lng_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $lat = $this->lat_lng_combo[$v][0];
-        //         $lon = $this->lat_lng_combo[$v][1];
-        //         $lower_limit_of_lat = $lat - 2;
-        //         $upper_limit_of_lat = $lat + 2;
-        //         $lower_limit_of_lng = $lon - 2;
-        //         $upper_limit_of_lng = $lon + 2;
-        //         $result = $apiInstance->search($this->api_key, $latitude = $lat, $longitude = $lon, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 // $this->assertGreaterThanOrEqual($lower_limit_of_lat, $listing["dealer"]["latitude"]);
-        //                 // $this->assertLessThanOrEqual($upper_limit_of_lat, $listing["dealer"]["latitude"]); 
-        //                 // $this->assertGreaterThanOrEqual($lower_limit_of_lat, $listing["dealer"]["longitude"]);
-        //                 // $this->assertLessThanOrEqual($upper_limit_of_lat, $listing["dealer"]["longitude"]); 
-        //                 // $this->assertEquals($lat, $listing["dealer"]["latitude"]);  
-        //                 // $this->assertEquals($lon, $listing["dealer"]["longitude"]); 
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&latitude=$lat&longitude=$lon&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }   
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate lat and lng";
+        try 
+        {        
+            $random_index = array_rand($this->lat_lng_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $lat = $this->lat_lng_combo[$v][0];
+                $lon = $this->lat_lng_combo[$v][1];
+                $lower_limit_of_lat = $lat - 2;
+                $upper_limit_of_lat = $lat + 2;
+                $lower_limit_of_lng = $lon - 2;
+                $upper_limit_of_lng = $lon + 2;
+                $result = $apiInstance->search($this->api_key, $latitude = $lat, $longitude = $lon, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        // $this->assertGreaterThanOrEqual($lower_limit_of_lat, $listing["dealer"]["latitude"]);
+                        // $this->assertLessThanOrEqual($upper_limit_of_lat, $listing["dealer"]["latitude"]); 
+                        // $this->assertGreaterThanOrEqual($lower_limit_of_lat, $listing["dealer"]["longitude"]);
+                        // $this->assertLessThanOrEqual($upper_limit_of_lat, $listing["dealer"]["longitude"]); 
+                        // $this->assertEquals($lat, $listing["dealer"]["latitude"]);  
+                        // $this->assertEquals($lon, $listing["dealer"]["longitude"]); 
+                    }
+                    echo "\n/search?api_key={{api_key}}&latitude=$lat&longitude=$lon&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate engine block";
-        // try 
-        // {       
-        //     $engine_b = array("V", "I", "H");
-        //     foreach($engine_b as $e_block) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = $e_block, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($e_block, $listing["build"]["engine_block"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&engine_block=$e_block&latitude=37.998&longitude=-84.522: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate engine block";
+        try 
+        {       
+            $engine_b = array("V", "I", "H");
+            foreach($engine_b as $e_block) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = $e_block, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($e_block, $listing["build"]["engine_block"]);
+                }
+                echo "\n/search?api_key={{api_key}}&engine_block=$e_block&latitude=37.998&longitude=-84.522: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate doors";
-        // try 
-        // {       
-        //     $doors_count = array(4, 2, 5, 3, 6);
-        //     foreach($doors_count as $d_count) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = $d_count, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($d_count, $listing["build"]["doors"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&doors=$d_count&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate doors";
+        try 
+        {       
+            $doors_count = array(4, 2, 5, 3, 6);
+            foreach($doors_count as $d_count) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = $d_count, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($d_count, $listing["build"]["doors"]);
+                }
+                echo "\n/search?api_key={{api_key}}&doors=$d_count&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate transmission";
-        // try 
-        // {       
-        //     $transmission_types = array("Automatic", "Manual", "Automated Manual", "Direct Drive", "Manual/Standard");
-        //     foreach($transmission_types as $t_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = $t_type, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($t_type, $listing["build"]["transmission"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&transmission=$t_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate transmission";
+        try 
+        {       
+            $transmission_types = array("Automatic", "Manual", "Automated Manual", "Direct Drive", "Manual/Standard");
+            foreach($transmission_types as $t_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = $t_type, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($t_type, $listing["build"]["transmission"]);
+                }
+                echo "\n/search?api_key={{api_key}}&transmission=$t_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate cylinders";
-        // try 
-        // {       
-        //     $cylinder_types = array(4, 6, 8, 5, 3);
-        //     foreach($cylinder_types as $c_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = $c_type, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($c_type, $listing["build"]["cylinders"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&cylinders=$c_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate cylinders";
+        try 
+        {       
+            $cylinder_types = array(4, 6, 8, 5, 3);
+            foreach($cylinder_types as $c_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = $c_type, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($c_type, $listing["build"]["cylinders"]);
+                }
+                echo "\n/search?api_key={{api_key}}&cylinders=$c_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate drivetrain";
-        // try 
-        // {       
-        //     $drive_train_types = array("Front Wheel Drive", "4-Wheel Drive", "All Wheel Drive", "Rear Wheel Drive", "4x2");
-        //     foreach($drive_train_types as $dt_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = $dt_type, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($dt_type, $listing["build"]["drivetrain"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&drivetrain=$dt_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate drivetrain";
+        try 
+        {       
+            $drive_train_types = array("Front Wheel Drive", "4-Wheel Drive", "All Wheel Drive", "Rear Wheel Drive", "4x2");
+            foreach($drive_train_types as $dt_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = $dt_type, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($dt_type, $listing["build"]["drivetrain"]);
+                }
+                echo "\n/search?api_key={{api_key}}&drivetrain=$dt_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
     
-        // echo "\nValidate seller and vehicle type";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->seller_and_vehicle_type, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {               
-        //         $s_type = $this->seller_and_vehicle_type[$v][0];
-        //         $v_type = $this->seller_and_vehicle_type[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = $s_type, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = $v_type, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($s_type), strtolower($listing["seller_type"]));  
-        //                 $this->assertEquals(strtolower($v_type), strtolower($listing["build"]["vehicle_type"])); 
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&seller_type=$s_type&vehicle_type=$v_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }   
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate seller and vehicle type";
+        try 
+        {        
+            $random_index = array_rand($this->seller_and_vehicle_type, 3);        
+            foreach($random_index as $k => $v)   
+            {               
+                $s_type = $this->seller_and_vehicle_type[$v][0];
+                $v_type = $this->seller_and_vehicle_type[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = $s_type, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = $v_type, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($s_type), strtolower($listing["seller_type"]));  
+                        $this->assertEquals(strtolower($v_type), strtolower($listing["build"]["vehicle_type"])); 
+                    }
+                    echo "\n/search?api_key={{api_key}}&seller_type=$s_type&vehicle_type=$v_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate seller type";
-        // try 
-        // {       
-        //     $seller_types = array("dealer", "fsbo");
-        //     foreach($seller_types as $s_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = $s_type, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($s_type, $listing["seller_type"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&seller_types=$s_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate seller type";
+        try 
+        {       
+            $seller_types = array("dealer", "fsbo");
+            foreach($seller_types as $s_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = $s_type, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($s_type, $listing["seller_type"]);
+                }
+                echo "\n/search?api_key={{api_key}}&seller_types=$s_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate vehicle type";
-        // try 
-        // {       
-        //     $vehilce_types = array("SUV", "Van", "Car", "Truck");
-        //     foreach($vehilce_types as $v_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = $v_type, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {
-        //             $this->assertEquals($v_type, $listing["build"]["vehicle_type"]);
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&vehicle_types=$v_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate vehicle type";
+        try 
+        {       
+            $vehilce_types = array("SUV", "Van", "Car", "Truck");
+            foreach($vehilce_types as $v_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = $v_type, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {
+                    $this->assertEquals($v_type, $listing["build"]["vehicle_type"]);
+                }
+                echo "\n/search?api_key={{api_key}}&vehicle_types=$v_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate exterior color, interior color, body type and body sub-type";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->ext_int_clr_bd_and_bds_type_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $ext_color = $this->ext_int_clr_bd_and_bds_type_combo[$v][0];
-        //         $int_color = $this->ext_int_clr_bd_and_bds_type_combo[$v][1];
-        //         $b_type = $this->ext_int_clr_bd_and_bds_type_combo[$v][2];
-        //         $b_subtype = $this->ext_int_clr_bd_and_bds_type_combo[$v][3];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = $b_type, $body_subtype = $b_subtype, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
-        //                 $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
-        //                 $this->assertEquals(strtolower($b_type), strtolower($listing["build"]["body_type"]));
-        //                 $this->assertEquals(strtolower($b_subtype), strtolower($listing["build"]["body_subtype"]));
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&body_type=$b_type&body_subtype=$b_subtype&exterior_color=$ext_color&interior_color=$int_color&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }  
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate exterior color, interior color, body type and body sub-type";
+        try 
+        {        
+            $random_index = array_rand($this->ext_int_clr_bd_and_bds_type_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $ext_color = $this->ext_int_clr_bd_and_bds_type_combo[$v][0];
+                $int_color = $this->ext_int_clr_bd_and_bds_type_combo[$v][1];
+                $b_type = $this->ext_int_clr_bd_and_bds_type_combo[$v][2];
+                $b_subtype = $this->ext_int_clr_bd_and_bds_type_combo[$v][3];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = $b_type, $body_subtype = $b_subtype, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
+                        $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
+                        $this->assertEquals(strtolower($b_type), strtolower($listing["build"]["body_type"]));
+                        $this->assertEquals(strtolower($b_subtype), strtolower($listing["build"]["body_subtype"]));
+                    }
+                    echo "\n/search?api_key={{api_key}}&body_type=$b_type&body_subtype=$b_subtype&exterior_color=$ext_color&interior_color=$int_color&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }  
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate exterior color, body type and body sub-type";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->ext_clr_bd_and_bds_type_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $ext_color = $this->ext_clr_bd_and_bds_type_combo[$v][0];
-        //         $int_color = $this->ext_clr_bd_and_bds_type_combo[$v][1];
-        //         $b_subtype = $this->ext_clr_bd_and_bds_type_combo[$v][2];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = $b_subtype, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
-        //                 $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
-        //                 $this->assertEquals(strtolower($b_subtype), strtolower($listing["build"]["body_subtype"]));
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&body_subtype=$b_subtype&exterior_color=$ext_color&interior_color=$int_color&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }  
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate exterior color, body type and body sub-type";
+        try 
+        {        
+            $random_index = array_rand($this->ext_clr_bd_and_bds_type_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $ext_color = $this->ext_clr_bd_and_bds_type_combo[$v][0];
+                $int_color = $this->ext_clr_bd_and_bds_type_combo[$v][1];
+                $b_subtype = $this->ext_clr_bd_and_bds_type_combo[$v][2];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = $b_subtype, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
+                        $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
+                        $this->assertEquals(strtolower($b_subtype), strtolower($listing["build"]["body_subtype"]));
+                    }
+                    echo "\n/search?api_key={{api_key}}&body_subtype=$b_subtype&exterior_color=$ext_color&interior_color=$int_color&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }  
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate exterior, interior color and body type";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->ext_clr_bd_type_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $ext_color = $this->ext_clr_bd_type_combo[$v][0];
-        //         $int_color = $this->ext_clr_bd_type_combo[$v][1];
-        //         $b_type = $this->ext_clr_bd_type_combo[$v][2];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = $b_type, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
-        //                 $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
-        //                 $this->assertEquals(strtolower($b_type), strtolower($listing["build"]["body_type"]));
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&body_type=$b_type&exterior_color=$ext_color&interior_color=$int_color&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
-        //     }   
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate exterior, interior color and body type";
+        try 
+        {        
+            $random_index = array_rand($this->ext_clr_bd_type_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $ext_color = $this->ext_clr_bd_type_combo[$v][0];
+                $int_color = $this->ext_clr_bd_type_combo[$v][1];
+                $b_type = $this->ext_clr_bd_type_combo[$v][2];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = $b_type, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
+                        $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
+                        $this->assertEquals(strtolower($b_type), strtolower($listing["build"]["body_type"]));
+                    }
+                    echo "\n/search?api_key={{api_key}}&body_type=$b_type&exterior_color=$ext_color&interior_color=$int_color&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";               
+            }   
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate exterior and interior color";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->ext_int_clr_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $ext_color = $this->ext_int_clr_combo[$v][0];
-        //         $int_color = $this->ext_int_clr_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
-        //                 $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&exterior_color=$ext_color&interior_color=$int_color&latitude=37.998&longitude=-84.522&radius=200&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                
-        //     }  
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate exterior and interior color";
+        try 
+        {        
+            $random_index = array_rand($this->ext_int_clr_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $ext_color = $this->ext_int_clr_combo[$v][0];
+                $int_color = $this->ext_int_clr_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = 37.998, $longitude = -84.522, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $ext_color, $interior_color = $int_color, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($ext_color), strtolower($listing["exterior_color"]));  
+                        $this->assertEquals(strtolower($int_color), strtolower($listing["interior_color"])); 
+                    }
+                    echo "\n/search?api_key={{api_key}}&exterior_color=$ext_color&interior_color=$int_color&latitude=37.998&longitude=-84.522&radius=200&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                
+            }  
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate body sub-type";
-        // try 
-        // {       
-        //     $body_sub_types = array("Crew Cab", "Extended Cab", "Regular Cab", "Super Cab");
-        //     foreach($body_sub_types as $bd_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = $bd_type, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($bd_type, $listing["build"]["body_subtype"]);  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&body_subtype=$bd_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate body sub-type";
+        try 
+        {       
+            $body_sub_types = array("Crew Cab", "Extended Cab", "Regular Cab", "Super Cab");
+            foreach($body_sub_types as $bd_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = $bd_type, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($bd_type, $listing["build"]["body_subtype"]);  
+                }
+                echo "\n/search?api_key={{api_key}}&body_subtype=$bd_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate body type";
-        // try 
-        // {       
-        //     $body_types = array("Sedan", "Pickup", "Hatchback", "Coupe", "Wagon");
-        //     foreach($body_types as $b_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = $b_type, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($b_type, $listing["build"]["body_type"]);  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&body_type=$b_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate body type";
+        try 
+        {       
+            $body_types = array("Sedan", "Pickup", "Hatchback", "Coupe", "Wagon");
+            foreach($body_types as $b_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = $b_type, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($b_type, $listing["build"]["body_type"]);  
+                }
+                echo "\n/search?api_key={{api_key}}&body_type=$b_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate interior color";
-        // try 
-        // {       
-        //     $interior_color_types = array("Black", "Gray", "Graphite", "Cloth", "Ash");
-        //     foreach($interior_color_types as $i_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = $i_type, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals(strtolower($i_type), strtolower($listing["interior_color"]));  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&interior_color=$i_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate interior color";
+        try 
+        {       
+            $interior_color_types = array("Black", "Gray", "Graphite", "Cloth", "Ash");
+            foreach($interior_color_types as $i_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = $i_type, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals(strtolower($i_type), strtolower($listing["interior_color"]));  
+                }
+                echo "\n/search?api_key={{api_key}}&interior_color=$i_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate exterior color";
-        // try 
-        // {       
-        //     $exterior_color_types = array("Black", "White", "Silver", "Red", "Blue");
-        //     foreach($exterior_color_types as $e_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $e_type, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals(strtolower($e_type), strtolower($listing["exterior_color"]));  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&exterior_color=$e_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate exterior color";
+        try 
+        {       
+            $exterior_color_types = array("Black", "White", "Silver", "Red", "Blue");
+            foreach($exterior_color_types as $e_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = $e_type, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals(strtolower($e_type), strtolower($listing["exterior_color"]));  
+                }
+                echo "\n/search?api_key={{api_key}}&exterior_color=$e_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate year, make, model and trim";
-        // try 
-        // {                    
-        //     $random_index = array_rand($this->ymmt_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $yr = $this->ymmt_combo[$v][0];
-        //         $mk = $this->ymmt_combo[$v][1];
-        //         $md = $this->ymmt_combo[$v][2];
-        //         $tr = $this->ymmt_combo[$v][3];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = $mk, $model = $md, $trim = $tr, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($yr), strtolower($listing["build"]["year"]));  
-        //                 $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"])); 
-        //                 $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"])); 
-        //                 $this->assertEquals(strtolower($tr), strtolower($listing["build"]["trim"]));
-        //             }
-        //         echo "\n/search?api_key={{api_key}}&year=$yr&make=$mk&model=$md&trim=$tr&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                       
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate year, make, model and trim";
+        try 
+        {                    
+            $random_index = array_rand($this->ymmt_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $yr = $this->ymmt_combo[$v][0];
+                $mk = $this->ymmt_combo[$v][1];
+                $md = $this->ymmt_combo[$v][2];
+                $tr = $this->ymmt_combo[$v][3];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = $mk, $model = $md, $trim = $tr, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($yr), strtolower($listing["build"]["year"]));  
+                        $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"])); 
+                        $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"])); 
+                        $this->assertEquals(strtolower($tr), strtolower($listing["build"]["trim"]));
+                    }
+                echo "\n/search?api_key={{api_key}}&year=$yr&make=$mk&model=$md&trim=$tr&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                       
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate year, make and model";
-        // try 
-        // {                    
-        //     $random_index = array_rand($this->ymm_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $yr = $this->ymm_combo[$v][0];
-        //         $mk = $this->ymm_combo[$v][1];
-        //         $md = $this->ymm_combo[$v][2];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = $mk, $model = $md, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($yr), strtolower($listing["build"]["year"]));  
-        //                 $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"])); 
-        //                 $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"])); 
-        //             }
-        //         echo "\n/search?api_key={{api_key}}&year=$yr&make=$mk&model=$md&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                       
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate year, make and model";
+        try 
+        {                    
+            $random_index = array_rand($this->ymm_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $yr = $this->ymm_combo[$v][0];
+                $mk = $this->ymm_combo[$v][1];
+                $md = $this->ymm_combo[$v][2];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = $mk, $model = $md, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($yr), strtolower($listing["build"]["year"]));  
+                        $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"])); 
+                        $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"])); 
+                    }
+                echo "\n/search?api_key={{api_key}}&year=$yr&make=$mk&model=$md&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                       
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate model and trim";
-        // try 
-        // {        
-        //     $random_index = array_rand($this->mt_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $md = $this->mt_combo[$v][0];
-        //         $mt = $this->mt_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = $md, $trim = $mt, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"]));  
-        //                 $this->assertEquals(strtolower($mt), strtolower($listing["build"]["trim"])); 
-        //             }
-        //         echo "\n/search?api_key={{api_key}}&model=$md&trim=$mt&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                     
-        //     } 
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate model and trim";
+        try 
+        {        
+            $random_index = array_rand($this->mt_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $md = $this->mt_combo[$v][0];
+                $mt = $this->mt_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = $md, $trim = $mt, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"]));  
+                        $this->assertEquals(strtolower($mt), strtolower($listing["build"]["trim"])); 
+                    }
+                echo "\n/search?api_key={{api_key}}&model=$md&trim=$mt&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                     
+            } 
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate make and model";
-        // try 
-        // {    
-        //     $random_index = array_rand($this->mm_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {                
-        //         $mk = $this->mm_combo[$v][0];
-        //         $md = $this->mm_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = $mk, $model = $md, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"]));  
-        //                 $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"])); 
-        //             }
-        //         echo "\n/search?api_key={{api_key}}&make=$mk&model=$md&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                     
-        //     }    
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate make and model";
+        try 
+        {    
+            $random_index = array_rand($this->mm_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {                
+                $mk = $this->mm_combo[$v][0];
+                $md = $this->mm_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = $mk, $model = $md, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"]));  
+                        $this->assertEquals(strtolower($md), strtolower($listing["build"]["model"])); 
+                    }
+                echo "\n/search?api_key={{api_key}}&make=$mk&model=$md&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";                     
+            }    
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate year and make";
-        // try 
-        // {    
-        //     $random_index = array_rand($this->ym_combo, 3);        
-        //     foreach($random_index as $k => $v)   
-        //     {
-        //         $yr = $this->ym_combo[$v][0];
-        //         $mk = $this->ym_combo[$v][1];
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = $mk, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertEquals(strtolower($yr), strtolower($listing["build"]["year"]));  
-        //                 $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"])); 
-        //             }
-        //         echo "\n/search?api_key={{api_key}}&year=$yr&make=$mk&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     } 
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate year and make";
+        try 
+        {    
+            $random_index = array_rand($this->ym_combo, 3);        
+            foreach($random_index as $k => $v)   
+            {
+                $yr = $this->ym_combo[$v][0];
+                $mk = $this->ym_combo[$v][1];
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $yr, $make = $mk, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertEquals(strtolower($yr), strtolower($listing["build"]["year"]));  
+                        $this->assertEquals(strtolower($mk), strtolower($listing["build"]["make"])); 
+                    }
+                echo "\n/search?api_key={{api_key}}&year=$yr&make=$mk&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            } 
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate trim";
-        // try 
-        // {       
-        //     $trim_types = array("Base", "Limited", "Sport", "Platinum", "Touring");
-        //     foreach($trim_types as $t_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = $t_type, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals(strtolower($t_type), strtolower($listing["build"]["trim"]));  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&trim=$t_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate trim";
+        try 
+        {       
+            $trim_types = array("Base", "Limited", "Sport", "Platinum", "Touring");
+            foreach($trim_types as $t_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = $t_type, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals(strtolower($t_type), strtolower($listing["build"]["trim"]));  
+                }
+                echo "\n/search?api_key={{api_key}}&trim=$t_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate model";
-        // try 
-        // {       
-        //     $model_types = array("F-150", "Civic", "Escape", "Equinox", "Malibu");
-        //     foreach($model_types as $m_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = $m_type, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals(strtolower($m_type), strtolower($listing["build"]["model"]));  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&model=$m_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate model";
+        try 
+        {       
+            $model_types = array("F-150", "Civic", "Escape", "Equinox", "Malibu");
+            foreach($model_types as $m_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = $m_type, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals(strtolower($m_type), strtolower($listing["build"]["model"]));  
+                }
+                echo "\n/search?api_key={{api_key}}&model=$m_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate make";
-        // try 
-        // {       
-        //     $make_types = array("Ford", "Chevrolet", "Toyota", "Nissan", "Honda");
-        //     foreach($make_types as $mk_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = $mk_type, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals(strtolower($mk_type), strtolower($listing["build"]["make"]));  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&make=$mk_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate make";
+        try 
+        {       
+            $make_types = array("Ford", "Chevrolet", "Toyota", "Nissan", "Honda");
+            foreach($make_types as $mk_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = $mk_type, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals(strtolower($mk_type), strtolower($listing["build"]["make"]));  
+                }
+                echo "\n/search?api_key={{api_key}}&make=$mk_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate multiple years";
-        // try 
-        // {        
-        //     $year_param = "2016,2017";
-        //     $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $year_param, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //     foreach($result["listings"] as $listing)
-        //     {   
-        //         $this->assertContains($listing["build"]["year"], $year_param);
-        //     }
-        //     echo "\n/search?api_key={{api_key}}&year=$year_param&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";            
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate multiple years";
+        try 
+        {        
+            $year_param = "2016,2017";
+            $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $year_param, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+            foreach($result["listings"] as $listing)
+            {   
+                $this->assertContains($listing["build"]["year"], $year_param);
+            }
+            echo "\n/search?api_key={{api_key}}&year=$year_param&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";            
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate year";
-        // try 
-        // {       
-        //     $year_types = array(2017, 2018, 2014, 2016, 2015);
-        //     foreach($year_types as $y_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $y_type, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals(strtolower($y_type), strtolower($listing["build"]["year"]));  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&year=$y_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate year";
+        try 
+        {       
+            $year_types = array(2017, 2018, 2014, 2016, 2015);
+            foreach($year_types as $y_type) 
+            {
+                $result = $apiInstance->search($this->api_key, 37.998, -84.522, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = $y_type, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals(strtolower($y_type), strtolower($listing["build"]["year"]));  
+                }
+                echo "\n/search?api_key={{api_key}}&year=$y_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nShould sorting order on dist";
-        // try 
-        // {
-        //     $result = $apiInstance->search($this->api_key, 39.73, -104.99, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "dist", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+        echo "\nShould sorting order on dist";
+        try 
+        {
+            $result = $apiInstance->search($this->api_key, 39.73, -104.99, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "dist", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
                 
-        //     $this->assertNotEquals(sizeof($result["listings"]), 0);  
-        //     $dist_list= []; 
-        //     $temp = [];
-        //     foreach($result["listings"] as $listing)
-        //     {
-        //         array_push($temp,$listing["dist"]);
-        //     }
-        //     $dist_list  = $temp;
-        //     sort($dist_list);            
-        //     $this->assertNotEquals(sizeof($result), 0);
-        //     $this->assertEquals($temp, array_reverse($dist_list));
-        //     echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&sort_by=dist&sort_order=desc&car_type=used: endpoint working fine";
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+            $this->assertNotEquals(sizeof($result["listings"]), 0);  
+            $dist_list= []; 
+            $temp = [];
+            foreach($result["listings"] as $listing)
+            {
+                array_push($temp,$listing["dist"]);
+            }
+            $dist_list  = $temp;
+            sort($dist_list);            
+            $this->assertNotEquals(sizeof($result), 0);
+            $this->assertEquals($temp, array_reverse($dist_list));
+            echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&sort_by=dist&sort_order=desc&car_type=used: endpoint working fine";
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate near by response";
-        // try 
-        // {
-        //     $result = $apiInstance->search($this->api_key, 39.73, -104.99, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+        echo "\nValidate near by response";
+        try 
+        {
+            $result = $apiInstance->search($this->api_key, 39.73, -104.99, 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
                 
-        //     $this->assertNotEquals(sizeof($result["listings"]), 0);              
-        //     foreach($result["listings"] as $listing)
-        //     {
-        //         echo $listing;
-        //         echo $listing["dist"];
-        //     }     
-        //     $this->assertLessThanOrEqual(200, $listing["dist"]);
-        //     echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&sort_order=desc&car_type=used: endpoint working fine";
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+            $this->assertNotEquals(sizeof($result["listings"]), 0);              
+            foreach($result["listings"] as $listing)
+            {
+                echo $listing;
+                echo $listing["dist"];
+            }     
+            $this->assertLessThanOrEqual(200, $listing["dist"]);
+            echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&sort_order=desc&car_type=used: endpoint working fine";
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate zip code search";      
-        // try 
-        // {       
-        //     $zip_types = array("90007", "75209", "90001", "22191");
-        //     foreach($zip_types as $z_type) 
-        //     {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = $z_type, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = "2016", $make = "ford", $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($z_type, $listing["dealer"]["zip"]);  
-        //         }
-        //         echo "\n/search?api_key={{api_key}}&make=ford&year=2016&zip=$z_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate zip code search";      
+        try 
+        {       
+            $zip_types = array("90007", "75209", "90001", "22191");
+            foreach($zip_types as $z_type) 
+            {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = $z_type, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = "2016", $make = "ford", $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($z_type, $listing["dealer"]["zip"]);  
+                }
+                echo "\n/search?api_key={{api_key}}&make=ford&year=2016&zip=$z_type&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate carafax attributes";      
-        // try 
-        // {       
-        //     $result = $apiInstance->search($this->api_key, 37.998, -84.522, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = "true", $carfax_clean_title = "true", $year = "2015", $make = "ford", $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //     $this->assertNotEquals(sizeof($result), 0);
-        //     foreach($result["listings"] as $listing)
-        //     {   
-        //         $this->assertEquals("1", $listing["carfax_1_owner"]);  
-        //         $this->assertEquals("1", $listing["carfax_clean_title"]);  
-        //     }
-        //     echo "\n/search?api_key={{api_key}}&make=ford&year=2015&carfax_1_owner=true&carfax_clean_title=true: endpoint working fine";                
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate carafax attributes";      
+        try 
+        {       
+            $result = $apiInstance->search($this->api_key, 37.998, -84.522, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = "true", $carfax_clean_title = "true", $year = "2015", $make = "ford", $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+            $this->assertNotEquals(sizeof($result), 0);
+            foreach($result["listings"] as $listing)
+            {   
+                $this->assertEquals("1", $listing["carfax_1_owner"]);  
+                $this->assertEquals("1", $listing["carfax_clean_title"]);  
+            }
+            echo "\n/search?api_key={{api_key}}&make=ford&year=2015&carfax_1_owner=true&carfax_clean_title=true: endpoint working fine";                
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate stats with multiple fields given";      
-        // try 
-        // {      
-        //     $stats_list = array("price", "miles", "dom");            
-        //     $result = $apiInstance->search($this->api_key, $latitude = 39.73, $longitude = -104.99, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 0, $start = 1, $facets = null, $stats = "price,miles,dom", $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);
-        //     echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&stats=price,miles,dom&start=1&rows=0&car_type=used: endpoint working fine";               
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate stats with multiple fields given";      
+        try 
+        {      
+            $stats_list = array("price", "miles", "dom");            
+            $result = $apiInstance->search($this->api_key, $latitude = 39.73, $longitude = -104.99, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 0, $start = 1, $facets = null, $stats = "price,miles,dom", $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);
+            echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&stats=price,miles,dom&start=1&rows=0&car_type=used: endpoint working fine";               
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate stats";      
-        // try 
-        // {      
-        //     $stats_list = array("price", "miles", "dom");      
-        //     foreach($stats_list as $s_type) 
-        //     {      
-        //         $result = $apiInstance->search($this->api_key, $latitude = 39.73, $longitude = -104.99, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_type, $sort_order = "desc", $rows = 10, $start = 0, $facets = null, $stats = $s_type, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null); 
-        //         echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&stats=$s_type&start=1&rows=0&car_type=used: endpoint working fine";               
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate stats";      
+        try 
+        {      
+            $stats_list = array("price", "miles", "dom");      
+            foreach($stats_list as $s_type) 
+            {      
+                $result = $apiInstance->search($this->api_key, $latitude = 39.73, $longitude = -104.99, $radius = 200, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_type, $sort_order = "desc", $rows = 10, $start = 0, $facets = null, $stats = $s_type, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null); 
+                echo "\n/search?api_key={{api_key}}&latitude=39.73&longitude=-104.99&radius=200&stats=$s_type&start=1&rows=0&car_type=used: endpoint working fine";               
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate finance fields in range and sort order on them";
-        // try 
-        // {   $sort_opt = array("finance_loan_term","finance_loan_apr","finance_down_payment","finance_emp");
-        //     foreach($this->sort_order as $s_type) 
-        //     {
-        //         foreach($sort_opt as $s_opt) 
-        //         {    
-        //             $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = "36-72", $finance_loan_apr = "4-5", $finance_emp = "200-300", $finance_down_payment = "2000-5000", $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_opt, $sort_order = $s_type, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //             $field_arr = array();
-        //             foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertLessThanOrEqual(72, $listing["financing_options"][0]["loan_term"]);
-        //                 $this->assertGreaterThanOrEqual(36, $listing["financing_options"][0]["loan_term"]);
-        //                 $this->assertLessThanOrEqual(300, $listing["financing_options"][0]["estimated_monthly_payment"]);
-        //                 $this->assertGreaterThanOrEqual(200, $listing["financing_options"][0]["estimated_monthly_payment"]);
-        //                 $this->assertLessThanOrEqual(5000, $listing["financing_options"][0]["down_payment"]);
-        //                 $this->assertGreaterThanOrEqual(2000, $listing["financing_options"][0]["down_payment"]);
-        //                 $this->assertLessThanOrEqual(5, $listing["financing_options"][0]["loan_apr"]);
-        //                 $this->assertGreaterThanOrEqual(4, $listing["financing_options"][0]["loan_apr"]);
-        //                 if($s_opt == "finance_loan_term")
-        //                     array_push($field_arr, $listing["financing_options"][0]["loan_term"]);
-        //                 if($s_opt == "finance_emp")
-        //                     array_push($field_arr, $listing["financing_options"][0]["estimated_monthly_payment"]);
-        //                 if($s_opt == "finance_loan_apr")
-        //                     array_push($field_arr, $listing["financing_options"][0]["loan_apr"]);
-        //                 if($s_opt == "finance_down_payment")
-        //                     array_push($field_arr, $listing["financing_options"][0]["down_payment"]);
-        //             }
-        //             $temp = [];
-        //             $temp = $field_arr;
-        //             sort($temp);
-        //             if ($s_type == "asc")
-        //             {
-        //                 $this->assertEquals($temp, $field_arr);     
-        //             }
-        //             else
-        //             {
-        //                 $this->assertEquals(array_reverse($temp), $field_arr); 
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&finance_loan_term=36-72&&finance_loan_apr=4-5&finance_emp=200-300&finance_down_payment=2000-5000&sort_by=$s_opt&sort_order=$s_type&rows=50&car_type=used: endpoint working fine";
-        //         }
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate finance fields in range and sort order on them";
+        try 
+        {   $sort_opt = array("finance_loan_term","finance_loan_apr","finance_down_payment","finance_emp");
+            foreach($this->sort_order as $s_type) 
+            {
+                foreach($sort_opt as $s_opt) 
+                {    
+                    $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = "36-72", $finance_loan_apr = "4-5", $finance_emp = "200-300", $finance_down_payment = "2000-5000", $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_opt, $sort_order = $s_type, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                    $field_arr = array();
+                    foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertLessThanOrEqual(72, $listing["financing_options"][0]["loan_term"]);
+                        $this->assertGreaterThanOrEqual(36, $listing["financing_options"][0]["loan_term"]);
+                        $this->assertLessThanOrEqual(300, $listing["financing_options"][0]["estimated_monthly_payment"]);
+                        $this->assertGreaterThanOrEqual(200, $listing["financing_options"][0]["estimated_monthly_payment"]);
+                        $this->assertLessThanOrEqual(5000, $listing["financing_options"][0]["down_payment"]);
+                        $this->assertGreaterThanOrEqual(2000, $listing["financing_options"][0]["down_payment"]);
+                        $this->assertLessThanOrEqual(5, $listing["financing_options"][0]["loan_apr"]);
+                        $this->assertGreaterThanOrEqual(4, $listing["financing_options"][0]["loan_apr"]);
+                        if($s_opt == "finance_loan_term")
+                            array_push($field_arr, $listing["financing_options"][0]["loan_term"]);
+                        if($s_opt == "finance_emp")
+                            array_push($field_arr, $listing["financing_options"][0]["estimated_monthly_payment"]);
+                        if($s_opt == "finance_loan_apr")
+                            array_push($field_arr, $listing["financing_options"][0]["loan_apr"]);
+                        if($s_opt == "finance_down_payment")
+                            array_push($field_arr, $listing["financing_options"][0]["down_payment"]);
+                    }
+                    $temp = [];
+                    $temp = $field_arr;
+                    sort($temp);
+                    if ($s_type == "asc")
+                    {
+                        $this->assertEquals($temp, $field_arr);     
+                    }
+                    else
+                    {
+                        $this->assertEquals(array_reverse($temp), $field_arr); 
+                    }
+                    echo "\n/search?api_key={{api_key}}&finance_loan_term=36-72&&finance_loan_apr=4-5&finance_emp=200-300&finance_down_payment=2000-5000&sort_by=$s_opt&sort_order=$s_type&rows=50&car_type=used: endpoint working fine";
+                }
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate lease fields in range and sort order on them";
-        // try 
-        // {   $sort_opt = array("lease_term","lease_emp","lease_down_payment");
-        //     foreach($this->sort_order as $s_type) 
-        //     {
-        //         foreach($sort_opt as $s_opt) 
-        //         {    
-        //             $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = "36-48", $lease_down_payment = "1000-3000", $lease_emp = "200-400", $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_opt, $sort_order = $s_type, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //             $field_arr = array();
-        //             foreach($result["listings"] as $listing)
-        //             {   
-        //                 $this->assertLessThanOrEqual(48, $listing["leasing_options"][0]["lease_term"]);
-        //                 $this->assertGreaterThanOrEqual(36, $listing["leasing_options"][0]["lease_term"]);
-        //                 $this->assertLessThanOrEqual(400, $listing["leasing_options"][0]["estimated_monthly_payment"]);
-        //                 $this->assertGreaterThanOrEqual(200, $listing["leasing_options"][0]["estimated_monthly_payment"]);
-        //                 $this->assertLessThanOrEqual(3000, $listing["leasing_options"][0]["down_payment"]);
-        //                 $this->assertGreaterThanOrEqual(1000, $listing["leasing_options"][0]["down_payment"]);
-        //                 if($s_opt == "lease_down_payment")
-        //                     array_push($field_arr, $listing["leasing_options"][0]["down_payment"]);
-        //                 if($s_opt == "lease_emp")
-        //                     array_push($field_arr, $listing["leasing_options"][0]["estimated_monthly_payment"]);
-        //                 if($s_opt == "lease_term")
-        //                     array_push($field_arr, $listing["leasing_options"][0]["lease_term"]);
-        //             }
-        //             $temp = [];
-        //             $temp = $field_arr;
-        //             sort($temp);
-        //             if ($s_type == "asc")
-        //             {
-        //                 $this->assertEquals($temp, $field_arr);     
-        //             }
-        //             else
-        //             {
-        //                 $this->assertEquals(array_reverse($temp), $field_arr); 
-        //             }
-        //             echo "\n/search?api_key={{api_key}}&lease_term=36-48&lease_emp=200-400&lease_down_payment=1000-3000&sort_by=$s_opt&sort_order=$s_type&rows=50&car_type=used: endpoint working fine";
-        //         }
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate lease fields in range and sort order on them";
+        try 
+        {   $sort_opt = array("lease_term","lease_emp","lease_down_payment");
+            foreach($this->sort_order as $s_type) 
+            {
+                foreach($sort_opt as $s_opt) 
+                {    
+                    $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = "36-48", $lease_down_payment = "1000-3000", $lease_emp = "200-400", $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = $s_opt, $sort_order = $s_type, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                    $field_arr = array();
+                    foreach($result["listings"] as $listing)
+                    {   
+                        $this->assertLessThanOrEqual(48, $listing["leasing_options"][0]["lease_term"]);
+                        $this->assertGreaterThanOrEqual(36, $listing["leasing_options"][0]["lease_term"]);
+                        $this->assertLessThanOrEqual(400, $listing["leasing_options"][0]["estimated_monthly_payment"]);
+                        $this->assertGreaterThanOrEqual(200, $listing["leasing_options"][0]["estimated_monthly_payment"]);
+                        $this->assertLessThanOrEqual(3000, $listing["leasing_options"][0]["down_payment"]);
+                        $this->assertGreaterThanOrEqual(1000, $listing["leasing_options"][0]["down_payment"]);
+                        if($s_opt == "lease_down_payment")
+                            array_push($field_arr, $listing["leasing_options"][0]["down_payment"]);
+                        if($s_opt == "lease_emp")
+                            array_push($field_arr, $listing["leasing_options"][0]["estimated_monthly_payment"]);
+                        if($s_opt == "lease_term")
+                            array_push($field_arr, $listing["leasing_options"][0]["lease_term"]);
+                    }
+                    $temp = [];
+                    $temp = $field_arr;
+                    sort($temp);
+                    if ($s_type == "asc")
+                    {
+                        $this->assertEquals($temp, $field_arr);     
+                    }
+                    else
+                    {
+                        $this->assertEquals(array_reverse($temp), $field_arr); 
+                    }
+                    echo "\n/search?api_key={{api_key}}&lease_term=36-48&lease_emp=200-400&lease_down_payment=1000-3000&sort_by=$s_opt&sort_order=$s_type&rows=50&car_type=used: endpoint working fine";
+                }
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate finance_down_payment";
-        // try 
-        // {   
-        //     foreach($this->finance_down_payment as $f_type) {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = $f_type, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($f_type, $listing["financing_options"][0]["down_payment"]);  
-        //         }
-        //     echo "\n/search?api_key={{api_key}}&finance_down_payment=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     } 
+        echo "\nValidate finance_down_payment";
+        try 
+        {   
+            foreach($this->finance_down_payment as $f_type) {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = $f_type, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($f_type, $listing["financing_options"][0]["down_payment"]);  
+                }
+            echo "\n/search?api_key={{api_key}}&finance_down_payment=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            } 
 
-        // echo "\nValidate finance_emp";
-        // try 
-        // {   
-        //     foreach($this->finance_emp as $f_type) {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = $f_type, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($f_type, $listing["financing_options"][0]["estimated_monthly_payment"]);  
-        //         }
-        //     echo "\n/search?api_key={{api_key}}&finance_emp=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate finance_emp";
+        try 
+        {   
+            foreach($this->finance_emp as $f_type) {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = $f_type, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($f_type, $listing["financing_options"][0]["estimated_monthly_payment"]);  
+                }
+            echo "\n/search?api_key={{api_key}}&finance_emp=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate finance_loan_apr";
-        // try 
-        // {   
-        //     foreach($this->finance_loan_apr as $f_type) {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = $f_type, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($f_type, $listing["financing_options"][0]["loan_apr"]);  
-        //         }
-        //     echo "\n/search?api_key={{api_key}}&finance_loan_apr=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate finance_loan_apr";
+        try 
+        {   
+            foreach($this->finance_loan_apr as $f_type) {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = $f_type, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($f_type, $listing["financing_options"][0]["loan_apr"]);  
+                }
+            echo "\n/search?api_key={{api_key}}&finance_loan_apr=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate finance_loan_term";
-        // try 
-        // {   
-        //     foreach($this->finance_loan_term as $f_type) {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = $f_type, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($f_type, $listing["financing_options"][0]["loan_term"]);  
-        //         }
-        //     echo "\n/search?api_key={{api_key}}&finance_loan_term=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate finance_loan_term";
+        try 
+        {   
+            foreach($this->finance_loan_term as $f_type) {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = $f_type, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($f_type, $listing["financing_options"][0]["loan_term"]);  
+                }
+            echo "\n/search?api_key={{api_key}}&finance_loan_term=$f_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
         
-        // echo "\nValidate lease_down_payment";
-        // try 
-        // {   
-        //     foreach($this->lease_down_payment as $l_type) {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = $l_type, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($l_type, $listing["leasing_options"][0]["down_payment"]);  
-        //         }
-        //     echo "\n/search?api_key={{api_key}}&lease_down_payment=$l_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate lease_down_payment";
+        try 
+        {   
+            foreach($this->lease_down_payment as $l_type) {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = $l_type, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($l_type, $listing["leasing_options"][0]["down_payment"]);  
+                }
+            echo "\n/search?api_key={{api_key}}&lease_down_payment=$l_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate lease_emp - should validate lease estimated monthly payment";
-        // try 
-        // {   
-        //     foreach($this->lease_emp as $l_type) {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = $l_type, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($l_type, $listing["leasing_options"][0]["estimated_monthly_payment"]);  
-        //         }
-        //     echo "\n/search?api_key={{api_key}}&lease_emp=$l_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate lease_emp - should validate lease estimated monthly payment";
+        try 
+        {   
+            foreach($this->lease_emp as $l_type) {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = $l_type, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($l_type, $listing["leasing_options"][0]["estimated_monthly_payment"]);  
+                }
+            echo "\n/search?api_key={{api_key}}&lease_emp=$l_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
 
-        // echo "\nValidate lease_emp - should validate lease term";
-        // try 
-        // {   
-        //     foreach($this->lease_term as $l_type) {
-        //         $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = $l_type, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
-        //         foreach($result["listings"] as $listing)
-        //         {   
-        //             $this->assertEquals($l_type, $listing["leasing_options"][0]["lease_term"]);  
-        //         }
-        //     echo "\n/search?api_key={{api_key}}&lease_term=$l_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
-        //     }
-        // } catch (Exception $e) {
-        //     $this->fail($e->getMessage());
-        //     }
+        echo "\nValidate lease_emp - should validate lease term";
+        try 
+        {   
+            foreach($this->lease_term as $l_type) {
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = $l_type, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = null, $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = null, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = null, $sort_order = null, $rows = 50, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                foreach($result["listings"] as $listing)
+                {   
+                    $this->assertEquals($l_type, $listing["leasing_options"][0]["lease_term"]);  
+                }
+            echo "\n/search?api_key={{api_key}}&lease_term=$l_type&rows=50&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";    
+            }
+        } catch (Exception $e) {
+            $this->fail($e->getMessage());
+            }
     }
 }
-
-
-//$result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $this->zip, $this->include_lease, $this->include_finance, $this->lease_term, $this->lease_down_payment, $this->lease_emp, $this->finance_loan_term, $this->finance_loan_apr, $this->finance_emp, $this->finance_down_payment, $this->finance_down_payment_per, $this->car_type, $this->seller_type, $this->carfax_1_owner, $this->carfax_clean_title, $this->year, $this->make, $this->model, $this->trim, $this->dealer_id, $this->vin, $this->source, $this->body_type, $this->body_subtype, $this->vehicle_type, $this->vins, $this->taxonomy_vins, $this->ymmt, $this->match, $this->cylinders, $this->transmission, $this->speeds, $this->doors, $this->drivetrain, $this->exterior_color, $this->interior_color, $this->engine, $this->engine_type, $this->engine_aspiration, $this->engine_block, $this->miles_range, $this->price_range, $this->dom_range, $this->sort_by, $this->sort_order, $this->rows, $this->start, $this->facets, $this->stats, $this->country, $this->plot, $this->nodedup, $this->state, $this->city, $this->dealer_name, $this->trim_o, $this->trim_r, $this->dom_active_range, $this->dom_180_range, $this->options, $this->features, $this->exclude_certified);  
                 
