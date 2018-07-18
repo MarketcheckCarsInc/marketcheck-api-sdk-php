@@ -482,7 +482,7 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
         {
             try 
             {         
-                $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = null, $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = null, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
                 
                 foreach($result["listings"] as $listing)
                 {
@@ -531,7 +531,6 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
                 array_push($all_query_params, $query_param);
             }       
             $random_index = array_rand($all_query_params, 2);   
-            print_r($random_index);
             foreach($random_index as $k => $v)   
             {                
                 $q_param = $all_query_params[$v];                
@@ -540,7 +539,7 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
                 //     {  
                         // todo
                 //     }
-                echo "\n/search?api_key={{api_key}}&$q_param&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";  
+                echo "\n/search?api_key={{api_key}}&query_param&car_type=used&sort_by=id&sort_order=desc: endpoint working fine";  
             } 
         } catch (Exception $e) {
             $this->fail($e->getMessage());
@@ -578,7 +577,7 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
         {
             try 
             {         
-                $result = $apiInstance->search($this->api_key, $this->latitude, $this->longitude, $this->radius, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = "black", $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = $r_num, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
+                $result = $apiInstance->search($this->api_key, $latitude = null, $longitude = null, $radius = null, $zip = null, $include_lease = null, $include_finance = null, $lease_term = null, $lease_down_payment = null, $lease_emp = null, $finance_loan_term = null, $finance_loan_apr = null, $finance_emp = null, $finance_down_payment = null, $finance_down_payment_per = null, $car_type = "used", $seller_type = null, $carfax_1_owner = null, $carfax_clean_title = null, $year = null, $make = null, $model = null, $trim = null, $dealer_id = $d_id, $vin = null, $source = null, $body_type = null, $body_subtype = null, $vehicle_type = null, $vins = null, $taxonomy_vins = null, $ymmt = null, $match = null, $cylinders = null, $transmission = null, $speeds = null, $doors = null, $drivetrain = null, $exterior_color = "black", $interior_color = null, $engine = null, $engine_type = null, $engine_aspiration = null, $engine_block = null, $miles_range = null, $price_range = null, $dom_range = null, $sort_by = "id", $sort_order = "desc", $rows = $r_num, $start = null, $facets = null, $stats = null, $country = null, $plot = null, $nodedup = null, $state = null, $city = null, $dealer_name = null, $trim_o = null, $trim_r = null, $dom_active_range = null, $dom_180_range = null, $options = null, $features = null, $exclude_certified = null);  
                 $this->assertEquals(sizeof($result["listings"]), $r_num);
                 echo "\n/search?api_key={{api_key}}&exterior_color=black&rows=$r_num&car_type=used&sort_by=id&sort_order=desc: endpoint working fine"; 
             } catch (Exception $e) {
@@ -786,7 +785,7 @@ class ListingsApiTest extends \PHPUnit_Framework_TestCase
             } 
 
         echo "\nValidate vin";
-        $vin_list = array("1N4AL3AP1JC104737","1C4NJCEB1HD160293");
+        $vin_list = array("1N4AL3AP1JC104737","1N4AL3AP0HC113049");
         foreach($vin_list as $v_id) 
         {
             try 
